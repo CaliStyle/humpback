@@ -27,6 +27,13 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
     * -- services
   * -- assets
   	* -- app
+  	  * -- controllers
+  	  * -- hooks
+  	  * -- models
+  	  * -- policies
+  	  * -- providers
+  	  * -- services
+  	  * -- app.js
   	* -- bower_components
   	* -- images
   	* -- styles
