@@ -15,7 +15,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   1. Humpback uses bower to mange frontend dependencies.
   2. Humpback generators create additional files compared to their sails.js counterparts.
   3. Humpback uses scss in lieu of less.
-  4. Humpback includes a humans.txt
+  4. Humpback includes a humans.txt.
   5. Humpback includes an app folder for angular controllers and models.
 
   * -- api
@@ -30,6 +30,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   	* -- bower_components
   	* -- images
   	* -- styles
+  	* -- scss
   	* -- templates
   	* -- bower.json
   	* -- favicon.ico

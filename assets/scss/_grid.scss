@@ -1,0 +1,33 @@
+/**
+* @class
+* max-width 
+*
+* @description 
+* max-width can be added inside page wide grid blocks to make innner divs work like foundations traditional page width 
+* 
+**/
+.max-width{
+	min-width: 100%;
+
+	@include breakpoint(medium only){
+		min-width: 100%;
+	}
+
+	@include breakpoint(large up){
+		max-width: rem-calc(1000);
+		min-width: rem-calc(1000);
+		margin: 0 auto;
+	}
+}
+
+
+ul.inline-list-center {
+	
+	list-style-type: none; 
+	text-align: center;
+	margin-left: 0px;
+	> li {
+		display: inline-block;
+		margin-right: -4px;
+	}
+}

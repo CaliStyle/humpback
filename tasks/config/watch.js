@@ -14,21 +14,38 @@
  */
 module.exports = function(grunt) {
 
-	grunt.config.set('watch', {
-		api: {
+	grunt.config.set('watch'
+		, {	api: 
 
-			// API files to watch:
-			files: ['api/**/*', '!**/node_modules/**']
-		},
-		assets: {
+				// API files to watch:
+				{	files: 
+					[	'api/**/*'
+					,	'!**/node_modules/**'
+					]
+				}
+				
+				,	assets: 
 
-			// Assets to watch:
-			files: ['assets/**/*', 'tasks/pipeline.js', '!**/node_modules/**'],
+				// Assets to watch:
+				{	files: 
+					['assets/**/*'
+					, 'tasks/pipeline.js'
+					, '!**/node_modules/**'
+					]
 
-			// When assets are changed:
-			tasks: ['syncAssets' , 'linkAssets']
-		}
-	});
+				// When assets are changed:
+				, tasks: 
+					['syncAssets' 
+					,	'linkAssets'
+					]
+				}
+
+				//Livereload
+			  ,	options: 
+			  	{	livereload: 1338
+			    }
+				}
+	);
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
 };

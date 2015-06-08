@@ -14,12 +14,11 @@
 
 module.exports = function(grunt) {
 
-	var templateFilesToInject = [
-		'templates/**/*.html'
-	];
+	var templateFilesToInject = [	'templates/**/*.html'	];
 
-	grunt.config.set('jst', {
-		dev: {
+	grunt.config.set('jst'
+	, {	dev: 
+			
 
 			// To use other sorts of templates, specify a regexp like the example below:
 			// options: {
@@ -32,14 +31,15 @@ module.exports = function(grunt) {
 			// default interpolation. If you want to parse templates with the default _.template behavior
 			// (i.e. using <div></div>), there's no need to overwrite `templateSettings.interpolate`.
 
-
-			files: {
+			{	files: 
+				
 				// e.g.
 				// 'relative/path/from/gruntfile/to/compiled/template/destination'  : ['relative/path/to/sourcefiles/**/*.html']
-				'.tmp/public/jst.js': require('../pipeline').templateFilesToInject
+				{	'.tmp/public/jst.js': require('../pipeline').templateFilesToInject
+				}
 			}
 		}
-	});
+	);
 
 	grunt.loadNpmTasks('grunt-contrib-jst');
 };
