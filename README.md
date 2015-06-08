@@ -50,13 +50,18 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
 ##Generators
 Humpback's generators override sails stock generators to create additional 
 files
-  * `sails-generate humpback-api <API_NAME>`
-  * `sails-generate humpback-model <MODEL_NAME>`
-  * `sails-generate humpback-controller <CONTROLLER_NAME>`
-  * `sails-generate humpback-view <VIEW_NAME>`
+  * `sails generate humpback-api <API_NAME>`
+  * `sails generate humpback-model <MODEL_NAME>`
+  * `sails generate humpback-controller <CONTROLLER_NAME>`
+  * `sails generate humpback-view <VIEW_NAME>`
 
 Humpback also has a few custom generators that make development faster and will 
 also work with the future release of humpback.io
+  * `sails generate humpback-module <MODULE_NAME>`
+
+Humpback comes bootstrapped with sails-stripe to make humpback apps SaaS 
+friendly and stripe ready.  See [this link for setup](https://github.com/scott-wyatt/sails-stripe).
+  * `sails generate sails-stripe`
 
 ##Contributing
-See `CONTRIBUTORS.md`
+See `CONTRIBUTORS.md` or [click here](https://github.com/CaliStyle/humpback/blob/master/CONTRIBUTORS.md)

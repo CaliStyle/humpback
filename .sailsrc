@@ -1,5 +1,7 @@
 {
   "generators": {
-    "modules": {}
+    "modules": {
+      "sails-stripe": "sails-stripe"
+    }
   }
 }
