@@ -12,7 +12,7 @@ Humpback is to the frontend what treeline is to the backend of a sails.js app.  
 ##File Structure
 Humpback's file structure is identical to a normal Sails.js app with a few exceptions. 
 
-  1. Humpback uses bower to mange frontend dependencies.
+  1. Humpback uses bower to manage frontend dependencies.
   2. Humpback generators create additional files compared to their sails.js counterparts.
   3. Humpback uses scss in lieu of less.
   4. Humpback includes a humans.txt.
@@ -46,6 +46,17 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   * -- package.json
   * -- README.md
   * -- CONTRIBUTORS.md
+
+##Generators
+Humpback's generators override sails stock generators to create additional 
+files
+  * `sails-generate humpback-api <API_NAME>`
+  * `sails-generate humpback-model <MODEL_NAME>`
+  * `sails-generate humpback-controller <CONTROLLER_NAME>`
+  * `sails-generate humpback-view <VIEW_NAME>`
+
+Humpback also has a few custom generators that make development faster and will 
+also work with the future release of humpback.io
 
 ##Contributing
 See `CONTRIBUTORS.md`
