@@ -1,0 +1,31 @@
+{
+  "name": "Humpback Core",
+  "version": "0.0.1",
+  "homepage": "https://github.com/CaliStyle/humpback",
+  "authors": [
+    "Scott Wyatt <scottwyatt86@gmail.com>"
+  ],
+  "description": "Humpback Core bower components",
+  "main": "app.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "HUmpback"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-apps": "~1.1.0",
+    "js-data": "~1.8.0",
+    "js-data-angular": "~2.4.0",
+    "lodash": "~3.9.3",
+    "angularSails": "~0.11.3"
+  }
+}

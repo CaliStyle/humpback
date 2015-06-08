@@ -1,0 +1,36 @@
+/* TEAM */
+
+                            
+Your title: Scott Wyatt.
+
+                            
+Site: 
+/* email, link to a contact form, etc. */
+
+                            
+Twitter: @scottBwyatt.
+
+                            
+Location: 
+/* City, Country. */
+
+							
+/* THANKS */
+
+							
+Name: Cali Style Technologies
+
+                                              
+/* SITE */
+
+                            
+Last update: YYYY/MM/DD 
+
+                            
+Standards: HTML5, CSS3
+
+                            
+Components: Angular
+
+                            
+Software: Node.js, Sails.js
