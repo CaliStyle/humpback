@@ -18,59 +18,33 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   4. Humpback includes a humans.txt
   5. Humpback includes an app folder for angular controllers and models.
 
-  -- api
-
-     -- controllers
-
-     -- models
-
-     -- hooks
-
-     -- policies
-
-     -- responses
-
-     -- services
-
-  -- assets
-
-  	 -- app
-
-  	 -- bower_components
-
-  	 -- images
-
-  	 -- styles
-
-  	 -- templates
-
-  	 -- bower.json
-
-  	 -- favicon.ico
-
-  	 -- robots.txt
-
-  	 -- humans.txt
-
-  -- config
-
-  -- node_modules
-
-  -- tasks
-
-  -- views
-
-  -- .sailsrc
-
-  -- app.js
-
-  -- Gruntfile.js
-
-  -- package.json
-
-  -- README.md
-
-  -- CONTRIBUTORS.md
+  * -- api
+     ** -- controllers
+     ** -- models
+     ** -- hooks
+     ** -- policies
+     ** -- responses
+     ** -- services
+  * -- assets
+  	 ** -- app
+  	 ** -- bower_components
+  	 ** -- images
+  	 ** -- styles
+  	 ** -- templates
+  	 ** -- bower.json
+  	 ** -- favicon.ico
+  	 ** -- robots.txt
+  	 ** -- humans.txt
+  * -- config
+  * -- node_modules
+  * -- tasks
+  * -- views
+  * -- .sailsrc
+  * -- app.js
+  * -- Gruntfile.js
+  * -- package.json
+  * -- README.md
+  * -- CONTRIBUTORS.md
 
 ##Contributing
 See `CONTRIBUTORS.md`
