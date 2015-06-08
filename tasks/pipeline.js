@@ -26,10 +26,14 @@ var jsFilesToInject =
   , 'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js'
   , 'bower_components/tether/tether.js'
   , 'bower_components/hammerjs/hammer.js'
+
+    // Angular Dependencies are brought in here
   , 'bower_components/angular/angular.js'
+  , 'bower_components/angularSails/dist/ngsails.io.js'
 
     // Dependencies like jQuery, or Angular are brought in here
   , 'js/dependencies/**/*.js'
+  
     // All of the rest of your client-side js files
     // will be injected here in no particular order.
   , 'js/**/*.js'
