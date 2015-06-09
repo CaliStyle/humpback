@@ -80,7 +80,7 @@ bower_components
 ################################################
 .tmp
 dump.rdb
-
+.sass-cache
 
 
 

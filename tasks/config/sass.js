@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 	, {	dev:
 			{	options: 
 		    {	loadPath: 
-			    ['./assets/bower_components/foundation/scss']
+			    ['./assets/bower_components/foundation-apps/scss']
 			    ,	style: 'expanded'
 				}
 				,	files: 

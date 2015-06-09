@@ -12,7 +12,9 @@ angular.module( 'humpback.services'
 	* These are core services used by the framework
 	* 
 	**/
+	, 'humpback.filters'
 
+	
 	/**
 	* @PROJECT SPECIFIC
 	* These project specific or custom services for this individual project

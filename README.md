@@ -21,6 +21,24 @@ JSdata as the client side persistence layer.  Both of these are forward thinking
 technologies, and we are focusing on Humpback as a web application builder not 
 a website generator. 
 
+##Getting Started
+For now, there is no complete CLI or node module, so to get started with humpback
+you can use the standard sails.js way.  First you will need to have node.js / sails.js
+installed as well as [bower](https://www.npmjs.com/package/bower). 
+
+Then, Fork this repo
+
+```sh
+$ npm install
+
+$ cd assets
+
+$ bower install
+
+$ cd ../
+
+$ sails lift
+```
 
 ##File Structure
 Humpback's file structure is identical to a normal Sails.js app with a few exceptions. 
@@ -33,8 +51,9 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
 
   * -- api
     * -- controllers
-    * -- models
     * -- hooks
+    * -- models
+ 	* -- machines
     * -- policies
     * -- responses
     * -- services
