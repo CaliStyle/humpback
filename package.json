@@ -24,6 +24,8 @@
     "rc": "~0.5.0",
     "sails": "^0.11.0",
     "sails-disk": "~0.10.0",
+    "sails-generate-humpback-controller": "^0.11.0",
+    "sails-generate-humpback-model": "^0.11.0",
     "sails-hook-machines": "^1.0.11",
     "sails-stripe": "0.0.5"
   },

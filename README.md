@@ -92,7 +92,7 @@ files
   * `sails generate humpback-api <API_NAME>`
   * `sails generate humpback-model <MODEL_NAME>`
   * `sails generate humpback-controller <CONTROLLER_NAME>`
-  * `sails generate humpback-view <VIEW_NAME>`
+  * `sails generate humpback-views <VIEW_NAME>`
 
 Humpback also has a few custom generators that make development faster and will 
 also work with the future release of humpback.io
