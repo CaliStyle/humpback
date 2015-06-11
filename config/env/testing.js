@@ -15,9 +15,18 @@ module.exports = {
 	//Set the port
 	port: 1337, // Yay for LEET!
 	
+	hooks: {
+    // Skip grunt (unless your hook uses it)
+    'grunt': false
+  },
+
 	//Set the model settigns
 	models: {
 		connection: 'localDiskDb',
 		migrate: 'drop'
-	}
+	},
+
+	log: {
+    level: 'error'
+ 	},
 }

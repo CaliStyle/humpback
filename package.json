@@ -1,7 +1,7 @@
 {
   "name": "humpback",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.11.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
@@ -34,15 +34,27 @@
     "sails-hook-machines": "^1.0.11",
     "sails-stripe": "0.0.5"
   },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-mocha-test": "^0.12.7",
+    "jshint-stylish": "^1.0.1",
+    "mocha": "^2.1.0"
+  },
   "scripts": {
     "start": "node app.js",
-    "debug": "node debug app.js"
+    "debug": "node debug app.js",
+    "pretest": "npm link",
+    "test": "grunt test"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/scott/humpback.git"
   },
-  "author": "scott",
-  "license": ""
+  "author": "Scott B Wyatt",
+  "license": "",
+  "engines": {
+    "node": ">= 0.10",
+    "npm": ">= 2.3"
+  }
 }

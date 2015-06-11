@@ -11,20 +11,20 @@ module.exports = function(grunt) {
 	grunt.config.set('sass'
 	, {	dev:
 			{	options: 
-		    {	loadPath: 
-			    ['./assets/bower_components/foundation-apps/scss']
-			    ,	style: 'expanded'
+			    {	loadPath: 
+				    ['./assets/bower_components/foundation-apps/scss']
+				    ,	style: 'expanded'
+					}
+					,	files: 
+			    	[
+				    	{	expand: true
+				    	,	cwd: 'assets/scss'
+				    	,	src: ['*.scss']
+				    	,	dest: '.tmp/public/styles'
+				    	,	ext: '.css'
+				    	}
+			    	]
 				}
-				,	files: 
-		    	[
-			    	{	expand: true
-			      ,	cwd: 'assets/scss'
-			      ,	src: ['*.scss']
-			      ,	dest: '.tmp/public/styles'
-			      ,	ext: '.css'
-			    	}
-		    	]
-	  	}
 		}
 	);
 
