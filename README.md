@@ -74,6 +74,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   3. Humpback uses scss in lieu of less (to support foundation-apps).
   4. Humpback includes a humans.txt.
   5. Humpback includes an app folder for angular controllers and models.
+  6. Humpback includes `config/env/test.js` environment file for testing.
 
   * -- api
     * -- controllers
@@ -125,7 +126,7 @@ files
   * `sails generate humpback-api <API_NAME>`
   * `sails generate humpback-model <MODEL_NAME>`
   * `sails generate humpback-controller <CONTROLLER_NAME>`
-  * `sails generate humpback-views <VIEW_NAME>`
+  * `sails generate humpback-view <VIEW_NAME [ui-views]>`
 
 Humpback also has a few custom generators that make development faster and will 
 also work with the future release of humpback.io
