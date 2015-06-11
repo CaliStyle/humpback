@@ -1,6 +1,7 @@
 /**
  * Development environment settings
  *
+ * This file is for testing.
  * This file can include shared settings for a development team,
  * such as API keys or remote database passwords.  If you're using
  * a version control solution for your Sails app, this file will
@@ -12,14 +13,4 @@
 
 module.exports = {
 
-  /***************************************************************************
-   * Set the default database connection for models in the development       *
-   * environment (see config/connections.js and config/models.js )           *
-   ***************************************************************************/
-
-  models: {
-  //   connection: 'someMongodbServer'
-  	migrate: 'alter'
-  }
-
-};
+}
