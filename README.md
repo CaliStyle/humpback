@@ -76,6 +76,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   5. Humpback includes an app folder for angular controllers and models.
   6. Humpback includes `config/env/test.js` environment file for testing.
 
+
   * -- api
     * -- controllers
     * -- hooks
