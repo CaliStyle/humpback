@@ -1,6 +1,5 @@
 module.exports = function (grunt) {
-	grunt.registerTask('humpback'
-	,	[	
-		]
-	);
+	grunt.registerTask('humpback',	[
+
+	]);
 };
