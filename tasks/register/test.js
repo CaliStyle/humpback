@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
 
     grunt.registerTask('test', [ 
-        'mochaTest', 
-        'jshint'
+        'jshint',
+        'mochaTest' 
     ]);
 }

@@ -6,6 +6,7 @@
   "keywords": [],
   "dependencies": {
     "bcryptjs": "^2.1.0",
+    "bower": "^1.4.1",
     "ejs": "~0.8.4",
     "grunt": "0.4.2",
     "grunt-contrib-clean": "~0.5.0",
@@ -43,6 +44,7 @@
   "scripts": {
     "start": "node app.js",
     "debug": "node debug app.js",
+    "postinstall": "./node_modules/.bin/bower install",
     "pretest": "npm link",
     "test": "grunt test"
   },
