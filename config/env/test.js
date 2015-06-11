@@ -1,5 +1,5 @@
 /**
- * Development environment settings
+ * Test environment settings
  *
  * This file is for testing.
  * This file can include shared settings for a development team,
@@ -12,5 +12,12 @@
  */
 
 module.exports = {
-
+	//Set the port
+	port: 1337, // Yay for LEET!
+	
+	//Set the model settigns
+	models: {
+		connection: 'localDiskDb',
+		migrate: 'drop'
+	}
 }

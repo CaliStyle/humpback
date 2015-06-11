@@ -70,11 +70,12 @@ and pluralize turned to false.
 Humpback's file structure is identical to a normal Sails.js app with a few exceptions. 
 
   1. Humpback uses bower to manage frontend dependencies.
-  2. Humpback generators create additional files compared to their sails.js counterparts.
-  3. Humpback uses scss in lieu of less (to support foundation-apps).
-  4. Humpback includes a humans.txt.
-  5. Humpback includes an app folder for angular controllers and models.
-  6. Humpback includes `config/env/test.js` environment file for testing.
+  *  Humpback generators create additional files compared to their sails.js counterparts.
+  *  Humpback uses scss in lieu of less (to support foundation-apps).
+  *  Humpback includes a humans.txt.
+  *  Humpback includes an app folder for angular controllers and models.
+  *  Humpback includes `config/env/test.js` environment file for testing.
+  
   * -- api
     * -- controllers
     * -- hooks
@@ -128,6 +129,7 @@ things that are changed for this particular SPA concept.
   * `Role`
   * `Model`
   * `Setting`
+
   If you are using sails-stripe, you consider not using those model names as well.
 
 ##Generators
