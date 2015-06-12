@@ -22,7 +22,12 @@
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link type="text/plain" rel="author" href="/humans.txt" />    
+    <link type="text/plain" rel="author" href="/humans.txt" />   
+
+
+    <% if (typeof sails.config.humpback.mode !== 'undefined' && sails.config.humpback.mode == 'development') { %>
+        <script src="http://localhost:1338/livereload.js"></script>
+    <% } %>
     <!--  
         Stylesheets and Preprocessors
         ==============================
@@ -110,7 +115,33 @@
     <script src="/bower_components/tether/tether.js"></script>
     <script src="/bower_components/hammerjs/hammer.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/js-data/dist/js-data.js"></script>
+    <script src="/bower_components/js-data-angular/dist/js-data-angular.js"></script>
     <script src="/bower_components/angularSails/dist/ngsails.io.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/foundation-apps/js/vendor/iconic.min.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.core.animation.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.core.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.dynamicRouting.animations.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.dynamicRouting.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.mediaquery.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/vendor/markdown.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/vendor/svgDirs.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/foundation.js"></script>
+    <script src="/bower_components/foundation-apps/dist/js/foundation-apps.js"></script>
+    <script src="/bower_components/foundation-apps/dist/js/foundation-apps-templates.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers/UserController.js"></script>
+    <script src="/app/controllers/index.js"></script>
+    <script src="/app/hooks/index.js"></script>
+    <script src="/app/models/User.js"></script>
+    <script src="/app/models/index.js"></script>
+    <script src="/app/policies/index.js"></script>
+    <script src="/app/providers/js-data-angular-sailssocket.js"></script>
+    <script src="/app/services/filters.js"></script>
+    <script src="/app/services/index.js"></script>
+    <script src="/app/views/index.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

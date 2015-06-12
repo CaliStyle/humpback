@@ -5,8 +5,7 @@
 * 
 **/
 
-angular.module( 'humpback.controllers'
-, [
+angular.module( 'humpback.controllers', [
 	/**
 	* @CORE
 	* These are core controllers used by the framework
@@ -21,5 +20,4 @@ angular.module( 'humpback.controllers'
 	/* PROJECT CONTROLLERS */
 
 	/* PROJECT CONTROLLERS END */
-	]
-);
+]);

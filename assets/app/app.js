@@ -5,23 +5,23 @@
 	* Root Module Loads dependencies and Initializes the APP.
 	* 
 	**/
-	angular.module( 'humpback'
-	,	[	'ui.router'
-		,	'js-data'
-		,	'sails.io'
+	angular.module( 'humpback',	[
+		
+		'ui.router',
+		'js-data',	
+		'sails.io',
 
-			//Foundation core
-		,	'foundation'
-		,	'foundation.core'
+		//Foundation core
+		'foundation',
+		'foundation.core',
 			
 			//humpback core
-	  ,	'humpback.controllers'
-		,	'humpback.policies'
-	  ,	'humpback.services'
-	  ,	'humpback.models'
-	    
-		]
-	)
+		'humpback.controllers',
+		'humpback.policies',
+		'humpback.services',
+		'humpback.models'
+	  
+	])
 	
 	/**
 	* @description 

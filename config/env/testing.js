@@ -29,4 +29,8 @@ module.exports = {
 	log: {
     level: 'error'
  	},
+
+  humpback: {
+  	mode: 'testing'
+  }
 }

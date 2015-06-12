@@ -21,7 +21,10 @@ module.exports = {
   //   connection: 'someMysqlServer'
     migrate: 'safe'
   },
-
+  
+  humpback: {
+    mode: 'production'
+  }
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/

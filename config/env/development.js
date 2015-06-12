@@ -20,6 +20,10 @@ module.exports = {
   models: {
   //   connection: 'someMongodbServer'
   	migrate: 'alter'
+  },
+  
+  humpback: {
+  	mode: 'development'
   }
 
 };

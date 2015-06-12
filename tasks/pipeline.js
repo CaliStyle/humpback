@@ -29,14 +29,37 @@ var jsFilesToInject =
 
     // Angular Dependencies are brought in here
   , 'bower_components/angular/angular.js'
+
+    // Load Angular Data
+  , 'bower_components/js-data/dist/js-data.js'
+  , 'bower_components/js-data-angular/dist/js-data-angular.js'
+
   , 'bower_components/angularSails/dist/ngsails.io.js'
 
-    // Dependencies like jQuery, or Angular are brought in here
-  , 'js/dependencies/**/*.js'
+    // Load Angular UI Router
+  , 'bower_components/angular-ui-router/release/angular-ui-router.js'
   
+    // Load Angular Animate
+  , 'bower_components/angular-animate/angular-animate.js'
+
+    // Load Foundation's Angular Core
+  , 'bower_components/foundation-apps/js/vendor/**/*.js'
+  //, 'bower_components/foundation-apps/js/angular/components/**/*.js'
+  , 'bower_components/foundation-apps/js/angular/services/**/*.js'
+  , 'bower_components/foundation-apps/js/angular/vendor/**/*.js'
+  , 'bower_components/foundation-apps/js/angular/foundation.js'
+  , 'bower_components/foundation-apps/dist/js/foundation-apps.js'
+  , 'bower_components/foundation-apps/dist/js/foundation-apps-templates.js'
+  //, '!bower_components/foundation-apps/js/angular/app.js'
+    
+    // All other Bower Scripts are brought in here.
+
+
+    // All other Dependencies are brought in here  
+  , 'js/dependencies/**/*.js'
     // All of the rest of your client-side js files
     // will be injected here in no particular order.
-  , 'js/**/*.js'
+  , 'app/**/*.js'
   ];
 
 
