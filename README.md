@@ -116,8 +116,8 @@ things that are changed for this particular SPA concept.
   * `tasks/register/syncAssets.js` -> `sass:dev`
 
 ##Reserved Model Names
-  Humpback reserves certain model names. While you are free to extend the models
-  you should not attempt to create models with these name spaces.
+Humpback reserves certain model names. While you are free to extend the models
+you should not attempt to create models with these name spaces:
   * `User`
   * `Passport`
   * `Permission`
@@ -125,11 +125,11 @@ things that are changed for this particular SPA concept.
   * `Model`
   * `Setting`
 
-  If you are using sails-stripe, you consider not using those model names as well.
+If you are using sails-stripe, you should consider not using those model names as well.
 
 ##Generators
 Humpback's generators override sails stock generators to create additional 
-files
+files:
   * `sails generate humpback-api <API_NAME>`
   * `sails generate humpback-model <MODEL_NAME>`
   * `sails generate humpback-controller <CONTROLLER_NAME>`
