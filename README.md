@@ -27,12 +27,30 @@ you can use the standard sails.js way.  First you will need to have node.js /
 sails.js installed.
 
 Then, Fork this repo
-
 ```sh
 $ npm install
 
 $ sails lift
 ```
+
+##What you should know if you consider using Humpback
+There is plethra of awesome technologies being used in Humpback.  If you 
+consider using Humpback for production, you and your team should have an
+understanding of the following:
+  * Node.js
+  * Sails.js
+  * Angular.js
+  * Foundation-apps
+  * JS-Data
+
+Additional things that will come in handy  
+  * Node-machines
+  * Bower
+  * Grunt
+
+Methodologies to keep in mind
+  * Single Page Applications (SPAs)
+  * Model View Controller (MVC)
 
 ##Role based authorization and Prebuilt Back Back Admin
 One of the most repetitive tasks that we do with every sails project is
@@ -70,7 +88,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   *  Humpback includes an app folder for angular controllers and models.
   *  Humpback includes `config/env/test.js` environment file for testing.
   *  Humpback includes a test folder for unit testing.
-  *  Humpback includes a `.jshintrc` file for consitent javascript across the front end.
+  *  Humpback includes a `.jshintrc` file for consitent javascript across the front and back end.
   
   * -- api
     * -- controllers
@@ -157,3 +175,4 @@ friendly and stripe ready.  See [this link for setup](https://github.com/scott-w
 
 ##Contributing
 See `CONTRIBUTORS.md` or [click here](https://github.com/CaliStyle/humpback/blob/master/CONTRIBUTORS.md)
+
