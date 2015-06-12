@@ -14,7 +14,10 @@
 //
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
-var cssFilesToInject = ['styles/**/*.css'];
+var cssFilesToInject = 
+  [ 'bower_components/angular/angular-csp.css'
+  , 'styles/**/*.css' 
+  ];
 
 
 // Client-side javascript files to inject in order
@@ -34,6 +37,7 @@ var jsFilesToInject =
   , 'bower_components/js-data/dist/js-data.js'
   , 'bower_components/js-data-angular/dist/js-data-angular.js'
 
+    // Load Angular Sails for sails socket version of http
   , 'bower_components/angularSails/dist/ngsails.io.js'
 
     // Load Angular UI Router
@@ -44,7 +48,7 @@ var jsFilesToInject =
 
     // Load Foundation's Angular Core
   , 'bower_components/foundation-apps/js/vendor/**/*.js'
-  //, 'bower_components/foundation-apps/js/angular/components/**/*.js'
+  , 'bower_components/foundation-apps/js/angular/components/**/*.js'
   , 'bower_components/foundation-apps/js/angular/services/**/*.js'
   , 'bower_components/foundation-apps/js/angular/vendor/**/*.js'
   , 'bower_components/foundation-apps/js/angular/foundation.js'

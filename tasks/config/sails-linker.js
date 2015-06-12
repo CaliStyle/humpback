@@ -12,6 +12,7 @@
  *
  */
 module.exports = function(grunt) {
+	var util = require('util');
 
 	grunt.config.set('sails-linker', {
 		devJs: {
@@ -260,6 +261,89 @@ module.exports = function(grunt) {
 			files: {
 				'views/**/*.jade': ['.tmp/public/jst.js']
 			}
+		},
+
+		// Inject Humpback Controllers
+		humpbackControllers: {
+			options: {
+		        startTag: '/* PROJECT CONTROLLERS */',
+		        endTag: '/* PROJECT CONTROLLERS END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'%s',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            filename = filename.replace('controller', ".controller");
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/controllers/index.js': ['assets/app/controllers/*Controller.js']
+		    }
+		},
+		humpbackModels: {
+			options: {
+		        startTag: '/* PROJECT MODELS */',
+		        endTag: '/* PROJECT MODELS END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'%s.model',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/models/index.js': ['assets/app/models/*.js', '!assets/app/models/index.js']
+		    }
+		},
+		humpbackHooks: {
+			options: {
+		        startTag: '/* PROJECT HOOKS */',
+		        endTag: '/* PROJECT MODELS END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'%s.hook',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/hooks/index.js': ['assets/app/hooks/*.js', '!assets/app/hooks/index.js']
+		    }
+		},
+		humpbackPolicies: {
+			options: {
+		        startTag: '/* PROJECT POLICIES */',
+		        endTag: '/* PROJECT POLICIES END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'%s.policy',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/policies/index.js': ['assets/app/policies/*.js', '!assets/app/policies/index.js']
+		    }
+		},
+		humpbackViews: {
+			options: {
+		        startTag: '/* PROJECT VIEWS */',
+		        endTag: '/* PROJECT VIEWS END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'%s.view',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/views/index.js': ['assets/app/views/*.js', '!assets/app/views/index.js']
+		    }
 		}
 	});
 

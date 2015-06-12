@@ -3,7 +3,7 @@
 * Global User. Model
 * humpback-model created at Tue Jun 09 2015 14:23:16 GMT-0400 (EDT)
 **/
-angular.module('models.user', [
+angular.module('user.model', [
     'humpback.models'
 ])
 

@@ -23,8 +23,8 @@ builder not a website generator.
 
 ##Quick Start
 For now, there is no complete CLI or node module, so to get started with humpback
-you can use the standard sails.js way.  First you will need to have node.js / sails.js
-installed.
+you can use the standard sails.js way.  First you will need to have node.js / 
+sails.js installed.
 
 Then, Fork this repo
 
@@ -65,10 +65,12 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
 
   1. Humpback uses bower to manage frontend dependencies.
   *  Humpback generators create additional files compared to their sails.js counterparts.
-  *  Humpback uses scss in lieu of less (to support foundation-apps).
+  *  Humpback uses SASS in lieu of less (to support foundation-apps).
   *  Humpback includes a humans.txt.
   *  Humpback includes an app folder for angular controllers and models.
   *  Humpback includes `config/env/test.js` environment file for testing.
+  *  Humpback includes a test folder for unit testing.
+  *  Humpback includes a `.jshintrc` file for consitent javascript across the front end.
   
   * -- api
     * -- controllers
@@ -100,10 +102,15 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   * -- config
   * -- node_modules
   * -- tasks
+  * -- test
   * -- views
+  * -- .gitignore
+  * -- .jshintrc
+  * -- .bowerrc
   * -- .sailsrc
   * -- app.js
   * -- Gruntfile.js
+  * -- bower.json
   * -- package.json
   * -- README.md
   * -- CONTRIBUTORS.md
@@ -126,6 +133,11 @@ you should not attempt to create models with these name spaces:
   * `Setting`
 
 If you are using sails-stripe, you should consider not using those model names as well.
+
+##Installable Hooks
+Humpback makes use of installable hooks, we call them barnacles. By default
+the included barnicles are:
+  * `humpback-hook` responsible for authorization logic, includes passport 
 
 ##Generators
 Humpback's generators override sails stock generators to create additional 
