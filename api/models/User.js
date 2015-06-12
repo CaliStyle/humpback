@@ -8,10 +8,10 @@
 var _ = require('lodash');
 var crypto = require('crypto');
 
-String.prototype.replaceArray = function(find, replace) {
+String.prototype.replaceArray = function(find, replace, ignore) {
   var replaceString = this;
   for (var i = 0; i < find.length; i++) {
-    replaceString = replaceString.replace(find[i], replace[i]);
+    replaceString = replaceString.replace(new RegExp(find[i].replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(replace[i])=="string")?replace[i].replace(/\$/g,"$$$$"):replace[i]);
   }
   return replaceString;
 };
