@@ -18,6 +18,8 @@
     "expr": true,
     "ignore": true,
     "globals": {
-        "sails": true
+        "sails": true,
+        "io": true,
+        "_": true
     }
 }
