@@ -7,6 +7,7 @@
 */
 
 module.exports = {
+  
   autoCreatedBy: false,
 
   description: [
@@ -14,6 +15,21 @@ module.exports = {
     'A `User` can perform an `action` on a `Model` by having a `Role` which',
     'grants the necessary `Permission`.'
   ].join(' '),
+
+  permissions: {
+    'registered': {
+      'create': {action: false, relation: false},
+      'read'  : {action: true,  relation: false},
+      'update': {action: false, relation: false},
+      'delete': {action: false, relation: false}    
+    },
+    'public': {
+      'create': {action: false, relation: false},
+      'read'  : {action: true,  relation: false},
+      'update': {action: false, relation: false},
+      'delete': {action: false, relation: false}
+    }
+  },
 
   attributes: {
 
@@ -38,13 +54,13 @@ module.exports = {
     },
 
     /**
-     * attribute of model that this Permission governs.
+     * attributes of model that this Permission governs.
      *
      * TODO dormant. enable in future release
      */
-    attribute: {
-      type: 'string',
-      defaultsTo: null,
+    attributes: {
+      type: 'array',
+      defaultsTo: [],
       index: true
     },
 

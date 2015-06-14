@@ -6,6 +6,7 @@
 * @sails-docs   :: http://sailsjs.org/#!documentation/models
 */
 
+
 var bcrypt = require('bcryptjs');
 
 /**
@@ -48,8 +49,21 @@ function hashPassword (passport, next) {
  * the user, but not the authentication data, to and from the session.
  */
 var Passport = {
-  
-  description: 'Represents a user authentication method',
+
+  permissions: {
+    'registered': {
+      'create': {action: false, relation: false},
+      'read'  : {action: false, relation: false},
+      'update': {action: false, relation: false},
+      'delete': {action: false, relation: false}    
+    },
+    'public': {
+      'create': {action: false, relation: false},
+      'read'  : {action: false, relation: false},
+      'update': {action: false, relation: false},
+      'delete': {action: false, relation: false}
+    }
+  },
 
   attributes: {
     // Required field: Protocol
@@ -69,7 +83,7 @@ var Passport = {
     // means of authentication along with either a username or an email.
     password: { 
       type: 'string', 
-      minLength: 7 
+      minLength: 8 
     },
 
     // Provider fields: Provider, identifer and tokens

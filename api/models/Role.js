@@ -6,16 +6,32 @@
 * @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
-module.exports = {
 
+module.exports = {
+  
   autoCreatedBy: false,
 
-  description: 'Confers `Permission` to `User`',
+  description: 'Confers "Permission" to "User"',
+  
+  permissions: {
+    'registered': {
+			'create': {action: false,	relation: false},
+			'read' 	: {action: false,	relation: false},
+			'update': {action: false,	relation: false},
+			'delete': {action: false,	relation: false}		
+		},
+		'public': {
+			'create': {action: false,	relation: false},
+			'read' 	: {action: false,	relation: false},
+			'update': {action: false,	relation: false},
+			'delete': {action: false,	relation: false}
+		}
+  },
 
   attributes: {
     name: {
       type: 'string',
-      //index: true, //Waterline does not index strings
+      //index: true, //Water line can index strings
       notNull: true,
       unique: true
     },
@@ -23,12 +39,12 @@ module.exports = {
       collection: 'User',
       via: 'roles'
     },
-    alerts: {
-      collection: 'Alert',
-      via: 'roles'
-    },
     routes: {
       collection: 'Route',
+      via: 'roles'
+    },
+    alerts: {
+      collection: 'Alert',
       via: 'roles'
     },
     active: {

@@ -7,13 +7,14 @@
 */
 
 module.exports = {
-  
   autoPK: false,
   
   autoCreatedBy: false,
   
   autoUpdatedAt: false,
   
+  description: 'Represents a Request Entry.',
+
   private: true,
 
   attributes: {

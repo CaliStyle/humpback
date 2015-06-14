@@ -6,15 +6,15 @@
 * @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
-
 module.exports = {
-  
   autoPK: false,
   
   autoUpdatedAt: false,
   
   autoCreatedAt: false,
   
+  description: 'Represents a Security Log Entry.',
+
   private: true,
 
   attributes: {

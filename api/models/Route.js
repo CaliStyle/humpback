@@ -6,19 +6,35 @@
 * @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
+
 module.exports = {
-	description: 'Represents a route.',
 	
+	description: 'Represents a route.',
+  	
+  	permissions: {
+	    'registered': {
+			'create': {action: false,	relation: false},
+			'read' 	: {action: true,	relation: false},
+    		'update': {action: false,	relation: false},
+    		'delete': {action: false,	relation: false}		
+    	},
+		'public': {
+			'create': {action: false,	relation: false},
+			'read' 	: {action: true,	relation: false},
+    		'update': {action: false,	relation: false},
+    		'delete': {action: false,	relation: false}
+		}
+  	},
+
 	attributes: {
-		url: {
+  		url: {
   			type: 'string',
   			required: true
   		},
-		roles: {
+  		roles: {
 	    	collection: 'Role',
 	    	via: 'routes',
 	    	dominant: true
 	    }
 	}
-};
-
+}

@@ -1,13 +1,13 @@
 /**
 * Model.js
 *
-* @description    :: Stores an alert for front end displayed
+* @description    :: Represents a Waterline collection that a User can preform CRUD, query, etc.
 * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Models#model
-* @sails-docs   :: http://sailsjs.org/#!documentation/models
+* @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
 module.exports = {
-  description: 'Represents a Waterline collection that a User can create, query, etc.',
+  description: 'Represents a Waterline collection that a User can preform CRUD, query, etc.',
 
   autoPK: true,
   
@@ -17,7 +17,20 @@ module.exports = {
   
   autoUpdatedAt: false,
 
-  private: true,
+  permissions: {
+    'registered': {
+      'create': {action: false, relation: false},
+      'read'  : {action: true,  relation: false},
+      'update': {action: false, relation: false},
+      'delete': {action: false, relation: false}    
+    },
+    'public': {
+      'create': {action: false, relation: false},
+      'read'  : {action: true,  relation: false},
+      'update': {action: false, relation: false},
+      'delete': {action: false, relation: false}
+    }
+  },
 
   attributes: {
     name: {

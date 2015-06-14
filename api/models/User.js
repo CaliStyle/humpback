@@ -6,6 +6,7 @@
 * @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
+
 var _ = require('lodash');
 var crypto = require('crypto');
 
@@ -17,22 +18,41 @@ String.prototype.replaceArray = function(find, replace, ignore) {
   return replaceString;
 };
 
+
 module.exports = {
 
-  description: 'Represents a user',
+  description: 'Represents a User.',
+
+  permissions: {
+    'registered': {
+      'create': {action: false, relation: false},
+      'read'  : {action: true,  relation: false},
+      'update': {action: false, relation: 'owner'},
+      'delete': {action: false, relation: false}    
+    },
+    'public': {
+      'create': {action: false, relation: false},
+      'read'  : {action: false, relation: false},
+      'update': {action: false, relation: false},
+      'delete': {action: false, relation: false}
+    }
+  },
 
   attributes: {
     username: {
       type: 'string',
       unique: true,
+      required: true // We need some kind of unique identifier, since not all providers have a email, this is the way to go.
       //index: true, //Waterline can not index a String as v0.10.0
       //notNull: true
+
     },
     email: {
       type: 'email',
       unique: true,
+      //required: true, //Not all providers return an email, here's looking at you twitter!
       //index: true, //Waterline can not index a String as v0.10.0
-      //notNull: true
+      //notNull: true //Not all providers return an email, here's looking at you twitter!
     },
     firstName: {
       type: 'string'
@@ -113,5 +133,18 @@ module.exports = {
         .catch(next)
       );
     }
-  ]
+  ],
+
+  /**
+   * Register a new User with a local passport
+   */
+  register: function (user) {
+    return new Promise(function (resolve, reject) {
+      sails.passport.protocols.local.createUser(user, function (error, created) {
+        if (error) return reject(error);
+
+        resolve(created);
+      });
+    });
+  }
 }

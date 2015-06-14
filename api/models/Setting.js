@@ -7,10 +7,26 @@
 */
 
 module.exports = {
+
 	description: 'Represents a humpback setting.',
 
 	autoCreatedBy: false,
-	
+
+	permissions: {
+	    'registered': {
+			'create': {action: false,	relation: false},
+			'read' 	: {action: true,	relation: false},
+    		'update': {action: false,	relation: false},
+    		'delete': {action: false,	relation: false}		
+    	},
+		'public': {
+			'create': {action: false,	relation: false},
+			'read' 	: {action: true,	relation: false},
+    		'update': {action: false,	relation: false},
+    		'delete': {action: false,	relation: false}
+		}
+  	},
+
 	attributes: {
 		name: {
 	    	type: 'string',
