@@ -1,9 +1,11 @@
 /**
- * @module Permission
- *
- * @description
- *   The actions a Role is granted on a particular Model and its attributes
- */
+* Permission.js
+*
+* @description    :: The actions a Role is granted on a particular Model and its attributes
+* @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Models#permission
+* @sails-docs     :: http://sailsjs.org/#!documentation/models
+*/
+
 module.exports = {
   autoCreatedBy: false,
 

@@ -1,3 +1,11 @@
+/**
+* Passport.js
+*
+* @description    :: Stores a passport for a user
+* @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Models#passport
+* @sails-docs   :: http://sailsjs.org/#!documentation/models
+*/
+
 var bcrypt = require('bcryptjs');
 
 /**
@@ -40,6 +48,9 @@ function hashPassword (passport, next) {
  * the user, but not the authentication data, to and from the session.
  */
 var Passport = {
+  
+  description: 'Represents a user authentication method',
+
   attributes: {
     // Required field: Protocol
     //

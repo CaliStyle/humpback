@@ -1,8 +1,9 @@
 /**
 * User.js
 *
-* @description :: TODO: You might write a short summary of how this model works and what it represents here.
-* @docs        :: http://sailsjs.org/#!documentation/models
+* @description    :: TODO: You might write a short summary of how this model works and what it represents here.
+* @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Models#user
+* @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
 var _ = require('lodash');
@@ -17,6 +18,9 @@ String.prototype.replaceArray = function(find, replace, ignore) {
 };
 
 module.exports = {
+
+  description: 'Represents a user',
+
   attributes: {
     username: {
       type: 'string',
@@ -78,10 +82,36 @@ module.exports = {
     }
   ],
  
+  /**
+   * Attach default Role to a new User
+   */
   afterCreate: [
-    function UserAfterCreate(created, next){
-
-      next(null, created);
+    function setOwner (user, next) {
+      sails.log('User.afterCreate.setOwner', user);
+      User
+        .update({ id: user.id }, { owner: user.id })
+        .then(function (user) {
+          next();
+        })
+        .catch(next);
+    },
+    function attachDefaultRole (user, next) {
+      Promise.bind({ }, User.findOne(user.id)
+        .populate('roles')
+        .then(function (user) {
+          this.user = user;
+          return Role.findOne({ name: 'registered' });
+        })
+        .then(function (role) {
+          this.user.roles.add(role.id);
+          return this.user.save();
+        })
+        .then(function (updatedUser) {
+          sails.log.silly('role "registered" attached to user', this.user.username);
+          next();
+        })
+        .catch(next)
+      );
     }
   ]
 }

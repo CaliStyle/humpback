@@ -23,6 +23,7 @@ angular.module( 'humpback.models'
 	* They are compiled with grunt -> tasks/register/humpback.js
 	**/
 	/* PROJECT MODELS */
+	'alert.model',
 	'user.model',
 	/* PROJECT MODELS END */
 	]

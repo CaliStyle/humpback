@@ -31,6 +31,6 @@ module.exports = {
  	},
 
   humpback: {
-  	mode: 'testing'
+  	env: 'testing'
   }
 }

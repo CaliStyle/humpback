@@ -1,5 +1,5 @@
 module.exports.humpback = {
 
-	mode: process.env.HUMPBACK_MODE
+	mode: process.env.HUMPBACK_ENV
 
 }

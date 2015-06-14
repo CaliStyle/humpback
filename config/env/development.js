@@ -23,7 +23,7 @@ module.exports = {
   },
   
   humpback: {
-  	mode: 'development'
+  	env: 'development'
   }
 
 };

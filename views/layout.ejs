@@ -25,11 +25,11 @@
     <link type="text/plain" rel="author" href="/humans.txt" />   
 
 
-    <% if (typeof sails.config.humpback.mode !== 'undefined' && sails.config.humpback.mode == 'development') { %>
+    <% if (typeof sails.config.humpback.env !== 'undefined' && sails.config.humpback.env == 'development') { %>
         <script src="http://localhost:1338/livereload.js"></script>
     <% } %>
     <script type="text/javascript">
-      var _mode = '<%= sails.config.humpback.mode %>';
+      var _env = '<%= sails.config.humpback.env %>';
     </script>
     <!--  
         Stylesheets and Preprocessors
@@ -150,6 +150,7 @@
     <script src="/app/controllers/UserController.js"></script>
     <script src="/app/controllers/index.js"></script>
     <script src="/app/hooks/index.js"></script>
+    <script src="/app/models/Alert.js"></script>
     <script src="/app/models/User.js"></script>
     <script src="/app/models/index.js"></script>
     <script src="/app/policies/index.js"></script>

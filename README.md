@@ -148,7 +148,8 @@ you should not attempt to create models with these name spaces:
   * `Permission`
   * `Role`
   * `Model`
-  * `Setting`
+  * `Setting`,
+  * `Alert`
 
 If you are using sails-stripe, you should consider not using those model names as well.
 

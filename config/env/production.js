@@ -23,7 +23,7 @@ module.exports = {
   },
   
   humpback: {
-    mode: 'production'
+    env: 'production'
   }
   /***************************************************************************
    * Set the port in the production environment to 80                        *
