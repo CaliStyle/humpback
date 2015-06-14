@@ -143,13 +143,16 @@ things that are changed for this particular SPA concept.
 ##Reserved Model Names
 Humpback reserves certain model names. While you are free to extend the models
 you should not attempt to create models with these name spaces:
-  * `User`
-  * `Passport`
-  * `Permission`
-  * `Role`
-  * `Model`
-  * `Setting`,
-  * `Alert`
+  * [`Alert`](https://github.com/CaliStyle/humpback/wiki/Models#alert)
+  * [`Model`](https://github.com/CaliStyle/humpback/wiki/Models#model)
+  * [`Passport`](https://github.com/CaliStyle/humpback/wiki/Models#passport)
+  * [`Permission`](https://github.com/CaliStyle/humpback/wiki/Models#permission)
+  * [`RequestLog`](https://github.com/CaliStyle/humpback/wiki/Models#requestlog)
+  * [`Role`](https://github.com/CaliStyle/humpback/wiki/Models#role)
+  * [`Route`](https://github.com/CaliStyle/humpback/wiki/Models#route)
+  * [`Setting`](https://github.com/CaliStyle/humpback/wiki/Models#setting)
+  * [`SecurityLog`](https://github.com/CaliStyle/humpback/wiki/Models#securitylog)
+  * [`User`](https://github.com/CaliStyle/humpback/wiki/Models#user)  
 
 If you are using sails-stripe, you should consider not using those model names as well.
 
@@ -161,14 +164,14 @@ the included barnicles are:
 ##Generators
 Humpback's generators override sails stock generators to create additional 
 files:
-  * `sails generate humpback-api <API_NAME>`
-  * `sails generate humpback-model <MODEL_NAME>`
-  * `sails generate humpback-controller <CONTROLLER_NAME>`
-  * `sails generate humpback-view <VIEW_NAME [|ui-view]>`
+  * [`sails generate humpback-api <API_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-api)
+  * [`sails generate humpback-model <MODEL_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-model)
+  * [`sails generate humpback-controller <CONTROLLER_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-controller)
+  * [`sails generate humpback-view <VIEW_NAME [|ui-view]>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-view)
 
 Humpback also has a few custom generators that make development faster and will 
 also work with the future release of humpback.io
-  * `sails generate humpback-module <MODULE_NAME>`
+  * [`sails generate humpback-module <MODULE_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-module)
 
 Humpback comes bootstrapped with sails-stripe to make humpback apps SaaS 
 friendly and stripe ready.  See [this link for setup](https://github.com/scott-wyatt/sails-stripe).
