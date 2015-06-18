@@ -1,5 +1,10 @@
 # Humpback
 
+## Status
+
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
+
 ##Preamble
 Humpback was born out of necessity.  We fell in love with sails.js, Angular.js,
 and Zurb Foundation and we knew right away that we wanted to build an intuitive
