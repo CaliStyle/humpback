@@ -28,8 +28,8 @@ builder not a website generator.
 
 ##Quick Start
 For now, there is no complete CLI or node module, so to get started with humpback
-you can use the standard sails.js way.  First you will need to have node.js / 
-sails.js installed.
+you can use the standard sails.js way.  First you will need to have node.js, 
+sails.js, Ruby, and Sass installed.
 
 Then, Fork this repo
 ```sh
