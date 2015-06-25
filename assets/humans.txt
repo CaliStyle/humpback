@@ -33,4 +33,4 @@ Standards: HTML5, CSS3
 Components: Angular
 
                             
-Software: Node.js, Sails.js
+Software: Node.js, Sails.js, Humpback

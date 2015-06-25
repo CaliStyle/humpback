@@ -25,6 +25,7 @@ var cssFilesToInject =
 var jsFilesToInject = 
     // Load sails.io before everything else
   [ 'js/dependencies/sails.io.js'
+  , 'js/dependencies/humpback.io.js'
   , 'bower_components/fastclick/lib/fastclick.js'
   , 'bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js'
   , 'bower_components/tether/tether.js'

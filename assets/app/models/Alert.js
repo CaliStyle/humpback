@@ -12,9 +12,10 @@ angular.module('alert.model', [
 * Run and ignore for unit testing
 * 
 **/
-.run(function($sailsSocket, DS, AlertService){
+.run(function($sailsSocket, DS, AlertService, utils){
 	
-	console.log("listening to alert changes");
+	if(utils.development()){ console.log("listening to alert changes")};
+
     $sailsSocket.subscribe('alert', function(envelope){
         //console.log(envelope);
         AlertService.handler[envelope.verb](envelope)

@@ -12,9 +12,10 @@ angular.module('user.model', [
 * Run and ignore for unit testing
 * 
 **/
-.run(function($sailsSocket, DS, UserService){
+.run(function($sailsSocket, DS, UserService, utils){
 	
-	console.log("listening to user changes");
+	if(utils.development()){ console.log("listening to user changes")};
+
     $sailsSocket.subscribe('user', function(envelope){
         //console.log(envelope);
         UserService.handler[envelope.verb](envelope)

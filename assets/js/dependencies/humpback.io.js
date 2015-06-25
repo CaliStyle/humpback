@@ -1,0 +1,1 @@
+io.sails.transports=['websocket'];

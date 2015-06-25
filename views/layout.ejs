@@ -1,22 +1,23 @@
-<!--
-    /****************************************************
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-     
-    ||  || ||   || ||\  /|| ||\\ ||\\    /\    //\\ || //
-    ||  || ||   || || \/ || ||// ||//   //\\  ||    ||//
-    ||==|| ||   || ||    || ||   ||\\  /====\ ||    ||\\
-    ||  ||  \\_//  ||    || ||   ||// //    \\ \\// || \\
-
-    Authored By: 
-    Scott Wyatt @ScottBWyatt 
-    Built On: Humpback
-
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    ****************************************************/
--->
 <!DOCTYPE html>
-<html ng-app="humpback" ng-controller="AppCtrl">
+<html ng-app="humpback" ng-controller="HumpbackCtrl">
   <head>
+    <!--
+        /****************************************************
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+         
+        ||  || ||   || ||\  /|| ||\\ ||\\    /\    //\\ || //
+        ||  || ||   || || \/ || ||// ||//   //\\  ||    ||//
+        ||==|| ||   || ||    || ||   ||\\  /====\ ||    ||\\
+        ||  ||  \\_//  ||    || ||   ||// //    \\ \\// || \\
+
+        Authored By: 
+        Scott Wyatt @ScottBWyatt 
+        Built On: Humpback
+
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ****************************************************/
+    -->
+
     <title>New Humpback App</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
@@ -24,13 +25,6 @@
 
     <link type="text/plain" rel="author" href="/humans.txt" />   
 
-
-    <% if (typeof sails.config.humpback.env !== 'undefined' && sails.config.humpback.env == 'development') { %>
-        <script src="http://localhost:1338/livereload.js"></script>
-    <% } %>
-    <script type="text/javascript">
-      var _env = '<%= sails.config.humpback.env %>';
-    </script>
     <!--  
         Stylesheets and Preprocessors
         ==============================
@@ -88,6 +82,15 @@
     
     <!--TEMPLATES END-->
 
+    
+    <!--HUMPBACK-->
+    <% if (typeof sails.config.humpback.livereload !== 'undefined' && sails.config.humpback.livereload) { %>
+        <script src=":1338/livereload.js"></script>
+    <% } %>
+    <script type="text/javascript">
+      var _env = '<%= sails.config.humpback.env %>';
+    </script>
+    <!--HUMPBACK END-->
 
     <!--
 
@@ -114,6 +117,7 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/humpback.io.js"></script>
     <script src="/bower_components/fastclick/lib/fastclick.js"></script>
     <script src="/bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
     <script src="/bower_components/tether/tether.js"></script>
@@ -156,6 +160,7 @@
     <script src="/app/policies/index.js"></script>
     <script src="/app/providers/js-data-angular-sailssocket.js"></script>
     <script src="/app/services/_filters.js"></script>
+    <script src="/app/services/_utils.js"></script>
     <script src="/app/services/index.js"></script>
     <script src="/app/views/index.js"></script>
     <!--SCRIPTS END-->
