@@ -6,21 +6,22 @@
 * @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
-module.exports = {
-  autoPK: false,
-  
-  autoUpdatedAt: false,
-  
-  autoCreatedAt: false,
-  
-  description: 'Represents a Security Log Entry.',
+var _ = require('lodash');
+var _super = require('humpback-hook/api/models/SecurityLog');
 
-  private: true,
+_.merge(exports, _super);
+_.merge(exports, {
 
-  attributes: {
-    request: {
-      model: 'RequestLog',
-      primaryKey: true
-    }
-  }
-};
+  /**
+   * Extend the Model
+   * @exmaple: 
+   * attributes : { 
+   *  foo : {type: 'string'} 
+   * }, 
+   * bar: function(values, next){ 
+   *  next(); 
+   * }
+   */
+
+  
+});

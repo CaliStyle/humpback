@@ -45,7 +45,7 @@
     "start": "node app.js",
     "debug": "node debug app.js",
     "postinstall": "./node_modules/.bin/bower install",
-    "pretest": "npm link",
+    "pretest": "npm link && npm link sails-hook-validation",
     "test": "grunt test"
   },
   "main": "app.js",

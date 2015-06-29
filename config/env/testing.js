@@ -16,8 +16,8 @@ module.exports = {
 	port: 1337, // Yay for LEET!
 	
 	hooks: {
-    	// Skip grunt (unless your hook uses it)
-    	'grunt': false
+    	// Runt grunt (unless you want to skip it)
+    	//'grunt': true
   	},
 
 	//Set the model settigns
@@ -27,12 +27,12 @@ module.exports = {
 	},
 
 	log: {
-    level: 'error'
+    	level: 'error'
  	},
 
-  humpback: {
-  	env:  'testing',
-  	host: 'localhost',
-  	livereload: false
-  }
+	humpback: {
+		env:  'testing',
+		host: 'localhost',
+		livereload: false
+	}
 }

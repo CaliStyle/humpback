@@ -6,48 +6,22 @@
 * @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
-module.exports = {
-  description: 'Represents a Waterline collection that a User can preform CRUD, query, etc.',
+var _ = require('lodash');
+var _super = require('humpback-hook/api/models/Model');
 
-  autoPK: true,
-  
-  autoCreatedBy: false,
-  
-  autoCreatedAt: false,
-  
-  autoUpdatedAt: false,
+_.merge(exports, _super);
+_.merge(exports, {
 
-  permissions: {
-    'registered': {
-      'create': {action: false, relation: false},
-      'read'  : {action: true,  relation: false},
-      'update': {action: false, relation: false},
-      'delete': {action: false, relation: false}    
-    },
-    'public': {
-      'create': {action: false, relation: false},
-      'read'  : {action: true,  relation: false},
-      'update': {action: false, relation: false},
-      'delete': {action: false, relation: false}
-    }
-  },
+  /**
+   * Extend the Model
+   * @exmaple: 
+   * attributes : { 
+   *  foo : {type: 'string'} 
+   * }, 
+   * bar: function(values, next){ 
+   *  next(); 
+   * }
+   */
 
-  attributes: {
-    name: {
-      type: 'string',
-      notNull: true,
-      unique: true
-    },
-    identity: {
-      type: 'string',
-      notNull: true
-    },
-    attributes: {
-      type: 'json'
-    },
-    permissions: {
-      collection: 'Permission',
-      via: 'model'
-    }
-  }
-};
+  
+});

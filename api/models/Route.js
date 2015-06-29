@@ -6,35 +6,22 @@
 * @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
+var _ = require('lodash');
+var _super = require('humpback-hook/api/models/Route');
 
-module.exports = {
-	
-	description: 'Represents a route.',
-  	
-  	permissions: {
-	    'registered': {
-			'create': {action: false,	relation: false},
-			'read' 	: {action: true,	relation: false},
-    		'update': {action: false,	relation: false},
-    		'delete': {action: false,	relation: false}		
-    	},
-		'public': {
-			'create': {action: false,	relation: false},
-			'read' 	: {action: true,	relation: false},
-    		'update': {action: false,	relation: false},
-    		'delete': {action: false,	relation: false}
-		}
-  	},
+_.merge(exports, _super);
+_.merge(exports, {
 
-	attributes: {
-  		url: {
-  			type: 'string',
-  			required: true
-  		},
-  		roles: {
-	    	collection: 'Role',
-	    	via: 'routes',
-	    	dominant: true
-	    }
-	}
-}
+  /**
+   * Extend the Model
+   * @exmaple: 
+   * attributes : { 
+   *	foo : {type: 'string'} 
+   * }, 
+   * bar: function(values, next){ 
+   *	next(); 
+   * }
+   */
+
+  
+});

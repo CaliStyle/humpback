@@ -6,55 +6,22 @@
 * @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
+var _ = require('lodash');
+var _super = require('humpback-hook/api/models/Role');
 
-module.exports = {
+_.merge(exports, _super);
+_.merge(exports, {
+
+  /**
+   * Extend the Model
+   * @exmaple: 
+   * attributes : { 
+   *  foo : {type: 'string'} 
+   * }, 
+   * bar: function(values, next){ 
+   *  next(); 
+   * }
+   */
+
   
-  autoCreatedBy: false,
-
-  description: 'Confers "Permission" to "User"',
-  
-  permissions: {
-    'registered': {
-			'create': {action: false,	relation: false},
-			'read' 	: {action: false,	relation: false},
-			'update': {action: false,	relation: false},
-			'delete': {action: false,	relation: false}		
-		},
-		'public': {
-			'create': {action: false,	relation: false},
-			'read' 	: {action: false,	relation: false},
-			'update': {action: false,	relation: false},
-			'delete': {action: false,	relation: false}
-		}
-  },
-
-  attributes: {
-    name: {
-      type: 'string',
-      //index: true, //Water line can index strings
-      notNull: true,
-      unique: true
-    },
-    users: {
-      collection: 'User',
-      via: 'roles'
-    },
-    routes: {
-      collection: 'Route',
-      via: 'roles'
-    },
-    alerts: {
-      collection: 'Alert',
-      via: 'roles'
-    },
-    active: {
-      type: 'boolean',
-      defaultsTo: true,
-      index: true
-    },
-    permissions: {
-      collection: 'Permission',
-      via: 'role'
-    }
-  }
-}
+});

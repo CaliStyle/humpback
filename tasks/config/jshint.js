@@ -15,7 +15,7 @@ module.exports = function(grunt) {
                 jshintrc: '.jshintrc'
             },
             all: [
-                //'Gruntfile.js',
+                'Gruntfile.js',
                 //'index.js',
                 //'lib/**/*.js',
                 'assets/app/**/*.js',

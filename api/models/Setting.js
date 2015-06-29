@@ -6,35 +6,22 @@
 * @sails-docs		:: http://sailsjs.org/#!documentation/models
 */
 
-module.exports = {
+var _ = require('lodash');
+var _super = require('humpback-hook/api/models/Setting');
 
-	description: 'Represents a humpback setting.',
+_.merge(exports, _super);
+_.merge(exports, {
 
-	autoCreatedBy: false,
+  /**
+   * Extend the Model
+   * @exmaple: 
+   * attributes : { 
+   *	foo : {type: 'string'} 
+   * }, 
+   * bar: function(values, next){ 
+   *	next(); 
+   * }
+   */
 
-	permissions: {
-	    'registered': {
-			'create': {action: false,	relation: false},
-			'read' 	: {action: true,	relation: false},
-    		'update': {action: false,	relation: false},
-    		'delete': {action: false,	relation: false}		
-    	},
-		'public': {
-			'create': {action: false,	relation: false},
-			'read' 	: {action: true,	relation: false},
-    		'update': {action: false,	relation: false},
-    		'delete': {action: false,	relation: false}
-		}
-  	},
-
-	attributes: {
-		name: {
-	    	type: 'string',
-	    	required: true,
-	    	unique: true
-	    },
-	    setting: {
-	    	type: 'json'
-	    }
-	}
-};
+  
+});
