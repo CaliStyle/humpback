@@ -32,6 +32,7 @@ module.exports = function(grunt) {
 
 			// When assets are changed:
 			tasks: [
+				'humpback',
 				'syncAssets',
 				'linkAssets'
 			]

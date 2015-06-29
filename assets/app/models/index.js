@@ -24,6 +24,7 @@ angular.module( 'humpback.models'
 	**/
 	/* PROJECT MODELS */
 	'alert.model',
+	'setting.model',
 	'user.model',
 	/* PROJECT MODELS END */
 	]
