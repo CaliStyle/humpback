@@ -22,8 +22,16 @@ module.exports = {
     migrate: 'safe'
   },
   
+
+  /***************************************************************************
+   * Set the default humpback configuration for production                   *
+   * environment (see config/connections.js and config/models.js )           *
+   ***************************************************************************/
+
   humpback: {
-    env: 'production'
+    env:  'production',
+    host: '<set_your_primary_host>',
+    livereload: false
   }
   /***************************************************************************
    * Set the port in the production environment to 80                        *

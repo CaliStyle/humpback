@@ -56,28 +56,37 @@ module.exports = {
     /**
      * attributes of model that this Permission governs.
      *
-     * TODO dormant. enable in future release
+     * '*' wildcard is allowed, else only access to specified attributes
      */
     attributes: {
       type: 'array',
-      defaultsTo: [],
+      defaultsTo: ['*'],
       index: true
     },
 
+    /**
+     * action permissions based on all controller
+     * actions, including custom ones
+     */
     action: {
       type: 'string',
       index: true,
       notNull: true,
+      type: 'string'
+      //defaultsTo: []
+      
       /**
        * TODO remove enum and support permissions based on all controller
        * actions, including custom ones
        */
+      /*
       enum: [
         'create',
         'read',
         'update',
         'delete'
       ]
+      */
     },
 
     relation: {

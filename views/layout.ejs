@@ -25,6 +25,10 @@
 
     <link type="text/plain" rel="author" href="/humans.txt" />   
 
+    <% if (typeof sails.config.humpback.livereload !== 'undefined' && sails.config.humpback.livereload) { %>
+        <script src="//<%= sails.config.humpback.host %>:1338/livereload.js"></script>
+    <% } %>
+    
     <!--  
         Stylesheets and Preprocessors
         ==============================
@@ -84,9 +88,6 @@
 
     
     <!--HUMPBACK-->
-    <% if (typeof sails.config.humpback.livereload !== 'undefined' && sails.config.humpback.livereload) { %>
-        <script src=":1338/livereload.js"></script>
-    <% } %>
     <script type="text/javascript">
       var _env = '<%= sails.config.humpback.env %>';
     </script>
