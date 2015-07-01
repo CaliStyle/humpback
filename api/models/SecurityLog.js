@@ -15,6 +15,7 @@ _.merge(exports, {
   /**
    * Extend the Model
    * @exmaple: 
+   * https://github.com/CaliStyle/humpback-hook/blob/master/api/models/SecurityLog.js
    * attributes : { 
    *  foo : {type: 'string'} 
    * }, 

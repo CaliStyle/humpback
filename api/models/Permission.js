@@ -14,6 +14,7 @@ _.merge(exports, {
 
   /**
    * Extend the Model
+   * https://github.com/CaliStyle/humpback-hook/blob/master/api/models/Permission.js
    * @exmaple: 
    * attributes : { 
    *  foo : {type: 'string'} 
