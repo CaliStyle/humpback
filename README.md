@@ -143,7 +143,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
 Humpback overrides as few system defaults as possible, but there are some
 things that are changed for this particular SPA concept.
   * `config/blueprints.js` -> `prefix: 'api/'`
-  * `tasks/register/compileAssets.js` -> `sass:dev`
+  * `tasks/register/compileAssets.js` -> `humpback`,`sass:dev`
   * `tasks/register/syncAssets.js` -> `sass:dev`
 
 ##Reserved Model Names
