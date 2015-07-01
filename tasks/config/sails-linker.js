@@ -344,6 +344,38 @@ module.exports = function(grunt) {
 		    files: {
 		        'assets/app/views/index.js': ['assets/app/views/*.js', '!assets/app/views/index.js']
 		    }
+		},
+		humpbackDirectives: {
+			options: {
+		        startTag: '/* PROJECT DIRECTIVES */',
+		        endTag: '/* PROJECT DIRECTIVES END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'%s.view',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/directives/index.js': ['assets/app/directives/*.js', '!assets/app/directives/index.js']
+		    }
+		},
+		humpbackFilters: {
+			options: {
+		        startTag: '/* PROJECT FILTERS */',
+		        endTag: '/* PROJECT FITLERS END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'%s.view',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/filters/index.js': ['assets/app/filters/*.js', '!assets/app/filters/index.js']
+		    }
 		}
 	});
 
