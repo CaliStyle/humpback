@@ -16,9 +16,12 @@
 		'foundation.core',
 			
 		//humpback core
+		'humpback.hooks',
 		'humpback.controllers',
 		'humpback.policies',
 		'humpback.services',
+		'humpback.directives',
+		'humpback.filters',
 		'humpback.models'
 	  
 	])
@@ -64,7 +67,7 @@
 
 	/**
 	* @description 
-	* APP Wide Controller 
+	* APP Wide Primary Controller for ng-app 
 	* 
 	**/
 	.controller( 'HumpbackCtrl', function AppCtrl ($rootScope, $state, utils){

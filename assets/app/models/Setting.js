@@ -7,7 +7,6 @@ angular.module('setting.model', [
     'humpback.models'
 ])
 
-
 /**
 * @description 
 * Run and ignore for unit testing
@@ -18,7 +17,7 @@ angular.module('setting.model', [
 	if(utils.development()){ console.log("listening to setting changes")};
 
     $sailsSocket.subscribe('setting', function(envelope){
-        //console.log(envelope);
+        if(utils.development()){ console.log(envelope)};
         SettingService.handler[envelope.verb](envelope)
     });
 
