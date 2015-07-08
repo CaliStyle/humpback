@@ -4,6 +4,10 @@ node_js:
   - "0.10"
   - "0.12"
 
+# before install
+before_install:
+  - npm install -g grunt-cli
+
 # whitelisted branches
 branches:
   only:
