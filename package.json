@@ -1,8 +1,7 @@
 {
   "name": "humpback",
-  "private": true,
   "version": "0.11.0",
-  "description": "a Sails application",
+  "description": "The Humpback Platform, a rapid development starting point",
   "keywords": [],
   "dependencies": {
     "bcryptjs": "^2.1.0",
