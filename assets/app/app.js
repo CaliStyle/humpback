@@ -63,6 +63,11 @@
 			$rootScope.__env = window._env;
 		}
 
+		if(window._prefix){
+			console.log("HUMPBACK PREFIX:", window._prefix);
+			$rootScope.__prefix = window._prefix;
+		}
+
 	}])
 
 	/**

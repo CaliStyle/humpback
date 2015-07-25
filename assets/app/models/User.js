@@ -14,7 +14,7 @@ angular.module('user.model', [
 **/
 .run(function($sailsSocket, DS, UserService, utils){
 	
-	if(utils.development()){ console.log("listening to user changes")};
+	if(utils.development()){ console.log("HUMPBACK: listening to user changes")};
 
     $sailsSocket.subscribe('user', function(envelope){
         //console.log(envelope);
@@ -31,7 +31,7 @@ angular.module('user.model', [
         storageMode: 'localStorage',
         idAttribute: 'id',
         endpoint: '/user',
-        baseUrl: '/api',
+        baseUrl: window._prefix || '/api',
         
         /**
         * @description 

@@ -9,18 +9,7 @@
  * http://sailsjs.org/#/documentation/concepts/ORM
  */
 
-var _ = require('lodash');
-var _super = require('humpback-hook/config/models');
-
-_.merge(exports, _super);
-_.merge(exports, {
-
-  /**
-   * Extend the models
-   * https://github.com/CaliStyle/humpback-hook/blob/master/config/models.js
-   * @exmaple: 
-   * attribute : flase
-   */
+module.exports.models = {
 
   /***************************************************************************
   *                                                                          *
@@ -40,5 +29,4 @@ _.merge(exports, {
   ***************************************************************************/
   // migrate: 'alter'
 
-  
-});
+};

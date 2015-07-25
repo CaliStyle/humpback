@@ -166,6 +166,7 @@ If you are using sails-stripe, you should consider not using those model names a
 Humpback makes use of installable hooks, we call them barnacles. By default
 the included barnicles are:
   * `humpback-hook` responsible for authorization logic, includes passport 
+  * `humpback-gui-hook` responsible for creating the admin data GUI 
 
 ##Generators
 Humpback's generators override sails stock generators to create additional 

@@ -14,7 +14,7 @@ angular.module('alert.model', [
 **/
 .run(function($sailsSocket, DS, AlertService, utils){
 	
-	if(utils.development()){ console.log("listening to alert changes")};
+	if(utils.development()){ console.log("HUMPBACK: listening to alert changes")};
 
     $sailsSocket.subscribe('alert', function(envelope){
         //console.log(envelope);
@@ -43,7 +43,7 @@ angular.module('alert.model', [
         storageMode: 'localStorage',
         idAttribute: 'id',
         endpoint: '/alert',
-        baseUrl: '/api',
+        baseUrl: window._prefix || '/api',
         
         /**
         * @description 

@@ -6,8 +6,8 @@
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
          
         ||  || ||   || ||\  /|| ||\\ ||\\    /\    //\\ || //
-        ||  || ||   || || \/ || ||// ||//   //\\  ||    ||//
-        ||==|| ||   || ||    || ||   ||\\  /====\ ||    ||\\
+        ||  || ||   || ||\\//|| ||// ||//   //\\  ||    ||//
+        ||==|| ||   || || \/ || ||   ||\\  /====\ ||    ||\\
         ||  ||  \\_//  ||    || ||   ||// //    \\ \\// || \\
 
         Authored By: 
@@ -28,7 +28,7 @@
     <% if (typeof sails.config.humpback.livereload !== 'undefined' && sails.config.humpback.livereload) { %>
         <script src="//<%= sails.config.humpback.host %>:1338/livereload.js"></script>
     <% } %>
-    
+
     <!--  
         Stylesheets and Preprocessors
         ==============================
@@ -90,6 +90,7 @@
     <!--HUMPBACK-->
     <script type="text/javascript">
       var _env = '<%= sails.config.humpback.env %>';
+      var _prefix = '<%= sails.config.blueprints.prefix %>';
     </script>
     <!--HUMPBACK END-->
 

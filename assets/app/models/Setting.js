@@ -14,7 +14,7 @@ angular.module('setting.model', [
 **/
 .run(function($sailsSocket, DS, SettingService, utils){
 	
-	if(utils.development()){ console.log("listening to setting changes")};
+	if(utils.development()){ console.log("HUMPBACK: listening to setting changes")};
 
     $sailsSocket.subscribe('setting', function(envelope){
         if(utils.development()){ console.log(envelope)};
@@ -31,7 +31,7 @@ angular.module('setting.model', [
         storageMode: 'localStorage',
         idAttribute: 'id',
         endpoint: '/setting',
-        baseUrl: '/api',
+        baseUrl: window._prefix || '/api',
         
         /**
         * @description 
