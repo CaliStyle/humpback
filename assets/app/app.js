@@ -11,10 +11,11 @@
 		'js-data',	
 		'sails.io',
 		'pascalprecht.translate',
+		'ngAnimate',
 
 		//Foundation core
 		'foundation',
-		'foundation.core',
+		//'foundation.core',
 			
 		//humpback core
 		'humpback.hooks',
@@ -64,8 +65,6 @@
 		* 
 		**/
 		$urlRouterProvider.otherwise(function ($injector, $location, $state) {
-			
-			//if(utils.development()){ console.log('HUMPBACK: Location', $location); console.log('HUMPBACK: Location URL', $location.$$url); };
 
 			if ($location.$$url === '/') {
 				console.log("to home");
@@ -79,6 +78,7 @@
 		});
 
 	}])
+
 	/**
 	* @description 
 	* Root Module Run that can be ignored during unit testing.
