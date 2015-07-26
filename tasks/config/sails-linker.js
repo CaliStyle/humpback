@@ -302,7 +302,7 @@ module.exports = function(grunt) {
 		        startTag: '/* PROJECT HOOKS */',
 		        endTag: '/* PROJECT MODELS END */',
 		        fileRef: function (filepath) {
-		            var tmpl = "'%s.hook',";
+		            var tmpl = "'humpback.hook.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
 		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
 		            return util.format(tmpl, filename);
@@ -318,7 +318,7 @@ module.exports = function(grunt) {
 		        startTag: '/* PROJECT POLICIES */',
 		        endTag: '/* PROJECT POLICIES END */',
 		        fileRef: function (filepath) {
-		            var tmpl = "'%s.policy',";
+		            var tmpl = "'humpback.policy.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
 		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
 		            return util.format(tmpl, filename);
@@ -350,7 +350,7 @@ module.exports = function(grunt) {
 		        startTag: '/* PROJECT DIRECTIVES */',
 		        endTag: '/* PROJECT DIRECTIVES END */',
 		        fileRef: function (filepath) {
-		            var tmpl = "'%s.view',";
+		            var tmpl = "'humpback.directives.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
 		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
 		            return util.format(tmpl, filename);
@@ -366,7 +366,7 @@ module.exports = function(grunt) {
 		        startTag: '/* PROJECT FILTERS */',
 		        endTag: '/* PROJECT FITLERS END */',
 		        fileRef: function (filepath) {
-		            var tmpl = "'%s.view',";
+		            var tmpl = "'humpback.filters.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
 		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
 		            return util.format(tmpl, filename);
@@ -382,7 +382,7 @@ module.exports = function(grunt) {
 		        startTag: '/* PROJECT SERVICES */',
 		        endTag: '/* PROJECT SERVICES END */',
 		        fileRef: function (filepath) {
-		            var tmpl = "'%s.view',";
+		            var tmpl = "'humpback.services.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
 		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
 		            return util.format(tmpl, filename);

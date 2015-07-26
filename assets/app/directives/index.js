@@ -21,7 +21,7 @@ angular.module( 'humpback.directives'
 	* They are compiled with grunt -> tasks/register/humpback.js
 	**/
 	/* PROJECT DIRECTIVES */
-
+	'humpback.directives.focus',
 	/* PROJECT DIRECTIVES END */
 	]
 );

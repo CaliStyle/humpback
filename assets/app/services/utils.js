@@ -1,4 +1,4 @@
-angular.module( 'humpback.utils', [])
+angular.module( 'humpback.services.utils', [])
 
 .service('utils', function($timeout) {
 	return {

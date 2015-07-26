@@ -56,7 +56,8 @@ var jsFilesToInject =
   , 'bower_components/foundation-apps/dist/js/foundation-apps.js'
   , 'bower_components/foundation-apps/dist/js/foundation-apps-templates.js'
   //, '!bower_components/foundation-apps/js/angular/app.js'
-    
+  
+  , 'bower_components/angular-translate/angular-translate.js'  
     // All other Bower Scripts are brought in here.
 
 

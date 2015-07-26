@@ -22,7 +22,7 @@ angular.module( 'humpback.services'
 	* They are compiled with grunt -> tasks/register/humpback.js
 	**/
 	/* PROJECT SERVICES */
-
+	'humpback.services.utils',
 	/* PROJECT SERVICES END */
 	]
 );

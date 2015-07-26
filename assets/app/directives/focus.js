@@ -1,4 +1,4 @@
-angular.module('humpback.focus', [])
+angular.module('humpback.directives.focus', [])
 /*
  * @description
  * Factory that takes an Id and focuses the window on the element

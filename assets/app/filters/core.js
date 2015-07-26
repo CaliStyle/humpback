@@ -1,4 +1,4 @@
-angular.module('humpback.filters', [])
+angular.module('humpback.filters.core', [])
 
 /*
  * @description

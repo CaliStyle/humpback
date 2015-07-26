@@ -7,5 +7,6 @@ module.exports = function (grunt) {
 		'sails-linker:humpbackViews',
 		'sails-linker:humpbackDirectives',
 		'sails-linker:humpbackFilters',
+		'sails-linker:humpbackServices'
 	]);
 };
