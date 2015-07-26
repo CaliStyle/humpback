@@ -47,6 +47,7 @@ understanding of the following:
   * Angular.js
   * Foundation-apps
   * JS-Data
+  * i18n
 
 Additional things that will come in handy  
   * Node-machines
@@ -183,6 +184,9 @@ also work with the future release of humpback.io
 Humpback comes bootstrapped with sails-stripe to make humpback apps SaaS 
 friendly and stripe ready.  See [this link for setup](https://github.com/scott-wyatt/sails-stripe).
   * `sails generate sails-stripe`
+
+##i18n model validation 
+Humpback includes custom validation transaltion for i18n
 
 ##Contributing
 See `CONTRIBUTORS.md` or [click here](https://github.com/CaliStyle/humpback/blob/master/CONTRIBUTORS.md)

@@ -12,8 +12,6 @@ angular.module( 'humpback.services'
 	* These are core services used by the framework
 	* 
 	**/
-	, 'humpback.utils'
-	, 'humpback.filters'
 	/* CORE PROJECT SERVICES */
 
 	/* CORE PROJECT SERVICES END */

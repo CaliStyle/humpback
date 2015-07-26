@@ -376,6 +376,22 @@ module.exports = function(grunt) {
 		    files: {
 		        'assets/app/filters/index.js': ['assets/app/filters/*.js', '!assets/app/filters/index.js']
 		    }
+		},
+		humpbackServices: {
+			options: {
+		        startTag: '/* PROJECT SERVICES */',
+		        endTag: '/* PROJECT SERVICES END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'%s.view',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/services/index.js': ['assets/app/services/*.js', '!assets/app/services/index.js']
+		    }
 		}
 	});
 
