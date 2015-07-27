@@ -168,6 +168,7 @@ Humpback makes use of installable hooks, we call them barnacles. By default
 the included barnicles are:
   * `humpback-hook` responsible for authorization logic, includes passport 
   * `humpback-gui-hook` responsible for creating the admin data GUI 
+  * `humpback-validation-hook` responsible for creating model validation errors in i18n
 
 ##Generators
 Humpback's generators override sails stock generators to create additional 
