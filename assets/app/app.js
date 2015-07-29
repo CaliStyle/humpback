@@ -51,8 +51,9 @@
 		* Configure Translations
 		* 
 		**/
+		
+		$translateProvider.preferredLanguage(window._defaultLocale);
 		/*
-		$translateProvider.preferredLanguage('en');
 		$translateProvider.useStaticFilesLoader({
 			prefix: '/languages/',
 			suffix: '.json'
@@ -67,12 +68,12 @@
 		$urlRouterProvider.otherwise(function ($injector, $location, $state) {
 
 			if ($location.$$url === '/') {
-				console.log("to home");
+				console.log("HUMPBACK: HOMEPAGE");
 				//$state.go('home');
 				//window.location = '/';
 			}else {
 				// pass through to let the web server handle this request
-				console.log('send to server');
+				console.log('HUMPBACK: Not Found - send request to server');
 				window.location = $location.$$absUrl;
 			}
 		});
@@ -116,9 +117,13 @@
 		}
 
 		if(window._prefix){
-			console.log("HUMPBACK PREFIX:", window._prefix);
 			$rootScope.__prefix = window._prefix;
-			if(utils.development()){ console.log("HUMPBACK ENV:", window._env); }
+			if(utils.development()){ console.log("HUMPBACK PREFIX:", window._prefix); }
+		}
+		
+		if(window._defaultLocale){
+			$rootScope.__defaultLocale = window._defaultLocale;
+			if(utils.development()){ console.log("HUMPBACK DEFAULT LOCALE:", window._defaultLocale); }
 		}
 
 		if(window._user){
@@ -127,6 +132,8 @@
 				if(utils.development()){ console.log("HUMPBACK USER:", $rootScope.currentUser); }
 			});
 		}
+
+
 
 	}])
 

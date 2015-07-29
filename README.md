@@ -176,11 +176,11 @@ files:
   * [`sails generate humpback-api <API_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-api)
   * [`sails generate humpback-model <MODEL_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-model)
   * [`sails generate humpback-controller <CONTROLLER_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-controller)
-  * [`sails generate humpback-view <VIEW_NAME [|ui-view]>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-view)
+  * TODO [`sails generate humpback-view <VIEW_NAME [|ui-view]>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-view)
 
 Humpback also has a few custom generators that make development faster and will 
 also work with the future release of humpback.io
-  * [`sails generate humpback-module <MODULE_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-module)
+  * TODO [`sails generate humpback-module <MODULE_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-module)
 
 Humpback comes bootstrapped with sails-stripe to make humpback apps SaaS 
 friendly and stripe ready.  See [this link for setup](https://github.com/scott-wyatt/sails-stripe).

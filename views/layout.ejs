@@ -90,8 +90,9 @@
     
     <!--HUMPBACK-->
     <script type="text/javascript">
-      var _env = '<%= sails.config.humpback.env %>';
-      var _prefix = '<%= sails.config.blueprints.prefix %>';
+      var _env = '<%= sails.config.humpback.env %>' || 'development';
+      var _prefix = '<%= sails.config.blueprints.prefix || '' %>';
+      var _defaultLocale = '<%= sails.config.i18n.defaultLocale || 'en' %>';
     </script>
     <!--HUMPBACK END-->
 
