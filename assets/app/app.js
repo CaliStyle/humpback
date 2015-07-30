@@ -85,7 +85,7 @@
 	* Root Module Run that can be ignored during unit testing.
 	* 
 	**/
-	.run(['DS', 'DSSailsSocketAdapter', '$rootScope', '$state', '$stateParams', '$q', 'utils' , function (DS, DSSailsSocketAdapter, $rootScope, $state, $stateParams, $q, utils) {
+	.run(['DS', 'DSSailsSocketAdapter', '$rootScope', '$state', '$stateParams', '$location', '$q', 'utils',  function (DS, DSSailsSocketAdapter, $rootScope, $state, $stateParams, $location, $q, utils) {
 
 		/**
 		* @description 
@@ -134,6 +134,54 @@
 		}
 
 
+
+		/**
+		* @description 
+		* APP Wide State/Route change event handler
+		* 
+		**/
+		$rootScope.$state = $state;
+		$rootScope.$stateParams = $stateParams;
+    
+		$rootScope.$on('$routeChangeStart', function(e, curr, prev) { 
+			$rootScope.__loadingRoute = true;
+			// Show a loading message until promises are not resolved
+			if (curr.$$route && curr.$$route.resolve) {
+				$rootScope.__loadingRoute = true;
+			}
+		});
+
+		$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) { 
+		
+			// Show a loading message until promises are not resolved
+			if (curr.$$route && curr.$$route.resolve) {
+				// Hide loading message
+				$rootScope.__loadingRoute = false;
+			}
+		});
+
+		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) { 
+			console.log(toState.name);	
+			// Show a loading message until promises are not resolved
+			
+			$rootScope.__loadingRoute = true;
+		
+		});
+
+		$rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) { 
+
+			//$root.currentState = toState.name.replace(".", "-");
+			//$root.currentPage = toState.name;
+			// Hide loading message
+			$rootScope.__loadingRoute = false;
+
+		});
+
+		$rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){ 
+			console.log(unfoundState.to);
+			console.log(unfoundState.toParams);
+			console.log(unfoundState.options); 
+		});
 
 	}])
 

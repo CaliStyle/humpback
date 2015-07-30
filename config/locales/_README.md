@@ -34,8 +34,6 @@ are case sensitive and require exact key matches, e.g.
 Localization/internationalization config can be found in `config/i18n.js`, 
 from where you can set your supported locales.
 
-
-
 # Internationalization of Model Validations
 Humpback includes the ability to set i18n model validation messages when 
 a validation error occurs during a CRUD opperation.
