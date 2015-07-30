@@ -266,8 +266,8 @@ module.exports = function(grunt) {
 		// Inject Humpback Controllers
 		humpbackControllers: {
 			options: {
-		        startTag: '/* PROJECT CONTROLLERS */',
-		        endTag: '/* PROJECT CONTROLLERS END */',
+		        startTag: '/* CORE PROJECT CONTROLLERS */',
+		        endTag: '/* CORE PROJECT CONTROLLERS END */',
 		        fileRef: function (filepath) {
 		            var tmpl = "'%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
@@ -283,8 +283,8 @@ module.exports = function(grunt) {
 		},
 		humpbackModels: {
 			options: {
-		        startTag: '/* PROJECT MODELS */',
-		        endTag: '/* PROJECT MODELS END */',
+		        startTag: '/* CORE PROJECT MODELS */',
+		        endTag: '/* CORE PROJECT MODELS END */',
 		        fileRef: function (filepath) {
 		            var tmpl = "'%s.model',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
@@ -299,8 +299,8 @@ module.exports = function(grunt) {
 		},
 		humpbackHooks: {
 			options: {
-		        startTag: '/* PROJECT HOOKS */',
-		        endTag: '/* PROJECT MODELS END */',
+		        startTag: '/* CORE PROJECT HOOKS */',
+		        endTag: '/* CORE PROJECT MODELS END */',
 		        fileRef: function (filepath) {
 		            var tmpl = "'humpback.hook.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
@@ -315,8 +315,8 @@ module.exports = function(grunt) {
 		},
 		humpbackPolicies: {
 			options: {
-		        startTag: '/* PROJECT POLICIES */',
-		        endTag: '/* PROJECT POLICIES END */',
+		        startTag: '/* CORE PROJECT POLICIES */',
+		        endTag: '/* CORE PROJECT POLICIES END */',
 		        fileRef: function (filepath) {
 		            var tmpl = "'humpback.policy.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
@@ -327,6 +327,54 @@ module.exports = function(grunt) {
 		    },
 		    files: {
 		        'assets/app/policies/index.js': ['assets/app/policies/*.js', '!assets/app/policies/index.js']
+		    }
+		},
+		humpbackDirectives: {
+			options: {
+		        startTag: '/* CORE PROJECT DIRECTIVES */',
+		        endTag: '/* CORE PROJECT DIRECTIVES END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'humpback.directives.%s',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/directives/index.js': ['assets/app/directives/*.js', '!assets/app/directives/index.js']
+		    }
+		},
+		humpbackFilters: {
+			options: {
+		        startTag: '/* CORE PROJECT FILTERS */',
+		        endTag: '/* CORE PROJECT FITLERS END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'humpback.filters.%s',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/filters/index.js': ['assets/app/filters/*.js', '!assets/app/filters/index.js']
+		    }
+		},
+		humpbackServices: {
+			options: {
+		        startTag: '/* CORE PROJECT SERVICES */',
+		        endTag: '/* CORE PROJECT SERVICES END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "'humpback.services.%s',";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/app/services/index.js': ['assets/app/services/*.js', '!assets/app/services/index.js']
 		    }
 		},
 		humpbackViews: {
@@ -343,54 +391,6 @@ module.exports = function(grunt) {
 		    },
 		    files: {
 		        'assets/app/views/index.js': ['assets/app/views/*.js', '!assets/app/views/index.js']
-		    }
-		},
-		humpbackDirectives: {
-			options: {
-		        startTag: '/* PROJECT DIRECTIVES */',
-		        endTag: '/* PROJECT DIRECTIVES END */',
-		        fileRef: function (filepath) {
-		            var tmpl = "'humpback.directives.%s',";
-		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
-		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
-		            return util.format(tmpl, filename);
-		       	},
-		        appRoot: '/'
-		    },
-		    files: {
-		        'assets/app/directives/index.js': ['assets/app/directives/*.js', '!assets/app/directives/index.js']
-		    }
-		},
-		humpbackFilters: {
-			options: {
-		        startTag: '/* PROJECT FILTERS */',
-		        endTag: '/* PROJECT FITLERS END */',
-		        fileRef: function (filepath) {
-		            var tmpl = "'humpback.filters.%s',";
-		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
-		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
-		            return util.format(tmpl, filename);
-		       	},
-		        appRoot: '/'
-		    },
-		    files: {
-		        'assets/app/filters/index.js': ['assets/app/filters/*.js', '!assets/app/filters/index.js']
-		    }
-		},
-		humpbackServices: {
-			options: {
-		        startTag: '/* PROJECT SERVICES */',
-		        endTag: '/* PROJECT SERVICES END */',
-		        fileRef: function (filepath) {
-		            var tmpl = "'humpback.services.%s',";
-		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
-		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
-		            return util.format(tmpl, filename);
-		       	},
-		        appRoot: '/'
-		    },
-		    files: {
-		        'assets/app/services/index.js': ['assets/app/services/*.js', '!assets/app/services/index.js']
 		    }
 		}
 	});

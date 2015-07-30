@@ -10,18 +10,17 @@ angular.module( 'humpback.filters'
 	/**
 	* @CORE
 	* These are core hooks used by the framework
-	* 
+	* They are compiled with grunt -> tasks/register/humpback.js
 	**/
-	/* CORE PROJECT FILTERS */
+	/* CORE PROJECT FITLERS */
 
-	/* CORE PROJECT FILTERS END */
+	/* CORE PROJECT FITLERS END */
 	/**
 	* @PROJECT SPECIFIC
 	* These project specific or custom filters for this individual project
-	* They are compiled with grunt -> tasks/register/humpback.js
 	**/
-	/* PROJECT FILTERS */
+	/* PROJECT FITLERS */
 
-	/* PROJECT FILTERS END */
+	/* PROJECT FITLERS END */
 	]
 );

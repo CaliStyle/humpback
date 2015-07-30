@@ -11,21 +11,21 @@ angular.module( 'humpback.models'
 	/**
 	* @CORE
 	* These are core models used by the framework
-	* 
+	* They are compiled with grunt -> tasks/register/humpback.js 
 	**/
 	/* CORE PROJECT MODELS */
-
+	'alert.model',
+	'setting.model',
+	'user.model',
 	/* CORE PROJECT MODELS END */
 	
 	/**
 	* @PROJECT SPECIFIC
 	* These project specific or custom models for this individual project
-	* They are compiled with grunt -> tasks/register/humpback.js
+	
 	**/
 	/* PROJECT MODELS */
-	'alert.model',
-	'setting.model',
-	'user.model',
+
 	/* PROJECT MODELS END */
 	]
 );
