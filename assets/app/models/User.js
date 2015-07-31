@@ -14,7 +14,7 @@ angular.module('user.model', [
 **/
 .run(function($sailsSocket, DS, UserService, utils){
 	
-	if(utils.development()){ console.log("HUMPBACK: listening to user changes")};
+	if(utils.development()){ console.log(window._name,': listening to user changes')};
 
     $sailsSocket.subscribe('user', function(envelope){
         //console.log(envelope);
@@ -26,7 +26,7 @@ angular.module('user.model', [
         maxAge: 36000000,
         deleteOnExpire: 'none',
         onExpire: function (id, user) {
-            console.log(id, "User Expired");
+            console.log(id, 'User Expired');
         },
         storageMode: 'localStorage',
         idAttribute: 'id',
@@ -86,7 +86,7 @@ angular.module('user.model', [
     * 
     **/
 	_handler.created = function(envelope){
-        "use strict";
+        'use strict';
         DS.inject('user', envelope.data);
         console.log(envelope);
 
@@ -98,7 +98,7 @@ angular.module('user.model', [
     * 
     **/
     _handler.deleted = function(envelope){
-        "use strict";
+        'use strict';
         DS.eject('user', envelope.data);
         console.log(envelope);
 
@@ -110,7 +110,7 @@ angular.module('user.model', [
     * 
     **/
     _handler.updated = function(envelope){
-        "use strict";
+        'use strict';
         console.log(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
@@ -127,7 +127,7 @@ angular.module('user.model', [
     * 
     **/
     _handler.addedTo = function(envelope){
-        "use strict";
+        'use strict';
         console.log(envelope);
     };
 
@@ -137,7 +137,7 @@ angular.module('user.model', [
     * 
     **/
     _handler.removedFrom = function(envelope){
-        "use strict";
+        'use strict';
         console.log(envelope);
     };
 
@@ -147,7 +147,7 @@ angular.module('user.model', [
     * 
     **/
     _handler.messaged = function(envelope){
-        "use strict";
+        'use strict';
         console.log(envelope);
     };
 

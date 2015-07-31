@@ -90,9 +90,11 @@
     
     <!--HUMPBACK-->
     <script type="text/javascript">
-      var _env = '<%= sails.config.humpback.env %>' || 'development';
-      var _prefix = '<%= sails.config.blueprints.prefix || '' %>';
-      var _defaultLocale = '<%= sails.config.i18n.defaultLocale || 'en' %>';
+        var _name = '<%= sails.config.humpback.name %>' || 'HUMPBACK';
+        var _env = '<%= sails.config.humpback.env %>' || 'development';
+        var _prefix = '<%= sails.config.blueprints.prefix || '' %>';
+        var _defaultLocale = '<%= sails.config.i18n.defaultLocale || 'en' %>';
+        var _user = <% if (typeof req.session.user !== 'undefined'){ %><%- JSON.stringify(req.session.user) %><% }else{ %>null<% } %>;
     </script>
     <!--HUMPBACK END-->
 

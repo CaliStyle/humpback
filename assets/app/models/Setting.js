@@ -14,7 +14,7 @@ angular.module('setting.model', [
 **/
 .run(function($sailsSocket, DS, SettingService, utils){
 	
-	if(utils.development()){ console.log("HUMPBACK: listening to setting changes")};
+	if(utils.development()){ console.log(window._name,': listening to setting changes')};
 
     $sailsSocket.subscribe('setting', function(envelope){
         if(utils.development()){ console.log(envelope)};
@@ -26,7 +26,7 @@ angular.module('setting.model', [
         maxAge: 36000000,
         deleteOnExpire: 'none',
         onExpire: function (id, setting) {
-            console.log(id, "Setting Expired");
+            console.log(id, 'Setting Expired');
         },
         storageMode: 'localStorage',
         idAttribute: 'id',
@@ -86,7 +86,7 @@ angular.module('setting.model', [
     * 
     **/
 	_handler.created = function(envelope){
-        "use strict";
+        'use strict';
         DS.inject('setting', envelope.data);
         console.log(envelope);
 
@@ -98,7 +98,7 @@ angular.module('setting.model', [
     * 
     **/
     _handler.deleted = function(envelope){
-        "use strict";
+        'use strict';
         DS.eject('setting', envelope.data);
         console.log(envelope);
 
@@ -110,7 +110,7 @@ angular.module('setting.model', [
     * 
     **/
     _handler.updated = function(envelope){
-        "use strict";
+        'use strict';
         console.log(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
@@ -127,7 +127,7 @@ angular.module('setting.model', [
     * 
     **/
     _handler.addedTo = function(envelope){
-        "use strict";
+        'use strict';
         console.log(envelope);
     };
 
@@ -137,7 +137,7 @@ angular.module('setting.model', [
     * 
     **/
     _handler.removedFrom = function(envelope){
-        "use strict";
+        'use strict';
         console.log(envelope);
     };
 
@@ -147,7 +147,7 @@ angular.module('setting.model', [
     * 
     **/
     _handler.messaged = function(envelope){
-        "use strict";
+        'use strict';
         console.log(envelope);
     };
 

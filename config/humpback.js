@@ -1,6 +1,10 @@
 module.exports.humpback = {
 
-	
+	/***************************************************************************
+	* Humpback Name is used for front end console output					   *
+	***************************************************************************/
+	name: process.env.HUMPBACK_NAME,
+
 	/***************************************************************************
 	* In "Testing Enviorments" Sails runs in "development mode", which may     *
 	* not always be the best idea.  When a Mocha test, Grunt Test, Protractor  *

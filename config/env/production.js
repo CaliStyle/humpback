@@ -29,6 +29,7 @@ module.exports = {
    ***************************************************************************/
 
   humpback: {
+    name: 'HUMPBACK',
     env:  'production',
     host: '<set_your_primary_host>',
     livereload: false

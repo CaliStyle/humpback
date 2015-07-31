@@ -23,6 +23,7 @@ module.exports = {
   },
   
   humpback: {
+    name: 'HUMPBACK DEV',
   	env: 'development',
     host: 'localhost',
     livereload: true

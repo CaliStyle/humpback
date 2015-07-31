@@ -15,7 +15,8 @@
 
 		//Foundation core
 		'foundation',
-		//'foundation.core',
+		//'foundation.dynamicRouting',
+    	//'foundation.dynamicRouting.animations',
 			
 		//humpback core
 		'humpback.hooks',
@@ -68,12 +69,12 @@
 		$urlRouterProvider.otherwise(function ($injector, $location, $state) {
 
 			if ($location.$$url === '/') {
-				console.log("HUMPBACK: HOMEPAGE");
+				console.log(window._name,': HOMEPAGE');
 				//$state.go('home');
 				//window.location = '/';
 			}else {
 				// pass through to let the web server handle this request
-				console.log('HUMPBACK: Not Found - send request to server');
+				console.log(window._name,': Not Found - send request to server');
 				window.location = $location.$$absUrl;
 			}
 		});
@@ -113,23 +114,23 @@
 		**/
 		if(window._env){
 			$rootScope.__env = window._env;
-			if(utils.development()){ console.log("HUMPBACK ENV:", window._env); }
+			if(utils.development()){ console.log(window._name,'ENV:', window._env); }
 		}
 
 		if(window._prefix){
 			$rootScope.__prefix = window._prefix;
-			if(utils.development()){ console.log("HUMPBACK PREFIX:", window._prefix); }
+			if(utils.development()){ console.log(window._name,'PREFIX:', window._prefix); }
 		}
 		
 		if(window._defaultLocale){
 			$rootScope.__defaultLocale = window._defaultLocale;
-			if(utils.development()){ console.log("HUMPBACK DEFAULT LOCALE:", window._defaultLocale); }
+			if(utils.development()){ console.log(window._name,'DEFAULT LOCALE:', window._defaultLocale); }
 		}
 
 		if(window._user){
 			DS.inject('user', window._user);
 			DS.bindOne('user', window._user.id, $rootScope, 'currentUser', function(err){
-				if(utils.development()){ console.log("HUMPBACK USER:", $rootScope.currentUser); }
+				if(utils.development()){ console.log(window._name,'USER:', $rootScope.currentUser); }
 			});
 		}
 
@@ -178,9 +179,11 @@
 		});
 
 		$rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){ 
-			console.log(unfoundState.to);
-			console.log(unfoundState.toParams);
-			console.log(unfoundState.options); 
+			if(utils.development()){
+				console.log(unfoundState.to);
+				console.log(unfoundState.toParams);
+				console.log(unfoundState.options);
+			} 
 		});
 
 	}])

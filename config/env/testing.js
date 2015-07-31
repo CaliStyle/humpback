@@ -31,6 +31,7 @@ module.exports = {
  	},
 
 	humpback: {
+		name: 'HUMPBACK TESTING',
 		env:  'testing',
 		host: 'localhost',
 		livereload: false

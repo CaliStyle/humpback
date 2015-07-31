@@ -17,12 +17,26 @@ module.exports = function(grunt) {
 
 	grunt.config.set('copy', {	
 		dev: {	
-			files: [{	
-				expand: true,	
-				cwd: './assets',	
-				src: ['**/*.!(coffee|less)'],	
-				dest: '.tmp/public'
-			}]
+			files: [
+				{	
+					expand: true,	
+					cwd: './assets',	
+					src: ['**/*.!(coffee|less)'],	
+					dest: '.tmp/public'
+				},
+				{
+				    expand: true,
+				    cwd: './assets/styles/fonts',
+				    src: ['**/*'],
+				    dest: '.tmp/public/styles/fonts'
+				},
+				{
+				    expand: true,
+				    cwd: './assets/bower_components/foundation-apps/iconic',
+				    src: ['**/*'],
+				    dest: '.tmp/public/images/iconic'
+				}
+			]
 		},	
 		build: {	
 			files: [{	
