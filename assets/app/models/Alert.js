@@ -12,9 +12,15 @@ angular.module('alert.model', [
 * Run and ignore for unit testing
 * 
 **/
-.run(function($sailsSocket, DS, AlertService, utils){
-	
-	if(utils.development()){ console.log(window._name,': listening to alert changes')};
+.run(function($sailsSocket, DS, AlertService, utils, FoundationApi){
+    
+    if(utils.development()){ 
+        console.log(window._name,': listening to alert changes');
+        setTimeout(function() {
+            AlertService.handler.development();    
+        }, 10);
+        
+    };
 
     $sailsSocket.subscribe('alert', function(envelope){
         //console.log(envelope);
@@ -88,9 +94,9 @@ angular.module('alert.model', [
 * The AlertService factory Exposes Handler and Service methods for the Alert Server Side Model
 * 
 **/
-.factory('AlertService',function(DS, $sailsSocket, $rootScope, FoundationApi){
-	var _service = {};
-	var _handler = {};
+.factory('AlertService',function(DS, $sailsSocket, $rootScope, FoundationApi, utils){
+    var _service = {};
+    var _handler = {};
 
     /**
     * @description 
@@ -105,14 +111,27 @@ angular.module('alert.model', [
 
     /**
     * @description 
+    * When site is placed into maintenance mode
+    * 
+    **/
+    _handler.development = function(){
+        "use strict";
+        var data = { id: 1000, display: true, system: false, location: 'system-alerts', color: 'success', title: 'Running', content: window._name + ' is running!', autoclose: 5000 };
+        DS.inject('alert', data);
+        FoundationApi.publish(data.location, { color: data.color, title: data.title, content: data.content, autoclose: data.autoclose});
+    };
+
+    /**
+    * @description 
     * When client is disconnected
     * 
     **/
     _handler.disconnect = function(){
         "use strict";
-        var alert = { id: 1001, display: true, system: false, type: 'warning', message: 'Humpback.Connection.Disconnected' };
-        DS.inject('alert', alert);
-        FoundationApi.publish('system-notifications', { title: 'Disconnected', content: 'Humpback.Connection.Disconnected', color: 'alert', autoClose: 5000});
+        var data = { id: 1001, display: true, system: false, location: 'system-alerts', color: 'warning', title: 'Disconnected', content: 'Humpback.Connection.Disconnected', autoclose: 5000 };
+        DS.inject('alert', data);
+        DS.eject('alert', 1002);
+        FoundationApi.publish(data.location, { color: data.color, title: data.title, content: data.content, autoclose: data.autoclose});
     };
 
     /**
@@ -122,9 +141,10 @@ angular.module('alert.model', [
     **/
     _handler.reconnect = function(){
         "use strict";
-        var alert = { id: 1002, display: true, system: false, type: 'success', message: 'Humpback.Connection.Reconnected' };
-        DS.inject('alert',alert);
-        FoundationApi.publish('system-notifications', { title: 'Reconnected', content: 'Humpback.Connection.Reconnected' , color: 'success', autoClose: 5000 });
+        var data = { id: 1002, display: true, system: false, location: 'system-alerts', color: 'success', title:'Reconnected', content: 'Humpback.Connection.Reconnected', autoclose: 5000 };
+        DS.inject('alert', data);
+        DS.eject('alert', 1001);
+        FoundationApi.publish(data.location, { color: data.color, title: data.title, content: data.content, autoclose: data.autoclose});
     };
 
     /**
@@ -132,7 +152,7 @@ angular.module('alert.model', [
     * When a Alert is created that the app is listenting to inject it into the local DB
     * 
     **/
-	_handler.created = function(envelope){
+    _handler.created = function(envelope){
         "use strict";
         DS.inject('alert', envelope.data);
         console.log(envelope);
@@ -198,8 +218,8 @@ angular.module('alert.model', [
         console.log(envelope);
     };
 
-	return {
-		service : _service,
-		handler : _handler
-	}
+    return {
+        service : _service,
+        handler : _handler
+    }
 });

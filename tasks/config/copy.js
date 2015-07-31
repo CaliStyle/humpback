@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 				    expand: true,
 				    cwd: './assets/bower_components/foundation-apps/iconic',
 				    src: ['**/*'],
-				    dest: '.tmp/public/images/iconic'
+				    dest: '.tmp/public/assets/img/iconic'
 				}
 			]
 		},	
