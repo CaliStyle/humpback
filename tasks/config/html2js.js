@@ -11,13 +11,13 @@ module.exports = function(grunt) {
 	grunt.config.set('html2js', {
 		humpbackViews: {
 			options: {
-				base: 'assets/src/app/views',
+				base: 'assets/src/app',
 				// changing the module name here will be set as the angular module name of for the template cache
-				// So in this case, humpback will use 'views-app' as the module name
-				module: 'views-app'
+				// So in this case, our code will use 'app-views' as the module name
+				module: 'humpback.views.templates'
 			},
 			files: {
-				'.tmp/public/assets/app/views/templates.js':  require('../pipeline').templateFilesToInject
+				'.tmp/public/app/views/templates.js':  require('../pipeline').templateFilesToInject
 			}
 		}
 	});
