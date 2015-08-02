@@ -1,9 +1,12 @@
+/* CORE PROJECT SCSS */
 @import "settings";
 @import "foundation";
+@import "layout";
 @import "svg";
 @import "animation";
 @import "grid";
+/* CORE PROJECT SCSS END */
 
-/* VIEWS */
-
-/* VIEWS END */
+/* PROJECT SCSS */
+@import "home";
+/* PROJECT SCSS END */

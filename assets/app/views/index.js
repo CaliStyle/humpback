@@ -23,4 +23,31 @@ angular.module( 'humpback.views', [
 	/* PROJECT VIEWS */
 	
 	/* PROJECT VIEWS END */
-]);
+])
+.config(function config( $stateProvider, $urlRouterProvider) {
+	$stateProvider
+		.state( 'fourZeroThree', {
+			url: '^/403',
+			views: {
+				"main": {
+					templateUrl: 'app/views/403.html'
+				}
+			}
+		})
+		.state( 'fourZeroFour', {
+			url: '^/404',
+			views: {
+				"main": {
+					templateUrl: 'app/views/404.html'
+				}
+			}
+		})
+		.state( 'fiveZeroZero', {
+			url: '^/500',
+			views: {
+				"main": {
+					templateUrl: 'app/views/500.html'
+				}
+			}
+		});
+});

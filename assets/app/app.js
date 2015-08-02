@@ -25,7 +25,8 @@
 		'humpback.services',
 		'humpback.directives',
 		'humpback.filters',
-		'humpback.models'
+		'humpback.models',
+		'humpback.views'
 	  
 	])
 	/**

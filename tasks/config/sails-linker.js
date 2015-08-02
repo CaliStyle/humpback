@@ -281,6 +281,7 @@ module.exports = function(grunt) {
 		        'assets/app/controllers/index.js': ['assets/app/controllers/*Controller.js']
 		    }
 		},
+		// Inject Humpback Models
 		humpbackModels: {
 			options: {
 		        startTag: '/* CORE PROJECT MODELS */',
@@ -297,6 +298,7 @@ module.exports = function(grunt) {
 		        'assets/app/models/index.js': ['assets/app/models/*.js', '!assets/app/models/index.js']
 		    }
 		},
+		// Inject Humpback Hooks
 		humpbackHooks: {
 			options: {
 		        startTag: '/* CORE PROJECT HOOKS */',
@@ -313,6 +315,7 @@ module.exports = function(grunt) {
 		        'assets/app/hooks/index.js': ['assets/app/hooks/*.js', '!assets/app/hooks/index.js']
 		    }
 		},
+		// Inject Humpback Policies
 		humpbackPolicies: {
 			options: {
 		        startTag: '/* CORE PROJECT POLICIES */',
@@ -329,6 +332,7 @@ module.exports = function(grunt) {
 		        'assets/app/policies/index.js': ['assets/app/policies/*.js', '!assets/app/policies/index.js']
 		    }
 		},
+		// Inject Humpback Directives
 		humpbackDirectives: {
 			options: {
 		        startTag: '/* CORE PROJECT DIRECTIVES */',
@@ -345,6 +349,7 @@ module.exports = function(grunt) {
 		        'assets/app/directives/index.js': ['assets/app/directives/*.js', '!assets/app/directives/index.js']
 		    }
 		},
+		// Inject Humpback Filters
 		humpbackFilters: {
 			options: {
 		        startTag: '/* CORE PROJECT FILTERS */',
@@ -361,6 +366,7 @@ module.exports = function(grunt) {
 		        'assets/app/filters/index.js': ['assets/app/filters/*.js', '!assets/app/filters/index.js']
 		    }
 		},
+		// Inject Humpback Services
 		humpbackServices: {
 			options: {
 		        startTag: '/* CORE PROJECT SERVICES */',
@@ -377,12 +383,13 @@ module.exports = function(grunt) {
 		        'assets/app/services/index.js': ['assets/app/services/*.js', '!assets/app/services/index.js']
 		    }
 		},
+		// Inject Humpback Views
 		humpbackViews: {
 			options: {
-		        startTag: '/* PROJECT VIEWS */',
-		        endTag: '/* PROJECT VIEWS END */',
+		        startTag: '/* CORE PROJECT VIEWS */',
+		        endTag: '/* CORE PROJECT VIEWS END */',
 		        fileRef: function (filepath) {
-		            var tmpl = "'%s.view',";
+		            var tmpl = "'humpback.views.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
 		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
 		            return util.format(tmpl, filename);
@@ -390,7 +397,26 @@ module.exports = function(grunt) {
 		        appRoot: '/'
 		    },
 		    files: {
-		        'assets/app/views/index.js': ['assets/app/views/*.js', '!assets/app/views/index.js']
+		        'assets/app/views/index.js': ['assets/app/views/**/*.js', '!assets/app/views/index.js']
+		    }
+		},
+		// Inject Humpback SCSS
+		humpbackSCSS: {
+			options: {
+		        startTag: '/* PROJECT SCSS */',
+		        endTag: '/* PROJECT SCSS END */',
+		        fileRef: function (filepath) {
+		            var tmpl = "@import '%s'";
+		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
+		            filename = filename.replace(/\.[^/.]+$/, "");
+		            filename = filename.replace('.scss', "");
+		            filename = filename.replace('_', "");
+		            return util.format(tmpl, filename);
+		       	},
+		        appRoot: '/'
+		    },
+		    files: {
+		        'assets/scss/app.scss': ['assets/scss/**/*.js', '!assets/scss/app.scss']
 		    }
 		}
 	});
