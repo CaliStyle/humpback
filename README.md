@@ -24,7 +24,8 @@ Humpback is to the frontend what treeline is to the backend of a sails.js app.
 We've concretely decided to use Foundation-apps as the frontend framework and 
 JSdata as the client side persistence layer.  Both of these are forward thinking 
 technologies, and we are focusing on Humpback as a Single Page Application (SPA) 
-builder not a website generator.
+builder not a website generator.  It's also a fast track for your next hackathon
+with things like auto linking views/scss/controllers/modules etc.
 
 ##Quick Start
 For now, there is no complete CLI or node module, so to get started with humpback
@@ -176,7 +177,7 @@ files:
   * [`sails generate humpback-api <API_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-api)
   * [`sails generate humpback-model <MODEL_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-model)
   * [`sails generate humpback-controller <CONTROLLER_NAME>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-controller)
-  * TODO [`sails generate humpback-view <VIEW_NAME [|ui-view]>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-view)
+  * [`sails generate humpback-view <VIEW_NAME [FEAUTRE/MODULE]>`](https://github.com/CaliStyle/humpback/wiki/Generators#humpback-view)
 
 Humpback also has a few custom generators that make development faster and will 
 also work with the future release of humpback.io
