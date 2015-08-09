@@ -164,7 +164,7 @@ you should not attempt to create models with these name spaces:
 
 If you are using sails-stripe, you should consider not using those model names as well.
 
-##Installable Hooks
+##Installable Hooks (aka Humpback Barnacles)
 Humpback makes use of installable hooks, we call them barnacles. By default
 the included barnicles are:
   * `humpback-hook` responsible for authorization logic, includes passport 
@@ -193,3 +193,6 @@ Humpback includes custom validation transaltion for i18n
 ##Contributing
 See `CONTRIBUTORS.md` or [click here](https://github.com/CaliStyle/humpback/blob/master/CONTRIBUTORS.md)
 
+##Change Log
+###0.11.1
+Add initial View generator and semantic layout of module names and file includes.
