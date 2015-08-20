@@ -30,7 +30,7 @@ with things like auto linking views/scss/controllers/modules etc.
 ##Quick Start
 For now, there is no complete CLI or node module, so to get started with humpback
 you can use the standard sails.js way.  First you will need to have node.js, 
-sails.js, Ruby, and Sass installed.
+sails.js, Ruby, Sass, and PhantomJs installed.
 
 Then, Fork this repo
 ```sh
@@ -59,11 +59,11 @@ Methodologies to keep in mind
   * Single Page Applications (SPAs)
   * Model View Controller (MVC)
 
-##Role based authorization and Prebuilt Back Back Admin
+##Role based authorization, Lightweight CMS, and Prebuilt Back Back Admin
 One of the most repetitive tasks that we do with every sails project is
-Role based authorization and GUI Data Management.  So with Humpback, we built
-that in natively.  We did it for two reasons 1) we do it for 99% of the 
-sails.js projects we create anyways 2) It's a great working example of how 
+Role based authorization, Content Management, GUI Data Management.  So with Humpback, 
+we built that in natively.  We did it for two reasons 1) we do it for 99% of 
+the sails.js projects we create anyways 2) It's a great working example of how 
 the humpback frontend and backend work together. It's not a sails.js version
 of wordpress or anything like that, just a great time saving way to see all 
 the working pieces.
@@ -189,6 +189,9 @@ friendly and stripe ready.  See [this link for setup](https://github.com/scott-w
 
 ##i18n model validation 
 Humpback includes custom validation transaltion for i18n
+
+##PhantomJS
+We included a dependency on PhantomJs, for best restults, PhantomJs should be installed globally.
 
 ##Contributing
 See `CONTRIBUTORS.md` or [click here](https://github.com/CaliStyle/humpback/blob/master/CONTRIBUTORS.md)

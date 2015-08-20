@@ -10,5 +10,6 @@ module.exports = function (grunt) {
 		'ejs:humpbackViews',
 		'sails-linker:humpbackViews',
 		'html2js:humpbackViews',
+		'svgtoolkit:dist'
 	]);
 };

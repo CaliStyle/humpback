@@ -21,6 +21,7 @@
     "grunt-ejs": "^0.3.0",
     "grunt-html2js": "^0.3.3",
     "grunt-sails-linker": "~0.9.5",
+    "grunt-svg-toolkit": "^0.1.1",
     "grunt-sync": "~0.0.4",
     "humpback-gui-hook": "^0.11.1",
     "humpback-hook": "^0.11.0",
@@ -54,7 +55,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/scott/humpback.git"
+    "url": "git://github.com/CaliStyle/humpback.git"
   },
   "author": "Scott B Wyatt",
   "license": "",
