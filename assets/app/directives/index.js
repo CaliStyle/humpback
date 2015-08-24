@@ -20,7 +20,7 @@ angular.module( 'humpback.directives'
 	* These project specific or custom hooks for this individual project
 	**/
 	/* PROJECT DIRECTIVES */
-	'humpback.directives.focus',
+	
 	/* PROJECT DIRECTIVES END */
 	]
 );

@@ -190,8 +190,18 @@ friendly and stripe ready.  See [this link for setup](https://github.com/scott-w
 ##i18n model validation 
 Humpback includes custom validation transaltion for i18n
 
+##Iconic
+Iconic and Open Iconic allow for responsive and stylized SVGs to be used 
+across the frontend. Humpback uses grunt-svg-toolkit to optimize svgs.  
+For more information on great ways to create
+SVGs for humpback see Iconic's [illustrator-svg-exporter](https://github.com/iconic/illustrator-svg-exporter) 
+and [grunt-svg-toolkit](https://github.com/iconic/grunt-svg-toolkit) 
+
 ##PhantomJS
-We included a dependency on PhantomJs, for best restults, PhantomJs should be installed globally.
+We included a dependency on PhantomJs. This dependency is to support certain 
+levels of image manipulation as well screenshot creation. For best restults 
+PhantomJs should be installed globally.
+`npm install phantomjs -g`
 
 ##Contributing
 See `CONTRIBUTORS.md` or [click here](https://github.com/CaliStyle/humpback/blob/master/CONTRIBUTORS.md)
