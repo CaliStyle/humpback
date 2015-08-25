@@ -16,7 +16,7 @@ JSdata, Foundation-apps, and all the wonderful new projects that have come out
 recently.  We are building the platform publicly so there is as much external 
 input as possible and will launch contributor guidelines when they are ready.
 
-This README.md file will be updated as this project evolves.  
+This README.md file will be updated as this project evolves. Also, check out the WIKI.  
 This product is currently *NOT PRODUCTION* ready. 
 
 ##Overview
@@ -84,7 +84,6 @@ custom provider for storage of client side models.  By default, humpback
 client side models communicate with the the REST routes via the prefix `/api` 
 and pluralize turned to false. 
 
-
 ##File Structure
 Humpback's file structure is identical to a normal Sails.js app with a few exceptions. 
 
@@ -96,6 +95,8 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   *  Humpback includes `config/env/test.js` environment file for testing.
   *  Humpback includes a test folder for unit testing.
   *  Humpback includes a `.jshintrc` file for consitent javascript across the front and back end.
+  *  Humpback removes the `assets/images` folder to be more consitent with the app file structure.
+  *  Humpback removes the `assets/styles` folder to be more consitent with the app file structure.
   
   * -- api
     * -- controllers
@@ -106,6 +107,12 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
     * -- responses
     * -- services
   * -- assets
+    * -- assets
+      * -- img
+        * -- iconic
+        * -- pngs
+        * -- svgs
+      * -- css
   	* -- app
   	  * -- controllers
   	  * -- directives
@@ -118,7 +125,6 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
       * -- views
   	  * -- app.js
   	* -- bower_components
-  	* -- images
   	* -- styles
   	* -- scss
   	* -- templates
@@ -134,6 +140,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   * -- .jshintrc
   * -- .bowerrc
   * -- .sailsrc
+  * -- .travis.yml
   * -- app.js
   * -- Gruntfile.js
   * -- bower.json
@@ -141,12 +148,20 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   * -- README.md
   * -- CONTRIBUTORS.md
 
+##Linker
+Humpback has a semantic layout for the `assets/app` folder (where all of the fronted files are stored).
+It uses the humpback generators and `sails-linker` to automatically and semantically bind all of your
+frontend JavaScript files together as sperate modules.  Then when the app is lifted for production,
+it minifies all of it together into a single production.js file.  
+
+*NOTE: You will still want to create all of your view files in .ejs in the `views` folder so that they can be compiled into the `assets/app/views` folder with grunt-ejs and html2js.*
+
 ##System Defaults
 Humpback overrides as few system defaults as possible, but there are some
 things that are changed for this particular SPA concept.
   * `config/blueprints.js` -> `prefix: 'api/'`
-  * `tasks/register/compileAssets.js` -> `humpback`,`sass:dev`
-  * `tasks/register/syncAssets.js` -> `sass:dev`
+  * `tasks/register/compileAssets.js` -> `humpback`,`sass:dev`,`html2js:humpbackViews`,`svgtoolkit:dev`
+  * `tasks/register/syncAssets.js` -> `humpback`,`sass:dev`,`html2js:humpbackViews`,`svgtoolkit:dev`
 
 ##Reserved Model Names
 Humpback reserves certain model names. While you are free to extend the models
@@ -160,9 +175,23 @@ you should not attempt to create models with these name spaces:
   * [`Route`](https://github.com/CaliStyle/humpback/wiki/Models#route)
   * [`Setting`](https://github.com/CaliStyle/humpback/wiki/Models#setting)
   * [`SecurityLog`](https://github.com/CaliStyle/humpback/wiki/Models#securitylog)
-  * [`User`](https://github.com/CaliStyle/humpback/wiki/Models#user)  
+  * [`User`](https://github.com/CaliStyle/humpback/wiki/Models#user)
+  * [`Criteria`](https://github.com/CaliStyle/humpback/wiki/Models#criteria)
+
+If you absolutely must use different model names, you can set replacements in the 
+`config/humpback.js` file.  You'll need to update the `api/models` and `api/controller`
+files as well.  See `humpback-hook` for more details.
 
 If you are using sails-stripe, you should consider not using those model names as well.
+
+##Reserved Controller Names
+Humpback reserves certain controller names.  While you are free to extend the controllers
+you shound not attempt to create controllers with these name spaces
+  * [`UserController`](https://github.com/CaliStyle/humpback/wiki/Controllers#usercontroller)
+  * [`AuthController`](https://github.com/CaliStyle/humpback/wiki/Controllers#authcontroller)
+## Reserved Policies
+
+## Reserved Services
 
 ##Installable Hooks (aka Humpback Barnacles)
 Humpback makes use of installable hooks, we call them barnacles. By default
@@ -170,6 +199,7 @@ the included barnicles are:
   * `humpback-hook` responsible for authorization logic, includes passport 
   * `humpback-gui-hook` responsible for creating the admin data GUI 
   * `humpback-validation-hook` responsible for creating model validation errors in i18n
+  * `humpback-cms-hook` responsible for creating an extenable lightweight cms
 
 ##Generators
 Humpback's generators override sails stock generators to create additional 
