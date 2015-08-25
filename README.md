@@ -29,8 +29,9 @@ with things like auto linking views/scss/controllers/modules etc.
 
 ##Quick Start
 For now, there is no complete CLI or node module, so to get started with humpback
-you can use the standard sails.js way.  First you will need to have node.js, 
-sails.js, Ruby, Sass, and PhantomJs installed.
+you can use the standard sails.js way.  First you will need to have node.js/NPM, 
+sails.js, Ruby, Sass, and PhantomJs installed. 
+*NOTE: PhantomJs works best if installed globally `npm install phantomjs -g`*
 
 Then, Fork this repo
 ```sh
@@ -61,7 +62,7 @@ Methodologies to keep in mind
 
 ##Role based authorization, Lightweight CMS, and Prebuilt Back Back Admin
 One of the most repetitive tasks that we do with every sails project is
-Role based authorization, Content Management, GUI Data Management.  So with Humpback, 
+Role based authorization, Content Management, and GUI Data Management.  So with Humpback, 
 we built that in natively.  We did it for two reasons 1) we do it for 99% of 
 the sails.js projects we create anyways 2) It's a great working example of how 
 the humpback frontend and backend work together. It's not a sails.js version
@@ -189,17 +190,18 @@ Humpback reserves certain controller names.  While you are free to extend the co
 you shound not attempt to create controllers with these name spaces
   * [`UserController`](https://github.com/CaliStyle/humpback/wiki/Controllers#usercontroller)
   * [`AuthController`](https://github.com/CaliStyle/humpback/wiki/Controllers#authcontroller)
-## Reserved Policies
 
-## Reserved Services
+##Reserved Policies
+
+##Reserved Services
 
 ##Installable Hooks (aka Humpback Barnacles)
 Humpback makes use of installable hooks, we call them barnacles. By default
 the included barnicles are:
-  * `humpback-hook` responsible for authorization logic, includes passport 
-  * `humpback-gui-hook` responsible for creating the admin data GUI 
-  * `humpback-validation-hook` responsible for creating model validation errors in i18n
-  * `humpback-cms-hook` responsible for creating an extenable lightweight cms
+  * [`humpback-hook`](https://github.com/CaliStyle/humpback-hook) responsible for authorization logic, includes passport 
+  * [`humpback-gui-hook`](https://github.com/CaliStyle/humpback-gui-hook) responsible for creating the admin data GUI 
+  * [`humpback-validation-hook`](https://github.com/CaliStyle/humpback-validation-hook) responsible for creating model validation errors in i18n
+  * [`humpback-cms-hook`](https://github.com/CaliStyle/humpback-cms-hook) responsible for creating an extenable lightweight content management system.
 
 ##Generators
 Humpback's generators override sails stock generators to create additional 
@@ -217,14 +219,20 @@ Humpback comes bootstrapped with sails-stripe to make humpback apps SaaS
 friendly and stripe ready.  See [this link for setup](https://github.com/scott-wyatt/sails-stripe).
   * `sails generate sails-stripe`
 
-##i18n model validation 
-Humpback includes custom validation transaltion for i18n
+##i18n model validation and Translation 
+Humpback includes custom validation transaltion for i18n as well as uses i18n
+to translate the app into the desired language.
+
+##Foundation-apps
+Humpback's default frontend is [Zurb's Foundation-apps](https://foundation.zurb.com/foundation-apps/).
+Humpback exentends a few of foundation-apps' modules functionality but supports them all.  Since we are
+using sails as the view router, you will want to avoid using foundation-apps built in router fuctionality
+or any of it's funcationality that relies on gulp.
 
 ##Iconic
 Iconic and Open Iconic allow for responsive and stylized SVGs to be used 
 across the frontend. Humpback uses grunt-svg-toolkit to optimize svgs.  
-For more information on great ways to create
-SVGs for humpback see Iconic's [illustrator-svg-exporter](https://github.com/iconic/illustrator-svg-exporter) 
+For more information on great ways to create SVGs for humpback, see Iconic's [illustrator-svg-exporter](https://github.com/iconic/illustrator-svg-exporter) 
 and [grunt-svg-toolkit](https://github.com/iconic/grunt-svg-toolkit) 
 
 ##PhantomJS
