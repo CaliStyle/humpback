@@ -199,9 +199,10 @@ you shound not attempt to create controllers with these name spaces
 Humpback makes use of installable hooks, we call them barnacles. By default
 the included barnicles are:
   * [`humpback-hook`](https://github.com/CaliStyle/humpback-hook) responsible for authorization logic, includes passport 
-  * [`humpback-gui-hook`](https://github.com/CaliStyle/humpback-gui-hook) responsible for creating the admin data GUI 
   * [`humpback-validation-hook`](https://github.com/CaliStyle/humpback-validation-hook) responsible for creating model validation errors in i18n
+  * [`humpback-admin-hook`](https://github.com/CaliStyle/humpback-admin-hook) responsible for creating a lightweight and customizable admin area
   * [`humpback-cms-hook`](https://github.com/CaliStyle/humpback-cms-hook) responsible for creating an extenable lightweight content management system.
+  * [`humpback-gui-hook`](https://github.com/CaliStyle/humpback-gui-hook) responsible for creating the admin data GUI 
 
 ##Generators
 Humpback's generators override sails stock generators to create additional 

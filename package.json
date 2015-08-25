@@ -23,6 +23,8 @@
     "grunt-sails-linker": "~0.9.5",
     "grunt-svg-toolkit": "^0.1.1",
     "grunt-sync": "~0.0.4",
+    "humpback-admin-hook": "^0.11.1",
+    "humpback-cms-hook": "^0.11.2",
     "humpback-gui-hook": "^0.11.1",
     "humpback-hook": "^0.11.0",
     "humpback-validation-hook": "^0.11.0",
