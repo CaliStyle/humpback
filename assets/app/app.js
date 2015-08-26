@@ -154,12 +154,23 @@
 
 		/**
 		* @description 
-		* APP Wide State/Route change event handler
+		* APP Wide State/Route change and connection event handler
 		* 
 		**/
+		
+    	$rootScope.__disconnected = false;
+    	io.socket.on('disconnect', function(){
+        	$rootScope.__disconnected = true;
+	    });
+	    
+	    io.socket.on('reconnect', function(){
+	        $rootScope.__disconnected = false;
+	    });
+	    
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
-    
+    	$rootScope.__loadingRoute = true;
+
 		$rootScope.$on('$routeChangeStart', function(e, curr, prev) { 
 			$rootScope.__loadingRoute = true;
 			// Show a loading message until promises are not resolved
