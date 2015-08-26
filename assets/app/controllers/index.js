@@ -19,6 +19,6 @@ angular.module( 'humpback.controllers', [
 	* These project specific or custom controllers for this individual project
 	**/
 	/* PROJECT CONTROLLERS */
-	'user.controller',
+
 	/* PROJECT CONTROLLERS END */
 ]);

@@ -58,8 +58,13 @@ var jsFilesToInject =
   //, '!bower_components/foundation-apps/js/angular/app.js'
   
   , 'bower_components/angular-translate/angular-translate.js'  
+    
     // All other Bower Scripts are brought in here.
-
+    // Load Lodash
+  , 'bower_components/lodash/lodash.min.js'
+  , 'bower_components/angular-lodash/angular-lodash.js'
+    // Load Angular Bread Crumbs
+  , 'bower_components/angular-breadcrumb/dist/angular-breadcrumb.js'
 
     // All other Dependencies are brought in here  
   , 'js/dependencies/**/*.js'
