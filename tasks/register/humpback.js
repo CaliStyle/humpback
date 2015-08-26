@@ -8,8 +8,6 @@ module.exports = function (grunt) {
 		'sails-linker:humpbackFilters',
 		'sails-linker:humpbackServices',
 		'ejs:humpbackViews',
-		'sails-linker:humpbackViews',
-		'html2js:humpbackViews',
-		'svgtoolkit:dist'
+		'sails-linker:humpbackViews'
 	]);
 };

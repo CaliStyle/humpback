@@ -113,6 +113,21 @@
 		* Expose data sent from server
 		* 
 		**/
+		if(window._name){
+			$rootScope.__name = window._name;
+			if(utils.development()){ console.log('NAME:', window._name); }
+		}
+
+		if(window._barnacles){
+			$rootScope.__barnacles = window._barnacles;
+			if(utils.development()){ console.log(window._name,'BARNACLES:', window._barnacles); }
+		}
+		
+		if(window._settings){
+			$rootScope.__settings = window._settings;
+			if(utils.development()){ console.log(window._name,'SETTINGS:', window._settings); }
+		}
+
 		if(window._env){
 			$rootScope.__env = window._env;
 			if(utils.development()){ console.log(window._name,'ENV:', window._env); }
