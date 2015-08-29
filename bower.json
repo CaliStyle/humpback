@@ -31,7 +31,7 @@
     "angular-translate-loader-url": "~2.7.2",
     "angularSails": "~0.11.3",
     "foundation-apps": "~1.1.0",
-    "humpback-core-pack": "~0.11.1",
+    "humpback-core-pack": "~0.11.2",
     "js-data": "~1.8.0",
     "js-data-angular": "~2.4.0",
     "lodash": "~3.10.1"
