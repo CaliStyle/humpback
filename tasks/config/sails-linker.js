@@ -353,7 +353,7 @@ module.exports = function(grunt) {
 		humpbackFilters: {
 			options: {
 		        startTag: '/* CORE PROJECT FILTERS */',
-		        endTag: '/* CORE PROJECT FITLERS END */',
+		        endTag: '/* CORE PROJECT FILTERS END */',
 		        fileRef: function (filepath) {
 		            var tmpl = "'humpback.filters.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);

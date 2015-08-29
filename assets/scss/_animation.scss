@@ -1,1 +1,12 @@
 /* Holds animations */
+$animation-time: 0.3s;
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity $animation-time linear;
+          transition: opacity $animation-time linear;
+}
+
+.fade.in {
+  opacity: 1;
+}

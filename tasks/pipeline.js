@@ -63,6 +63,9 @@ var jsFilesToInject =
     // Load Lodash
   , 'bower_components/lodash/lodash.min.js'
   , 'bower_components/angular-lodash/angular-lodash.js'
+
+  , 'bower_components/humpback-core-pack/src/humpback.js'
+  , 'bower_components/ng-tags-input/ng-tags-input.js'
     // Load Angular Bread Crumbs
   , 'bower_components/angular-breadcrumb/dist/angular-breadcrumb.js'
 
