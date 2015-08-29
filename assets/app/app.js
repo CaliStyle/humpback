@@ -19,6 +19,7 @@
     	//'foundation.dynamicRouting.animations',
 			
 		//humpback core
+		'humpback.core',
 		'humpback.hooks',
 		'humpback.controllers',
 		'humpback.policies',

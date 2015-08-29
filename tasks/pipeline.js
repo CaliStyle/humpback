@@ -31,8 +31,12 @@ var jsFilesToInject =
   , 'bower_components/tether/tether.js'
   , 'bower_components/hammerjs/hammer.js'
 
-    // Angular Dependencies are brought in here
+  , 'bower_components/ace-builds/src-min-noconflict/ace.js'
+    // Angular and Dependencies are brought in here
   , 'bower_components/angular/angular.js'
+    //Angular UI Ace
+  , 'bower_components/angular-ui-ace/ui-ace.js'
+  , 'bower_components/angular-sanitize/angular-sanitize.js'
 
     // Load Angular Data
   , 'bower_components/js-data/dist/js-data.js'
