@@ -19,19 +19,19 @@
     -->
 
     <base href="/">
-    <title><%= sails.config.humpback.name || 'New Humpback App' %></title>
+    <title><%= sails.config.meta.title || '' %></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="keywords" content="{{ keywords }}">
-    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="<%= sails.config.meta.keywords || '' %>">
+    <meta name="description" content="<%= sails.config.meta.description || ''%>">
     <meta property="og:locale" content="<%= sails.config.i18n.defaultLocale || 'en' %>" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{ title }}" />
-    <meta property="og:description" content="{{ description }}" />
-    <meta property="og:url" content="{{ uri }}" />
-    <meta property="og:image" content="{{ image }}">
-    <meta property="og:site_name" content="<%= sails.config.humpback.name || 'Humpback' %>" />
+    <meta property="og:title" content="<%= sails.config.meta.title %>" />
+    <meta property="og:description" content="<%= sails.config.meta.description || '' %>" />
+    <meta property="og:url" content="<%= sails.config.meta.url || '' %>" />
+    <meta property="og:image" content="<%= sails.config.meta.image || '' %>">
+    <meta property="og:site_name" content="<%= sails.config.meta.name || 'Humpback' %>" />
 
     <link type="text/plain" rel="author" href="/humans.txt" />   
 

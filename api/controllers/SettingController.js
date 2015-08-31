@@ -6,16 +6,11 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-module.exports = {
-	
-};
+var _ = require('lodash');
+var _super = require('humpback-hook/api/controllers/SettingController');
 
-// TODO implement in hook
-//var _ = require('lodash');
-//var _super = require('humpback-hook/api/controllers/SettingController');
-
-//_.merge(exports, _super);
-//_.merge(exports, {
+_.merge(exports, _super);
+_.merge(exports, {
 
 	/**
 	 * Extend the Controller
@@ -26,4 +21,4 @@ module.exports = {
 	 * }
 	 */ 
 
-//});
+});

@@ -60,10 +60,10 @@ Methodologies to keep in mind
   * Single Page Applications (SPAs)
   * Model View Controller (MVC)
 
-##Role based authorization, Lightweight CMS, and Prebuilt Back Back Admin
+##Role based authorization, Lightweight CMS, Lightweight Email, and Prebuilt Back Back Admin
 One of the most repetitive tasks that we do with every sails project is
-Role based authorization, Content Management, and GUI Data Management.  So with Humpback, 
-we built that in natively.  We did it for two reasons 1) we do it for 99% of 
+Role based authorization, Content Management, Email Management, and GUI Data Management.  
+So with Humpback, we built that in natively.  We did it for two reasons 1) we do it for 99% of 
 the sails.js projects we create anyways 2) It's a great working example of how 
 the humpback frontend and backend work together. It's not a sails.js version
 of wordpress or anything like that, just a great time saving way to see all 
@@ -201,7 +201,8 @@ the included barnicles are:
   * [`humpback-validation-hook`](https://github.com/CaliStyle/humpback-validation-hook) responsible for creating model validation errors in i18n
   * [`humpback-admin-hook`](https://github.com/CaliStyle/humpback-admin-hook) responsible for creating a lightweight and customizable admin area
   * [`humpback-cms-hook`](https://github.com/CaliStyle/humpback-cms-hook) responsible for creating an extenable lightweight content management system.
-  * [`humpback-gui-hook`](https://github.com/CaliStyle/humpback-gui-hook) responsible for creating the admin data GUI 
+  * [`humpback-gui-hook`](https://github.com/CaliStyle/humpback-gui-hook) responsible for creating the admin data GUI
+  * [`humpback-email-hook`](https://github.com/CaliStyle/humpback-email-hook) responsible for creating email templates 
 
 ##Generators
 Humpback's generators override sails stock generators to create additional 
