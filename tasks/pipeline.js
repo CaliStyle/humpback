@@ -42,9 +42,6 @@ var jsFilesToInject =
   , 'bower_components/js-data/dist/js-data.js'
   , 'bower_components/js-data-angular/dist/js-data-angular.js'
 
-    // Load Angular Sails for sails socket version of http
-  , 'bower_components/angularSails/dist/ngsails.io.js'
-
     // Load Angular UI Router
   , 'bower_components/angular-ui-router/release/angular-ui-router.js'
   
@@ -62,12 +59,14 @@ var jsFilesToInject =
   //, '!bower_components/foundation-apps/js/angular/app.js'
   
   , 'bower_components/angular-translate/angular-translate.js'  
-    
+  
     // All other Bower Scripts are brought in here.
     // Load Lodash
   , 'bower_components/lodash/lodash.min.js'
   , 'bower_components/angular-lodash/angular-lodash.js'
 
+  // Loadh Humpback Core  
+  , 'bower_components/humpback-core-pack/src/humpbackSails.io.js'
   , 'bower_components/humpback-core-pack/src/humpback.js'
   , 'bower_components/ng-tags-input/ng-tags-input.js'
     // Load Angular Bread Crumbs

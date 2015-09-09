@@ -1,0 +1,1 @@
+Store images here, they will be copied and transformed into the `assets/img` folder.  This is done by SVG toolkit

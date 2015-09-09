@@ -8,8 +8,7 @@
 	angular.module( 'humpback',	[
 		
 		'ui.router',
-		'js-data',	
-		'sails.io',
+		'js-data',
 		'pascalprecht.translate',
 		'ngAnimate',
 
@@ -88,7 +87,7 @@
 	* Root Module Run that can be ignored during unit testing.
 	* 
 	**/
-	.run(['DS', 'DSSailsSocketAdapter', '$rootScope', '$state', '$stateParams', '$location', '$q', 'utils',  function (DS, DSSailsSocketAdapter, $rootScope, $state, $stateParams, $location, $q, utils) {
+	.run(['DS', 'DSSailsSocketAdapter', '$rootScope', '$state', '$stateParams', '$location', '$q', 'utils', 'Route', 'CMS',  function (DS, DSSailsSocketAdapter, $rootScope, $state, $stateParams, $location, $q, utils, Route, CMS) {
 
 		/**
 		* @description 
@@ -123,7 +122,7 @@
 			$rootScope.__barnacles = window._barnacles;
 			if(utils.development()){ console.log(window._name,'BARNACLES:', window._barnacles); }
 		}
-		
+
 		if(window._settings){
 			$rootScope.__settings = window._settings;
 			if(utils.development()){ console.log(window._name,'SETTINGS:', window._settings); }
@@ -167,17 +166,23 @@
 	    io.socket.on('reconnect', function(){
 	        $rootScope.__disconnected = false;
 	    });
-	    
+
+	    $rootScope.__route = new Route();
+	    $rootScope.__cms = $rootScope.__route.cms;
+
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
-    	$rootScope.__loadingRoute = true;
-
+		$rootScope.__loadingRoute = true;
+    
 		$rootScope.$on('$routeChangeStart', function(e, curr, prev) { 
 			$rootScope.__loadingRoute = true;
 			// Show a loading message until promises are not resolved
 			if (curr.$$route && curr.$$route.resolve) {
 				$rootScope.__loadingRoute = true;
 			}
+
+			//console.log("START:",$location.path());
+
 		});
 
 		$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) { 
@@ -187,23 +192,39 @@
 				// Hide loading message
 				$rootScope.__loadingRoute = false;
 			}
+			//console.log("END:",$location.path());
+			if(window._barnacles.cms){
+				var id = btoa('get:' + $location.path());
+				$rootScope.__route.get(id);
+				//cms.setUrl($location.absUrl());
+			}
+
 		});
 
 		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) { 
-			console.log(toState.name);	
+			//console.log(toState.name);	
 			// Show a loading message until promises are not resolved
 			
 			$rootScope.__loadingRoute = true;
-		
+			//console.log("START:", $location.path());
+
 		});
 
 		$rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) { 
 
 			//$root.currentState = toState.name.replace(".", "-");
 			//$root.currentPage = toState.name;
+			$rootScope.__currentState = toState.name;
 			// Hide loading message
 			$rootScope.__loadingRoute = false;
 
+			//console.log("END:",$location.path());
+			if(window._barnacles.cms){
+				var id = btoa('get:' + $location.path());
+				$rootScope.__route.get(id);
+				//cms.setUrl($location.absUrl());
+			}
+			
 		});
 
 		$rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){ 
@@ -215,6 +236,20 @@
 		});
 
 	}])
+	/**
+	* @description 
+	* Global Factory 
+	* 
+	**/
+	.factory( 'Global', function( ){
+		var controllers = [];
+		return {
+			'controllers': controllers,
+			'getControllers': function(c) {
+				return JSON.stringify();
+			}
+		};
+	})
 
 	/**
 	* @description 

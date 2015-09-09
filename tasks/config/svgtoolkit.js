@@ -6,18 +6,18 @@ module.exports = function(grunt) {
 
 	grunt.config.set('svgtoolkit', {
 	
-		dist: {
+		dev: {
 			options: {
 				generatePNGs: false,
-				//style: 'src/css/themes/blue.css',
+				//style: '/assets/assets/css/themes/blue.css',
 				//colorize: '#808000',
 				debug: true
 	    	},
 			files: [
 				{
 		        	expand: true,
-		        	cwd: './assets/assets/img',
-		        	src: '**/*.svg',
+		        	cwd: './assets/images/svg',
+		        	src: '*.svg',
 		    		dest: 'assets/assets/img'
 		    	}
 	    	]

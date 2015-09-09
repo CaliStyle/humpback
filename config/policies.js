@@ -18,6 +18,19 @@
 
 
 module.exports.policies = {
+  
+  '*': [
+    'ModelPolicy',
+    'AuditPolicy',
+    'OwnerPolicy',
+    'PermissionPolicy',
+    'RolePolicy',
+    'CriteriaPolicy',
+    'RoutePolicy'
+  ],
+  AuthController: {
+      '*': []
+  }
 
   /***************************************************************************
   *                                                                          *
