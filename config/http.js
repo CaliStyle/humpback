@@ -21,7 +21,13 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-  // middleware: {
+  middleware: {
+
+    poweredBy: function(request, response, next) {
+      var expressApp = sails.hooks.http.app;
+      response.set('X-Powered-By', 'Humpback <cali-style.com>');
+      next();
+    },
 
   /***************************************************************************
   *                                                                          *
@@ -71,7 +77,7 @@ module.exports.http = {
 
     // bodyParser: require('skipper')
 
-  // },
+  },
 
   /***************************************************************************
   *                                                                          *
