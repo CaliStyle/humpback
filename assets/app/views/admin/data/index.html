@@ -1,0 +1,62 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Tue Aug 25 2015 11:52:44 GMT-0400 (EDT).
+-->
+<!--admin/data/index.ejs-->
+
+<div class="admin-header-block">
+	<div class="grid-content">
+		<h1>Data Management</h1>
+		<p class="lead">
+			Manage Raw data from the database
+		</p>
+	</div>
+</div>
+<div class="admin-filters-block" ui-view="filters">
+	<div class="grid-content">
+		<input 
+			type="search" 
+			placeholder="Search Models..."
+		>
+	</div>
+</div>
+<div class="admin-content-block" ui-view="content">
+	<div class="grid-content">
+		<div>
+			Showing {{ models.start | number }} - {{ models.end | number }} of {{ models.total | number}}
+		</div>
+		<div class="loader" ng-class="{done: !models.busy}">
+ 			<h2 class="loading-content">Loading Models...</h2>
+ 		</div>
+
+ 		<div ng-show="models.visible.length == 0 && !models.busy" class="not-found text-center">
+			<h2>No Models</h2>
+		</div>
+		<div 
+			class="admin-well" 
+			ng-repeat="model in models.visible | orderBy: sailsToAngularSort(models.sort)"
+		>
+			<a ui-sref="admin.data.data({id: model.id})">
+				{{ model.name }} {{ model.createdAt | date }}
+			</a>
+		</div>
+	</div>
+</div>
+<div class="admin-footer-block" ui-view="footer">
+	<div class="grid-content">
+		<a 
+			class="button"
+			ng-click="models.prevPage()"
+			ng-if="models.start > 0"
+		>
+			Previous Page
+		</a>
+		<a 
+			class="button"
+			ng-click="models.nextPage()"
+		>
+			Next Page
+		</a>
+	</div>
+</div>
