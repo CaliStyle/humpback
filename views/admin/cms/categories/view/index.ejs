@@ -1,0 +1,32 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Sep 04 2015 17:31:09 GMT-0400 (EDT).
+-->
+<!--admin/cms/categories/view/index.ejs-->
+
+<div class="grid-block">
+	<div class="grid-content">
+		<label for="category">Category Name</label>
+		<input 
+			ng-model="thiscategory.name" 
+			id="category" 
+			type="text" 
+			placeholder="Category Name"
+		/>
+		<a 
+			ng-if="!category.id"
+			class="button" 
+			ng-click="createCategory()"
+		>
+			{{ thiscategroy.updating | iif : 'Creating...' : 'Create' }}
+		</a>
+		<a 
+			ng-if="category.id"
+			class="button" 
+			ng-click="updateCategory()"
+		>
+			{{ thiscategroy.updating | iif : 'Updating...' : 'Update' }}
+		</a>
+	</div>
+</div>

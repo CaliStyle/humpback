@@ -1,0 +1,41 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Sep 04 2015 15:59:24 GMT-0400 (EDT).
+-->
+<!--admin/cms/category/index.ejs-->
+
+<div class="admin-header-block">
+	<div class="grid-content">
+		<h1>Content Categories</h1>
+		<p class="lead">
+			Manage Content Categories
+		</p>
+	</div>
+	<div class="grid-content">
+		<a 
+			class="button"
+			ui-sref="admin.cms.categories.new"
+		>
+			New Category
+		</a>
+	</div>
+</div>
+
+
+<div class="admin-content-block" ui-view="content">
+	<div class="loader" ng-class="{done: !categories.busy}">
+		<h2 class="loading-content">Loading Categories...</h2>
+	</div>
+	
+	<div class="grid-content">		
+		<div ng-show="categories.visible.length == 0 && !categories.busy" class="not-found text-center">
+			<h2>No Categories</h2>
+		</div>
+		<div class="admin-well" ng-repeat="category in categories.visible | orderBy: sailsToAngularSort(categories.sort)">
+			<a ui-sref="admin.cms.categories.view({id: category.id})">
+				{{ category.title || category.name }}
+			</a>
+		</div>
+	</div>
+</div>

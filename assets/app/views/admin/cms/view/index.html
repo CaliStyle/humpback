@@ -1,0 +1,56 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Aug 28 2015 18:16:29 GMT-0400 (EDT).
+-->
+<!--admin/cms/view/index.ejs-->
+<div class="grid-block">
+	<div class="grid-block medium-8 large-9">
+		
+		<div class="loader" ng-class="{'done' : !thisroute.busy}">
+			<h3>Loading...</h3>
+		</div>
+
+		<div class="grid-content">
+			<label for="title">Page Title</label>
+			<input
+				id="title" 
+				type="text"
+				ng-model="thisroute.title"
+				placeholder="Title"
+			>
+			<div 
+				class="admin-well"
+			>
+				Slug: {{ thisroute.slug }}
+			</div>
+			<div 
+				class="admin-well"
+			>
+				Permalink: {{ thisroute.uri }}
+			</div>
+
+			<ul class="cms-menu-bar">
+				<li><a href="#">Code</a></li>
+				<li><a href="#">Preview</a></li>
+			</ul>
+
+			<div 
+				ui-ace="{
+					mode: 'html',
+					onLoad: aceLoaded,
+					onChange: aceChanged
+				}"
+				ng-model="thisroute.content"
+			>
+				
+			</div>
+			<div data-ng-bind-html="thisroute.content"></div>
+
+		</div>
+	</div>
+	<div class="grid-block medium-4 large-3" ui-view="widgets">
+
+
+	</div>
+</div>

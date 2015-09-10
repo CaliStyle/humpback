@@ -1,0 +1,24 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Sat Aug 29 2015 16:08:20 GMT-0400 (EDT).
+-->
+<!--admin/data/view/widgets.ejs-->
+<div class="grid-block">
+	<div class="loader" ng-class="{'done' : !thismodel.busy}">
+		<h3>Loading...</h3>
+	</div>
+	<div class="grid-content">
+		
+		<h3>Attributes</h3>
+		
+		<p ng-repeat="(key, value) in thismodel.attributes">
+			<span>{{ key }}</span>
+
+			<span ng-if="value.type">{{ value.type }}</span>
+			<span ng-if="value.model">Model: {{ value.model }}</span>
+			<span ng-if="value.enum">{{ value.enum }}</span>
+			<span ng-if="value.collection">Collection: {{ value.collection }}</span>
+		</p>
+	</div>
+</div>

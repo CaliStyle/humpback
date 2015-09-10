@@ -99,7 +99,6 @@
 		// set the custom adapter as the default
 		DS.defaults.defaultAdapter = 'DSSailsSocketAdapter';
 
-
 		/**
 		* @description 
 		* Attach APP wide on RUN
@@ -150,6 +149,11 @@
 			});
 		}
 
+		if(window._maintenance){
+			$rootScope.__maintenance = window._maintenance;
+			if(utils.development()){ console.log(window._name,'MAINTENANCE:', window._maintenance); }
+		}
+
 
 
 		/**
@@ -194,7 +198,7 @@
 			}
 			//console.log("END:",$location.path());
 			if(window._barnacles.cms){
-				var id = btoa('get:' + $location.path());
+				var id = btoa('get:' + $location.path().split(/[?#]/)[0]);
 				$rootScope.__route.get(id);
 				//cms.setUrl($location.absUrl());
 			}
@@ -220,7 +224,7 @@
 
 			//console.log("END:",$location.path());
 			if(window._barnacles.cms){
-				var id = btoa('get:' + $location.path());
+				var id = btoa('get:' + $location.path().split(/[?#]/)[0]);
 				$rootScope.__route.get(id);
 				//cms.setUrl($location.absUrl());
 			}
@@ -233,6 +237,17 @@
 				console.log(unfoundState.toParams);
 				console.log(unfoundState.options);
 			} 
+			$state.go('fourZeroFour');
+
+		});
+
+		$rootScope.$on('$stateChargeError', function(event, errfoundState, fromState, fromParams){ 
+			if(utils.development()){
+				console.log(errfoundState.to);
+				console.log(errfoundState.toParams);
+				console.log(errfoundState.options);
+			} 
+			$state.go('fiveZeroZero');
 		});
 
 	}])

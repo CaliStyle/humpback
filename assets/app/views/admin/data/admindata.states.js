@@ -4,19 +4,19 @@
  * A humpback-view created at Tue Aug 25 2015 11:52:44 GMT-0400 (EDT).
  */
 
-angular.module( 'humpback.views.data.states', [
+angular.module( 'humpback.views.admindata.states', [
 
 ])
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state( 'admin.data', {
-			url: '/data',
+			url: '/data?skip?sort?limit?criteria',
 			ncyBreadcrumb: {
-          		label: 'Admin Data GUI'
+          		label: 'Data Management'
         	},
 			views: {
 				"admin": {
-					controller: 'DataCtrl',
+					controller: 'AdminDataCtrl',
 					templateUrl: 'app/views/admin/data/index.html'
 				}
 			}

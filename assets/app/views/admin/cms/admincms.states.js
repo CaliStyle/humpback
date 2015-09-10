@@ -4,23 +4,22 @@
  * A humpback-view created at Tue Aug 25 2015 11:28:21 GMT-0400 (EDT).
  */
 
-angular.module( 'humpback.views.cms.controllers', [
+angular.module( 'humpback.views.admincms.states', [
 
 ])
-.controller( 'CmsCtrl', function CmsController( $scope, DS ) {
+.config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state( 'admin.cms', {
-			url: '/cms',
+			url: '/cms?skip?sort?limit?criteria',
 			ncyBreadcrumb: {
-          		label: 'Admin CMS'
+          		label: 'Content Management'
         	},
 			views: {
 				"admin": {
-					controller: 'CmsCtrl',
+					controller: 'AdminCmsCtrl',
 					templateUrl: 'app/views/admin/cms/index.html'
 				}
 			}
 		})
 		;
-
 });

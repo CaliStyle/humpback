@@ -33,6 +33,10 @@ module.exports = {
     env:  'production',
     host: '<set_your_primary_host>',
     livereload: false
+  },
+
+  policies: {
+    UserController: { create: true }
   }
   /***************************************************************************
    * Set the port in the production environment to 80                        *

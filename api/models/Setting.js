@@ -7,13 +7,14 @@
 */
 
 var _ = require('lodash');
-var _super = require('humpback-hook/api/models/Setting');
+var _super = require('humpback-cms-hook/api/models/Setting');
 
 _.merge(exports, _super);
 _.merge(exports, {
 
   /**
    * Extend the Model
+   * https://github.com/CaliStyle/humpback-cms-hook/blob/master/api/models/Setting.js
    * https://github.com/CaliStyle/humpback-hook/blob/master/api/models/Setting.js
    * @exmaple: 
    * attributes : { 

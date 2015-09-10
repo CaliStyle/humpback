@@ -35,5 +35,9 @@ module.exports = {
 		env:  'testing',
 		host: 'localhost',
 		livereload: false
+	},
+
+	policies: {
+		UserController: { create: true }
 	}
 }

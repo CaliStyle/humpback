@@ -66,7 +66,14 @@ angular.module('user.model', [
         * 
         **/
         relations:{
-            
+            hasMany: {
+                role: {
+                    localField: 'roles',
+                    //foreignKey is the "join" field
+                    //the name of the field on a comment that points to its parent user
+                    foreignKey: 'userId'
+                }
+            }
         }
     });
 })

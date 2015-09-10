@@ -1,0 +1,43 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Mon Aug 31 2015 09:23:58 GMT-0400 (EDT).
+-->
+<!--admin/email/index.ejs-->
+<div class="admin-header-block">
+	<div class="grid-content">
+		<h1>Email Management</h1>
+		<p class="lead">
+			Manage Email Templates
+		</p>
+	</div>
+</div>
+<div class="admin-filters-block" ui-view="filters">
+	<div class="grid-content">
+		<input 
+			type="search" 
+			placeholder="Search Email Templates..."
+		>
+	</div>
+</div>
+<div class="admin-body-block" ui-view="content">
+	<div class="grid-content">
+		<div>
+			Showing {{ emails.start | number }} - {{ emails.end | number }} of {{ emails.total | number}}
+		</div>
+		<div class="loader" ng-class="{done: !emails.busy}">
+ 			<h2 class="loading-content">Loading Emails...</h2>
+ 		</div>
+ 		<div ng-show="emails.visible.length == 0 && !emails.busy" class="not-found text-center">
+			<h2>No Emails</h2>
+		</div>
+		<div 
+			class="admin-well" 
+			ng-repeat="email in emails.visible"
+		>
+			<a ui-sref="admin.emails.email({id: email.id})">
+				{{ email.name }} {{ email.createdAt | date }}
+			</a>
+		</div>
+	</div>
+</div>

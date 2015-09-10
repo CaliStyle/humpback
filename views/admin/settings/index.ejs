@@ -1,0 +1,41 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Tue Aug 25 2015 13:43:23 GMT-0400 (EDT).
+-->
+<!--admin/settings/index.ejs-->
+
+<div class="admin-header-block">
+	<div class="grid-content">
+		<h1>Settings</h1>
+		<p class="lead">
+			Manage Core and Custom settings
+		</p>
+	</div>
+</div>
+<div class="admin-filters-block" ui-view="filters">
+	<div class="grid-content">
+		<input 
+			type="search" 
+			placeholder="Search Settings..."
+		>
+	</div>
+</div>
+<div class="admin-body-block" ui-view="content">
+	<div class="grid-content">
+		<div>
+			Showing {{ settings.start | number }} - {{ settings.end | number }} of {{ settings.total | number}}
+		</div>
+		<div class="loader" ng-class="{done: !settings.busy}">
+ 			<h2 class="loading-content">Loading Settings...</h2>
+ 		</div>
+ 		<div ng-show="settings.visible.length == 0 && !settings.busy" class="not-found text-center">
+			<h2>No Settings</h2>
+		</div>
+		<div ng-repeat="setting in settings.visible">
+			<a ui-sref="admin.settings.setting({id: setting.id})">
+				{{ setting.name }} {{ setting.createdAt | date }}
+			</a>
+		</div>
+	</div>
+</div>

@@ -19,8 +19,8 @@ angular.module( 'humpback.views.admin.states', [
 					controller: 'AdminCtrl',
 					templateUrl: 'app/views/admin/index.html'
 				},
-				"header": {
-					templateUrl: 'app/views/header/index.html'
+				"header@admin": {
+					templateUrl: 'app/views/admin/header.html'
 				}
 			}
 		})

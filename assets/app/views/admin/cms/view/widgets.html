@@ -1,0 +1,74 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Sat Aug 29 2015 15:42:47 GMT-0400 (EDT).
+-->
+<!--admin/cms/view/widgets.ejs-->
+<div class="vertical grid-block">
+	
+	<div class="loader" ng-class="{'done' : !thisroute.busy}">
+		<h3>Loading...</h3>
+	</div>
+
+	<div class="grid-block">
+		<div class="grid-content">
+			<h3>Publish</h3>
+			<p>
+				Status
+			</p>
+			<p>
+				Permissions
+			</p>
+			<p>
+				Created {{ thisroute.createdAt | date : 'short' }}
+			</p>
+			<p>
+				Updated {{ thisroute.updatedAt | date : 'short' }}
+			</p>
+			<a>Move to Trash</a>
+			<a class="button" ng-click="updateRoute()">
+				{{ route.updating | iif : 'Publishing...' : 'Publish' }}
+			</a>
+
+		
+			<h3>Attributes</h3>
+			<label for="keywords">Keywords</label>
+			<tags-input 
+				id="keywords"
+				ng-model="thisroute.keywords"
+			>
+			</tags-input>
+			<label for="description">Description</label>
+			<textarea 
+				id="description"
+				ng-model="thisroute.description"
+				placeholder="Description"
+			>
+			</textarea>
+		
+			<h3>Category</h3>
+			{{ thisroute.categories }}
+			<div ng-repeat="category in route.categories.visible">
+				<input 
+					id="{{ category.id }}" 
+					type="checkbox"
+					checklist-model="thisroute.categories" checklist-value="category.id"
+				>
+				<label for="{{category.id}}">
+					{{ category.name }}
+				</label>
+			</div>
+			<a ui-sref="admin.cms.categories.new">
+				Add New Category
+			</a>
+		
+			<h3>Featured Image</h3>
+			<input 
+				id="featured"
+				type="text"
+				ng-model="thisroute.image"
+				placeholder="Featured Image URL"
+			>
+			<img ng-if="thisroute.image" ng-src="thisroute.image">
+	</div>
+</div>

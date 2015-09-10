@@ -4,4 +4,99 @@
  * A humpback-view created at Tue Aug 25 2015 11:28:21 GMT-0400 (EDT).
 -->
 <!--admin/cms/index.ejs-->
-
+<div class="admin-header-block">
+	<div class="grid-content">
+		<h1>Content Management</h1>
+		<p class="lead">
+			Manage Content, Content Permissions, and more 
+		</p>
+	</div>
+	<div class="grid-content">
+		<a 
+			class="button"
+			ui-sref="admin.cms.page"
+		>
+			New Page
+		</a>
+		<a 
+			class="button"
+			ui-sref="admin.cms.categories.new"
+		>
+			New Category
+		</a>
+	</div>
+</div>
+<div class="admin-filters-block" ui-view="filters">
+	<div class="grid-block">
+		<div class="grid-content">
+			<input 
+				type="search" 
+				placeholder="Search Content..."
+			>
+			<p>
+				Showing {{ routes.start | number }} - {{ routes.end | number }} of {{ routes.total | number}}
+			</p>
+		</div>
+	</div>
+	<div class="grid-block">
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="routes.limit"
+					ng-options="items.amount as items.name for items in filters.itemsPerPage"
+					ng-change="routes.reset('limit')"
+				>
+					<option value="">-- Items Per Page --</option>
+				</select>
+			</div>
+		</div>
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="routes.sort"
+					ng-options="items.value as items.name for items in filters.itemsSort"
+					ng-change="routes.reset('sort')"
+				>
+					<option value="">-- Sort Items --</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="admin-content-block" ui-view="content">
+	<div class="loader" ng-class="{done: !routes.busy}">
+		<h2 class="loading-content">
+			Loading Pages...
+		</h2>
+	</div>
+	
+	<div class="grid-content">		
+		<div ng-show="routes.visible.length == 0 && !routes.busy" class="not-found text-center">
+			<h2>
+				No Pages
+			</h2>
+		</div>
+		<div class="admin-well" ng-repeat="route in routes.visible | orderBy: sailsToAngularSort(routes.sort)">
+			<a ui-sref="admin.cms.cms({id: route.id})">
+				{{ route.method }} {{ route.title || route.uri }}
+			</a>
+		</div>
+	</div>
+</div>
+<div class="admin-footer-block" ui-view="footer">
+	<div class="grid-content">
+		<a 
+			class="button"
+			ng-click="routes.prevPage()"
+			ng-if="routes.start > 0"
+		>
+			Previous Page
+		</a>
+		<a 
+			class="button"
+			ng-click="routes.nextPage()"
+		>
+			Next Page
+		</a>
+	</div>
+</div>

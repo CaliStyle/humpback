@@ -27,6 +27,10 @@ module.exports = {
   	env: 'development',
     host: 'localhost',
     livereload: true
+  },
+
+  policies: {
+    UserController: { create: true }
   }
 
 };

@@ -1,0 +1,47 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Tue Aug 25 2015 13:11:17 GMT-0400 (EDT).
+-->
+<!--admin/user/index.ejs-->
+
+<div class="admin-header-block">
+	<div class="grid-content">
+		<h1>User Management</h1>
+		<p class="lead">
+			Manage Users' Permissions and Roles
+		</p>
+	</div>
+</div>
+<div class="admin-filters-block" ui-view="filters">
+	<div class="grid-content">
+		<input 
+			type="search" 
+			placeholder="Search Users..."
+		>
+	</div>
+</div>
+<div class="admin-body-block" ui-view="content">
+	<div class="grid-content">
+		<div>
+			Showing {{ users.start | number }} - {{ users.end | number }} of {{ users.total | number}}
+		</div>
+		<div class="loader" ng-class="{done: !users.busy}">
+ 			<h2 class="loading-content">
+ 				Loading Users...
+ 			</h2>
+ 		</div>
+
+ 		<div ng-show="users.visible.length == 0 && !users.busy" class="not-found text-center">
+			<h2>No Users</h2>
+		</div>
+		<div 
+			class="admin-well"
+			ng-repeat="user in users.visible | orderBy: sailsToAngularSort(users.sort)"
+		>
+			<a ui-sref="admin.user.user({id: user.id})">
+				{{ user.username }} {{ user.createdAt | date }}
+			</a>
+		</div>
+	</div>
+</div>
