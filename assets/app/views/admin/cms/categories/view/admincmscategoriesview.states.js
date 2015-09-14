@@ -18,6 +18,9 @@ angular.module( 'humpback.views.admincmscategoriesview.states', [
 				"admin@admin": {
 					controller: 'AdminCmsCategoriesViewCtrl',
 					templateUrl: 'app/views/admin/cms/categories/view/index.html'
+				},
+				"widgets@admin.cms.categories.view": {
+					templateUrl: 'app/views/admin/cms/categories/view/widgets.html'
 				}
 			}
 		})
@@ -30,6 +33,9 @@ angular.module( 'humpback.views.admincmscategoriesview.states', [
 				"admin@admin": {
 					controller: 'AdminCmsCategoriesNewCtrl',
 					templateUrl: 'app/views/admin/cms/categories/view/index.html'
+				},
+				"widgets@admin.cms.categories.new": {
+					templateUrl: 'app/views/admin/cms/categories/view/widgets.html'
 				}
 			}
 		})

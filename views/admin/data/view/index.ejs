@@ -6,17 +6,33 @@
 <!--admin/data/view/index.ejs-->
 
 <div class="grid-block">
-	<div class="grid-block medium-8 large-9" ui-view="content">
-		<div class="loader" ng-class="{'done' : !thismodel.busy}">
-			<h3>Loading...</h3>
+	<div class="vertical grid-block medium-8 large-9" ui-view="content">
+		<div class="admin-header-block">
+			<div class="loader" ng-class="{'done' : !thismodel.busy}">
+				<h3>Loading...</h3>
+			</div>
+			
+			<div class="grid-content">
+				<div>
+					<h1>{{ thismodel.name }}</h1>
+					<p class="lead">
+						{{ thismodel.description }}
+					</p>
+				</div>
+			</div>
 		</div>
-		
-		<div class="grid-content">
-			<div>
-				<h1>{{ thismodel.name }}</h1>
-				<p class="lead">
-					{{ thismodel.description }}
-				</p>
+		<div class="admin-body-block">
+			<div class="grid-content">
+				<div 
+					class="admin-well"
+					ng-repeat="item in model.Collection.visible"
+				>
+					<a
+						ui-sref="admin.data.data.data({model: thismodel.identity, item: item.id})"
+					>
+						{{ item }}
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>

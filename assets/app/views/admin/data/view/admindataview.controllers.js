@@ -7,13 +7,23 @@
 angular.module( 'humpback.views.admindataview.controllers', [
 
 ])
-.controller( 'AdminDataViewCtrl', function AdminDataViewController( $scope, $stateParams, DS, utils) {
-	DS.find('model', $stateParams.id)
+.controller( 'AdminDataViewCtrl', function AdminDataViewController( $scope, $stateParams, DS, Api) {
+	
+	$scope.model = new Api('model');
+	$scope.model.read($stateParams.id)
 	.then(function(model){
-		DS.bindOne('model', model.id, $scope, 'thismodel');
-	})
-	.catch(function (err) {
-	  if(utils.development()){ console.log(err); }; // reason why query failed
+		
+		console.log(model);
+
+		$scope.model.Collection = new Api(model.identity);
+		$scope.model.Collection.limit = $stateParams.limit ? parseInt($stateParams.limit) : 10;
+		$scope.model.Collection.skip = $stateParams.skip ? parseInt($stateParams.skip) : 0; 
+		$scope.model.Collection.criteria = $stateParams.criteria ? $stateParams.criteria : null;
+		$scope.model.Collection.init();
+
 	});
+
+	//$scope.thismodel = $scope.model.selected;
+	DS.bindOne('model', $stateParams.id, $scope, 'thismodel');
 
 });

@@ -24,17 +24,17 @@ angular.module( 'humpback.views.admincmsview.states', [
 				}
 			}
 		})
-		.state( 'admin.cms.page', {
+		.state( 'admin.cms.new', {
 			url: '/new?id',
 			ncyBreadcrumb: {
           		label: 'New'
         	},
 			views: {
 				"admin@admin": {
-					controller: 'AdminCmsPageCtrl',
+					controller: 'AdminCmsNewCtrl',
 					templateUrl: 'app/views/admin/cms/view/index.html'
 				},
-				"widgets@admin.cms.page": {
+				"widgets@admin.cms.new": {
 					templateUrl: 'app/views/admin/cms/view/widgets.html'
 				}
 			}

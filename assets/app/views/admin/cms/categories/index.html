@@ -32,7 +32,7 @@
 		<div ng-show="categories.visible.length == 0 && !categories.busy" class="not-found text-center">
 			<h2>No Categories</h2>
 		</div>
-		<div class="admin-well" ng-repeat="category in categories.visible | orderBy: sailsToAngularSort(categories.sort)">
+		<div class="admin-well" ng-repeat="category in categories.visible | orderBy: categories.angularSort">
 			<a ui-sref="admin.cms.categories.view({id: category.id})">
 				{{ category.title || category.name }}
 			</a>

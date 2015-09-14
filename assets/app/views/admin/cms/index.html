@@ -14,7 +14,13 @@
 	<div class="grid-content">
 		<a 
 			class="button"
-			ui-sref="admin.cms.page"
+			ui-sref="admin.cms.categories"
+		>
+			Categories
+		</a>
+		<a 
+			class="button"
+			ui-sref="admin.cms.new"
 		>
 			New Page
 		</a>
@@ -43,7 +49,7 @@
 			<div class="grid-content">
 				<select 
 					ng-model="routes.limit"
-					ng-options="items.amount as items.name for items in filters.itemsPerPage"
+					ng-options="items.value as items.name for items in filters.itemsPerPage"
 					ng-change="routes.reset('limit')"
 				>
 					<option value="">-- Items Per Page --</option>
@@ -76,7 +82,7 @@
 				No Pages
 			</h2>
 		</div>
-		<div class="admin-well" ng-repeat="route in routes.visible | orderBy: sailsToAngularSort(routes.sort)">
+		<div class="admin-well" ng-repeat="route in routes.visible | orderBy: routes.angularSort">
 			<a ui-sref="admin.cms.cms({id: route.id})">
 				{{ route.method }} {{ route.title || route.uri }}
 			</a>

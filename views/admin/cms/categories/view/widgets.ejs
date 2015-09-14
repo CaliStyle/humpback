@@ -1,0 +1,22 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Sep 04 2015 17:31:09 GMT-0400 (EDT).
+-->
+<!--admin/cms/categories/view/widgets.ejs-->
+<div class="grid-content">
+	<a 
+		ng-if="!category.selected.id"
+		class="button" 
+		ng-click="createCategory()"
+	>
+		{{ thiscategory.updating | iif : 'Creating...' : 'Create' }}
+	</a>
+	<a 
+		ng-if="category.selected.id"
+		class="button" 
+		ng-click="updateCategory()"
+	>
+		{{ thiscategory.updating | iif : 'Updating...' : 'Update' }}
+	</a>
+</div>

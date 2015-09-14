@@ -87,7 +87,7 @@
 	* Root Module Run that can be ignored during unit testing.
 	* 
 	**/
-	.run(['DS', 'DSSailsSocketAdapter', '$rootScope', '$state', '$stateParams', '$location', '$q', 'utils', 'Route', 'CMS',  function (DS, DSSailsSocketAdapter, $rootScope, $state, $stateParams, $location, $q, utils, Route, CMS) {
+	.run(['DS', 'DSSailsSocketAdapter', '$rootScope', '$state', '$stateParams', '$location', '$q', 'utils', 'Api', 'CMS',  function (DS, DSSailsSocketAdapter, $rootScope, $state, $stateParams, $location, $q, utils, Api, CMS) {
 
 		/**
 		* @description 
@@ -171,8 +171,8 @@
 	        $rootScope.__disconnected = false;
 	    });
 
-	    $rootScope.__route = new Route();
-	    $rootScope.__cms = $rootScope.__route.cms;
+	    $rootScope.__route = new Api('route');
+	    $rootScope.__cms = new CMS();
 
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
@@ -199,7 +199,10 @@
 			//console.log("END:",$location.path());
 			if(window._barnacles.cms){
 				var id = btoa('get:' + $location.path().split(/[?#]/)[0]);
-				$rootScope.__route.get(id);
+				$rootScope.__route.read(id)
+				.then(function(thisroute){
+					$rootScope.__cms.setPage(thisroute);
+				});
 				//cms.setUrl($location.absUrl());
 			}
 
@@ -225,7 +228,11 @@
 			//console.log("END:",$location.path());
 			if(window._barnacles.cms){
 				var id = btoa('get:' + $location.path().split(/[?#]/)[0]);
-				$rootScope.__route.get(id);
+				$rootScope.__route.read(id)
+				.then(function(thisroute){
+					console.log(thisroute);
+					$rootScope.__cms.setPage(thisroute);
+				});
 				//cms.setUrl($location.absUrl());
 			}
 			

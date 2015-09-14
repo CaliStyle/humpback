@@ -35,7 +35,7 @@
 		</div>
 		<div 
 			class="admin-well" 
-			ng-repeat="model in models.visible | orderBy: sailsToAngularSort(models.sort)"
+			ng-repeat="model in models.visible | orderBy: models.angularSort"
 		>
 			<a ui-sref="admin.data.data({id: model.id})">
 				{{ model.name }} {{ model.createdAt | date }}

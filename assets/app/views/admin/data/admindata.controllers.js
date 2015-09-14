@@ -7,13 +7,13 @@
 angular.module( 'humpback.views.admindata.controllers', [
 
 ])
-.controller( 'AdminDataCtrl', function AdminDataController( $scope, $stateParams, DS, Models ) {
+.controller( 'AdminDataCtrl', function AdminDataController( $scope, $stateParams, DS, Api) {
 
 	console.log($stateParams);
-	$scope.models = new Models();
+	$scope.models = new Api('model');
 	$scope.models.limit = $stateParams.limit ? parseInt($stateParams.limit) : 10;
 	$scope.models.skip = $stateParams.skip ? parseInt($stateParams.skip) : 0; 
 	$scope.models.criteria = $stateParams.criteria ? $stateParams.criteria : null;
-	$scope.models.nextPage();
+	$scope.models.init();
 
 });

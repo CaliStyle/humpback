@@ -12,38 +12,38 @@ angular.module( 'humpback.views.admin.controllers', [
 	$scope.filters = {
 		itemsPerPage: [
 			{
-				amount: 10,
+				value: 10,
 				name: '10'
 			},
 			{
-				amount: 20,
+				value: 20,
 				name: '20'
 			},
 			{
-				amount: 30,
+				value: 30,
 				name: '30'
 			},
 			{
-				amount: 40,
+				value: 40,
 				name: '40'
 			},
 			{
-				amount: 50,
+				value: 50,
 				name: '50'
 			},
 			{
-				amount: 100,
+				value: 100,
 				name: '100'
 			}
 		],
 		itemsSort: [
 			{
-				value: 'createdAt desc',
+				value: 'createdAt DESC',
 				name: 'Newest',
 
 			},
 			{
-				value: 'createdAt asc',
+				value: 'createdAt ASC',
 				name: 'Oldest'
 			}
 		]

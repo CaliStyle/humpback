@@ -4,29 +4,40 @@
  * A humpback-view created at Fri Sep 04 2015 17:31:09 GMT-0400 (EDT).
 -->
 <!--admin/cms/categories/view/index.ejs-->
-
 <div class="grid-block">
-	<div class="grid-content">
-		<label for="category">Category Name</label>
-		<input 
-			ng-model="thiscategory.name" 
-			id="category" 
-			type="text" 
-			placeholder="Category Name"
-		/>
-		<a 
-			ng-if="!category.id"
-			class="button" 
-			ng-click="createCategory()"
-		>
-			{{ thiscategroy.updating | iif : 'Creating...' : 'Create' }}
-		</a>
-		<a 
-			ng-if="category.id"
-			class="button" 
-			ng-click="updateCategory()"
-		>
-			{{ thiscategroy.updating | iif : 'Updating...' : 'Update' }}
-		</a>
+	<div class="grid-block medium-8 large-9">
+
+		<div class="grid-content">
+			
+			<h2>Category: {{ thiscategory.name }}</h2>
+
+			<label for="category">Category Name</label>
+			<input 
+				ng-model="thiscategory.name" 
+				id="category" 
+				type="text" 
+				placeholder="Category Name"
+			/>
+			
+			<div ng-show="category.Routes.api.length > 0">
+				<h3>In: {{ thiscategory.name }}</h3>
+				<div class="admin-well" ng-repeat="route in category.Routes.visible">
+					<input 
+					
+						type="checkbox"
+						checklist-model="thiscategory.routes" 
+						checklist-value="route"
+						checklist-comparator=".id"
+					>
+					<a ui-sref="admin.cms.cms({id: route.id})">
+						{{ route.method }} {{ route.title || route.uri }}
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-block medium-4 large-3" ui-view="widgets">
+
 	</div>
 </div>

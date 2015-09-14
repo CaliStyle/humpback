@@ -1,0 +1,14 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Sun Sep 13 2015 21:29:15 GMT-0400 (EDT).
+-->
+<!--admin/data/view/view/index.ejs-->
+
+<div class="grid-content">
+	{{ thisitem }}
+	<div ng-repeat="(key,value) in thismodel.attributes">
+
+		{{ key }} {{ thisitem[key] }}
+	</div>
+</div>

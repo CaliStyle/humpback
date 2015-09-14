@@ -7,20 +7,10 @@
 angular.module( 'humpback.views.adminuserview.controllers', [
 
 ])
-.controller( 'AdminUserViewCtrl', function AdminUserViewController( $scope, $stateParams, DS, utils, User) {
+.controller( 'AdminUserViewCtrl', function AdminUserViewController( $scope, $stateParams, DS, utils, Api) {
 
-	/*
-	DS.find('user', $stateParams.id)
-	.then(function(user){
-		DS.bindOne('user', user.id, $scope, 'thisuser');
-	})
-	.catch(function (err) {
-	  if(utils.development()){ console.log(err); }; // reason why query failed
-	});
-	*/
-
-	$scope.user = new User($stateParams.id);
-	$scope.user.read();
+	$scope.user = new Api('user');
+	$scope.user.read($stateParams.id);
 	DS.bindOne('user', $stateParams.id, $scope, 'thisuser');
 
 });

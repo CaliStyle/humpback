@@ -7,7 +7,10 @@
 angular.module( 'humpback.views.adminroleview.controllers', [
 
 ])
-.controller( 'AdminRolesViewCtrl', function AdminRolesViewController( $scope, DS ) {
+.controller( 'AdminRolesViewCtrl', function AdminRolesViewController( $scope, $stateParams, DS, Api ) {
 
+	$scope.role = new Api('role');
+	$scope.role.read($stateParams.id);
+	DS.bindOne('role', $stateParams.id, $scope, 'thisrole');
 
 });

@@ -7,9 +7,15 @@
 angular.module( 'humpback.views.admincmscategoriesview.controllers', [
 
 ])
-.controller( 'AdminCmsCategoriesViewCtrl', function AdminCmsCategoriesViewController( $scope, $stateParams, DS, Category ) {
-	$scope.category = new Category($stateParams.id);
-	$scope.category.read();
+.controller( 'AdminCmsCategoriesViewCtrl', function AdminCmsCategoriesViewController( $scope, $stateParams, DS, Api) {
+	$scope.category = new Api('category');
+	$scope.category.options = {bypassCache: true, params: {populate: 'routes'}};
+	$scope.category.read($stateParams.id);
+
+	$scope.category.Routes = new Api('category');
+	$scope.category.Routes.options = {bypassCache: true, endpoint: '/category/' + $stateParams.id + '/routes'};
+	$scope.category.Routes.init();
+
 	DS.bindOne('category', $stateParams.id, $scope, 'thiscategory');
 
 	$scope.updateCategory = function(){
@@ -17,17 +23,14 @@ angular.module( 'humpback.views.admincmscategoriesview.controllers', [
 	}
 
 	$scope.deleteCategory = function(){
-		$scope.category.delete();
+		$scope.category.delete($scope.thiscategory);
 	}
 
-
 })
-.controller( 'AdminCmsCategoriesNewCtrl', function AdminCmsCategoriesNewController( $scope, $stateParams, DS, Category ) {
+.controller( 'AdminCmsCategoriesNewCtrl', function AdminCmsCategoriesNewController( $scope, $stateParams, DS, Api) {
 	
-	$scope.category = new Category();
-	$scope.thiscategory = $scope.category.category;
-	//$scope.route.read();
-	//DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
+	$scope.category = new Api('category');
+	$scope.thiscategory = $scope.category.selected;
 
 	$scope.createCategory = function(){
 		console.log("Clicked");

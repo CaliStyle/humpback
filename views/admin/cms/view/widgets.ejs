@@ -47,14 +47,16 @@
 			</textarea>
 		
 			<h3>Category</h3>
-			{{ thisroute.categories }}
 			<div ng-repeat="category in route.categories.visible">
-				<input 
-					id="{{ category.id }}" 
-					type="checkbox"
-					checklist-model="thisroute.categories" checklist-value="category.id"
-				>
-				<label for="{{category.id}}">
+				<label>
+					<input 
+					
+						type="checkbox"
+						checklist-model="thisroute.categories" 
+						checklist-value="category"
+						checklist-comparator=".id"
+					>
+				
 					{{ category.name }}
 				</label>
 			</div>

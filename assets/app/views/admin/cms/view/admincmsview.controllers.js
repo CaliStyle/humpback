@@ -7,11 +7,20 @@
 angular.module( 'humpback.views.admincmsview.controllers', [
 
 ])
-.controller( 'AdminCmsViewCtrl', function AdminCmsViewController( $scope, $stateParams, DS, utils, Route ) {
+.controller( 'AdminCmsViewCtrl', function AdminCmsViewController( $scope, $stateParams, DS, utils, Api ) {
 
 
-	$scope.route = new Route($stateParams.id);
-	$scope.route.read();
+	//$scope.route = new Route($stateParams.id);
+	//$scope.route.read();
+	//DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
+
+	$scope.route = new Api('route');
+	$scope.route.options = {bypassCache: true, params: {populate: 'categories'}};
+	$scope.route.read($stateParams.id);
+	
+	$scope.route.categories = new Api('category');
+	$scope.route.categories.init();
+
 	DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
 
 	$scope.updateRoute = function(){
@@ -49,11 +58,14 @@ angular.module( 'humpback.views.admincmsview.controllers', [
 
 
 })
-.controller( 'AdminCmsPageCtrl', function AdminCmsPageController( $scope, $stateParams, DS, utils, Route ) {
-	$scope.route = new Route();
-	$scope.thisroute = $scope.route.route;
-	//$scope.route.read();
+.controller( 'AdminCmsNewCtrl', function AdminCmsNewController( $scope, $stateParams, DS, utils, Api ) {
+	
 	//DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
+
+	$scope.route = new Api('route');
+	$scope.thisroute = $scope.route.selected;
+	$scope.route.Categories = new Api('category');
+	$scope.route.Categories.init();
 
 	$scope.createRoute = function(){
 		$scope.route.create($scope.thisroute);
