@@ -391,7 +391,7 @@ module.exports = function(grunt) {
 		        fileRef: function (filepath) {
 		            var tmpl = "'humpback.views.%s',";
 		            var filename = filepath.substr(filepath.lastIndexOf('/') + 1);
-		            filename  = filename.replace(/\.[^/.]+$/, "").toLowerCase();
+		            filename  = filename.replace(/\.[^/.]+$/, "");
 		            return util.format(tmpl, filename);
 		       	},
 		        appRoot: '/'

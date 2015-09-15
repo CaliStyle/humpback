@@ -16,7 +16,7 @@ angular.module( 'humpback.views.adminuser.controllers', [
 	$scope.users.criteria = $stateParams.criteria ? $stateParams.criteria : null;
 	$scope.users.init();
 	
-	$scope.user.model = new Api('model');
+	$scope.users.model = new Api('model');
 	$scope.users.model.criteria = {name: 'user'};
 	$scope.users.model.search()
 	.then(function(models){
