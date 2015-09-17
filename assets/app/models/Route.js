@@ -21,7 +21,7 @@ angular.module('route.model', [
         RouteService.handler[envelope.verb](envelope)
     });
 
-    return DS.defineResource({
+    var Route = DS.defineResource({
         name: 'route',
         maxAge: 36000000,
         deleteOnExpire: 'none',
@@ -39,7 +39,18 @@ angular.module('route.model', [
         * http://www.js-data.io/v1.5.8/docs/dsdefaults
         **/
         beforeInject: function(resource, data){
-           //console.log(data);
+            //console.log(data);
+            /*
+            if(data.categories){
+                Promise.all(_.map(data.categories, function(category){
+                    return DS.inject('category_route__route_category', {
+                        id: category.id,
+                        category_routes: category.id,
+                        route_categories: data.id,
+                    });
+                }));
+            }
+            */
         },
         beforeCreate: function (resource, data, cb) {
             cb(null, data);
@@ -66,16 +77,28 @@ angular.module('route.model', [
         * 
         **/
         relations:{
-            hasMany: {
-              category: {
-                localField: 'categories',
-                // foreignKey is the "join" field
-                // the name of the field on a comment that points to its parent user
-                //foreignKey: 'userId'
-              }
+            relations:{
+               hasMany: {
+                    category_route__route_category: {
+                        localField: 'routes',
+                        foreignKey: 'route_categories'
+                    }
+                }
             }
         }
     });
+    
+    Route.findAllCategories = function(routeId){
+        return DS.findAll('category_route__route_category', {
+            routes_category: routeId
+        })
+        .then(function(categoryRoutes) {
+        // this could be done a few different ways
+            return Promise.all(categoryRoutes.map(function(categoryRoute) {
+                return DS.find('category', categoryRoute.route_categories);
+            }));
+        });
+    };
 })
 
 /**

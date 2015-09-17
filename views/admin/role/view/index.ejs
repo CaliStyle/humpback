@@ -4,6 +4,11 @@
  * A humpback-view created at Wed Sep 09 2015 18:52:30 GMT-0400 (EDT).
 -->
 <!--admin/role/view/index.ejs-->
+
 <div class="grid-content">
-	{{ thisrole.name }}
+	<h1>{{ thisrole.name }}</h1>
+	<div ng-repeat="(key,value) in role.model.selected.attributes">
+		{{ key }} {{ thisrole[key] }}
+	</div>
 </div>
+

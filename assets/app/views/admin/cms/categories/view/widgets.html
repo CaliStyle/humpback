@@ -6,17 +6,17 @@
 <!--admin/cms/categories/view/widgets.ejs-->
 <div class="grid-content">
 	<a 
-		ng-if="!category.selected.id"
+		ng-show="category.isNew"
 		class="button" 
 		ng-click="createCategory()"
 	>
-		{{ thiscategory.updating | iif : 'Creating...' : 'Create' }}
+		{{ category.updating | iif : 'Creating...' : 'Create' }}
 	</a>
 	<a 
-		ng-if="category.selected.id"
+		ng-show="!category.isNew"
 		class="button" 
 		ng-click="updateCategory()"
 	>
-		{{ thiscategory.updating | iif : 'Updating...' : 'Update' }}
+		{{ category.updating | iif : 'Updating...' : 'Update' }}
 	</a>
 </div>

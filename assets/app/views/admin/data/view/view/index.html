@@ -6,6 +6,11 @@
 <!--admin/data/view/view/index.ejs-->
 
 <div class="grid-content">
+	
+	<div class="loader" ng-class="{'done' : !item.busy}">
+		<h3>Loading...</h3>
+	</div>
+
 	{{ thisitem }}
 	<div ng-repeat="(key,value) in thismodel.attributes">
 

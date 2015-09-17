@@ -4,7 +4,7 @@
  * A humpback-view created at Fri Sep 04 2015 17:31:09 GMT-0400 (EDT).
  */
 
-angular.module( 'humpback.views.admincmscategoriesview.states', [
+angular.module( 'humpback.views.AdminCmsCategoriesView.states', [
 
 ])
 .config(function config( $stateProvider, $urlRouterProvider) {

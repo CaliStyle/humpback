@@ -7,7 +7,7 @@
 <div class="grid-block">
 	<div class="grid-block medium-8 large-9">
 		
-		<div class="loader" ng-class="{'done' : !thisroute.busy}">
+		<div class="loader" ng-class="{'done' : !route.busy}">
 			<h3>Loading...</h3>
 		</div>
 
@@ -28,25 +28,35 @@
 				class="admin-well"
 			>
 				Permalink: {{ thisroute.uri }}
+				<select 
+					ng-if="route.isNew"
+					ng-model="permalink[0]"
+					ng-options="permalink.uri as permalink.uri for permalink in route.Wildcards.visible"
+					ng-change=""
+				>
+					<option value="">-- Select Parent --</option>
+				</select>
 			</div>
 
 			<ul class="cms-menu-bar">
-				<li><a href="#">Code</a></li>
-				<li><a href="#">Preview</a></li>
+				<li><a ng-click="route.isCode = true">Code</a></li>
+				<li><a ng-click="route.isCode = false">Preview</a></li>
 			</ul>
-
-			<div 
-				ui-ace="{
-					mode: 'html',
-					onLoad: aceLoaded,
-					onChange: aceChanged
-				}"
-				ng-model="thisroute.content"
-			>
-				
+			<div ng-hide="!route.isCode">
+				<div 
+					ui-ace="{
+						mode: 'html',
+						onLoad: aceLoaded,
+						onChange: aceChanged
+					}"
+					ng-model="thisroute.content"
+				>
+					
+				</div>
 			</div>
-			<div data-ng-bind-html="thisroute.content"></div>
-
+			<div ng-show="!route.isCode">
+				<div data-ng-bind-html="thisroute.content"></div>
+			</div>
 		</div>
 	</div>
 	<div class="grid-block medium-4 large-3" ui-view="widgets">

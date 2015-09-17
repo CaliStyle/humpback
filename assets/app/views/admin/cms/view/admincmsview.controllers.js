@@ -4,7 +4,7 @@
  * A humpback-view created at Fri Aug 28 2015 18:16:29 GMT-0400 (EDT).
  */
 
-angular.module( 'humpback.views.admincmsview.controllers', [
+angular.module( 'humpback.views.AdminCmsView.controllers', [
 
 ])
 .controller( 'AdminCmsViewCtrl', function AdminCmsViewController( $scope, $stateParams, DS, utils, Api ) {
@@ -14,12 +14,23 @@ angular.module( 'humpback.views.admincmsview.controllers', [
 	//$scope.route.read();
 	//DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
 
-	$scope.route = new Api('route');
-	$scope.route.options = {bypassCache: true, params: {populate: 'categories'}};
+	$scope.route = new Api('route', {
+		options : {
+			bypassCache: true, 
+			params: {
+				populate: 'categories'
+			}
+		}
+	});
+	
+	$scope.route.isCode = true;
+
 	$scope.route.read($stateParams.id);
 	
-	$scope.route.categories = new Api('category');
-	$scope.route.categories.init();
+	$scope.route.Categories = new Api('category', {
+		limit: 100
+	});
+	$scope.route.Categories.init();
 
 	DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
 
@@ -40,7 +51,7 @@ angular.module( 'humpback.views.admincmsview.controllers', [
 	    // Options
 	    //_editor.setReadOnly(true);
 	    _session.setUndoManager(new ace.UndoManager());
-	    _renderer.setShowGutter(false);
+	    //_renderer.setShowGutter(false);
 
 	    // Events
 	    _editor.on("changeSession", function(){ 
@@ -58,17 +69,50 @@ angular.module( 'humpback.views.admincmsview.controllers', [
 
 
 })
-.controller( 'AdminCmsNewCtrl', function AdminCmsNewController( $scope, $stateParams, DS, utils, Api ) {
+.controller( 'AdminCmsNewCtrl', function AdminCmsNewController( $scope, $state, $stateParams, DS, utils, Api ) {
 	
 	//DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
 
-	$scope.route = new Api('route');
+	String.prototype.slug = function() {
+    var title = this;
+    return title
+        .toLowerCase()
+        .replace(/[^\w ]+/g,'')
+        .replace(/ +/g,'-');
+	};
+
+	$scope.route = new Api('route',{
+		isCode: true
+	});
+	$scope.route.isCode = true;
+
 	$scope.thisroute = $scope.route.selected;
-	$scope.route.Categories = new Api('category');
+	
+	$scope.route.Categories = new Api('category', {
+		limit: 100
+	});
 	$scope.route.Categories.init();
 
+	$scope.route.Wildcards = new Api('route', {
+		limit: 100,
+		criteria: {
+			'uri': {
+				endsWith: '*'
+			}
+		}, 
+		options: {
+			bypassCache: true
+		}
+	});
+
+	$scope.route.Wildcards.init();
+
+
 	$scope.createRoute = function(){
-		$scope.route.create($scope.thisroute);
+		$scope.route.create($scope.thisroute)
+		.then(function(thisroute){
+			$state.go('admin.cms.view', {id: thisroute.id});
+		});
 	}
 
 	//$scope.thisroute = route.route;
@@ -84,7 +128,7 @@ angular.module( 'humpback.views.admincmsview.controllers', [
 	    // Options
 	    //_editor.setReadOnly(true);
 	    _session.setUndoManager(new ace.UndoManager());
-	    _renderer.setShowGutter(false);
+	    //_renderer.setShowGutter(false);
 
 	    // Events
 	    _editor.on("changeSession", function(){ 

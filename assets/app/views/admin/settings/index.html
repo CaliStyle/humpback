@@ -12,6 +12,14 @@
 			Manage Core and Custom settings
 		</p>
 	</div>
+	<div class="grid-content">
+		<a 
+			class="button"
+			ui-sref="admin.settings.new"
+		>
+			New Setting
+		</a>
+	</div>
 </div>
 <div class="admin-filters-block" ui-view="filters">
 	<div class="grid-content">
@@ -32,7 +40,7 @@
  		<div ng-show="settings.visible.length == 0 && !settings.busy" class="not-found text-center">
 			<h2>No Settings</h2>
 		</div>
-		<div ng-repeat="setting in settings.visible">
+		<div class="admin-well" ng-repeat="setting in settings.visible">
 			<a ui-sref="admin.settings.setting({id: setting.id})">
 				{{ setting.name }} {{ setting.createdAt | date }}
 			</a>

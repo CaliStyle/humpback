@@ -4,7 +4,7 @@
  * A humpback-view created at Sat Aug 29 2015 16:08:20 GMT-0400 (EDT).
  */
 
-angular.module( 'humpback.views.admindataview.states', [
+angular.module( 'humpback.views.AdminDataView.states', [
 
 ])
 .config(function config( $stateProvider, $urlRouterProvider) {

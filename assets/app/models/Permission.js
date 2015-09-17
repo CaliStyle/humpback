@@ -1,9 +1,9 @@
 /**
 * @description 
-* Global Setting. Model
-* humpback-model created at Tue Jun 09 2015 14:23:16 GMT-0400 (EDT)
+* Global Permission. Model
+* humpback-model created at Fri Sep 04 2015 11:20:23 GMT-0400 (EDT)
 **/
-angular.module('setting.model', [
+angular.module('permission.model', [
     'humpback.models'
 ])
 
@@ -12,25 +12,24 @@ angular.module('setting.model', [
 * Run and ignore for unit testing
 * 
 **/
-.run(function($rootScope, $sailsSocket, DS, SettingService, utils){
-	
-	if(utils.development()){ console.log(window._name,': listening to setting changes')};
-
-    $sailsSocket.subscribe('setting', function(envelope){
-        if(utils.development()){ console.log(envelope)};
-        SettingService.handler[envelope.verb](envelope)
+.run(function($sailsSocket, DS, PermissionService, utils){
+    if(utils.development()){ console.log(window._name,': listening to permission changes')};
+    
+    $sailsSocket.subscribe('permission', function(envelope){
+        //console.log(envelope);
+        PermissionService.handler[envelope.verb](envelope)
     });
 
     return DS.defineResource({
-        name: 'setting',
+        name: 'permission',
         maxAge: 36000000,
         deleteOnExpire: 'none',
-        onExpire: function (id, setting) {
-            console.log(id, 'Setting Expired');
+        onExpire: function (id, permission) {
+            console.log(id, 'Permission Expired');
         },
         storageMode: 'localStorage',
         idAttribute: 'id',
-        endpoint: '/setting',
+        endpoint: '/permission',
         baseUrl: window._prefix || '/api',
         
         /**
@@ -48,19 +47,15 @@ angular.module('setting.model', [
             cb(null, data);
         },
         afterUpdate: function(resource, data, cb){
-            $rootScope.__settings[data.name] = window._settings[data.name] = data.value;
             cb(null, data);
         },
         afterCreate: function (resource, data, cb) {
-            $rootScope.__settings[data.name] = window._settings[data.name] = data.value;
             cb(null, data);
         },
         beforeDestroy: function (resource, data, cb) {
             cb(null, data);
         },
         afterDestroy: function (resource, data, cb) {
-            delete $rootScope.__settings[data.name]; 
-            delete window._settings[data.name];
             cb(null, data);
         },
 
@@ -77,40 +72,40 @@ angular.module('setting.model', [
 
 /**
 * @description 
-* The SettingService factory Exposes Handler and Service methods for the Setting Server Side Model
+* The PermissionService factory Exposes Handler and Service methods for the Permission Server Side Model
 * 
 **/
-.factory('SettingService',function(DS, $sailsSocket){
+.factory('PermissionService',function(DS, $sailsSocket){
 	var _service = {};
 	var _handler = {};
 
     /**
     * @description 
-    * When a Setting is created that the app is listenting to inject it into the local DB
+    * When a Permission is created that the app is listenting to inject it into the local DB
     * 
     **/
 	_handler.created = function(envelope){
         'use strict';
-        DS.inject('setting', envelope.data);
+        DS.inject('permission', envelope.data);
         console.log(envelope);
 
     };
 
     /**
     * @description 
-    * When a Setting is deleted that the app is listenting to eject it from the local DB 
+    * When a Permission is deleted that the app is listenting to eject it from the local DB 
     * 
     **/
     _handler.deleted = function(envelope){
         'use strict';
-        DS.eject('setting', envelope.data);
+        DS.eject('permission', envelope.data);
         console.log(envelope);
 
     };
 
     /**
     * @description 
-    * When a Setting is updated that the app is listenting to inject it from the local DB, or if only a ID fetch it from the server 
+    * When a Permission is updated that the app is listenting to inject it from the local DB, or if only a ID fetch it from the server 
     * 
     **/
     _handler.updated = function(envelope){
@@ -118,16 +113,16 @@ angular.module('setting.model', [
         console.log(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
-            DS.inject('setting', envelope.data);
+            DS.inject('permission', envelope.data);
         }else{
-            DS.refresh('setting',envelope.id);
+            DS.refresh('permission',envelope.id);
         }
 
     };
 
     /**
     * @description 
-    * When a Setting model's collection is added to, inject it into the Setting Model 
+    * When a Permission model's collection is added to, inject it into the Permission Model 
     * 
     **/
     _handler.addedTo = function(envelope){
@@ -137,7 +132,7 @@ angular.module('setting.model', [
 
     /**
     * @description 
-    * When a Setting model's collection is detracted from eject it from the Setting Model 
+    * When a Permission model's collection is detracted from eject it from the Permission Model 
     * 
     **/
     _handler.removedFrom = function(envelope){
@@ -147,7 +142,7 @@ angular.module('setting.model', [
 
     /**
     * @description 
-    * When a Setting model is messaged 
+    * When a Permission model is messaged 
     * 
     **/
     _handler.messaged = function(envelope){

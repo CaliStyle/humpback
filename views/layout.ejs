@@ -108,6 +108,8 @@
         var _env = '<%= sails.config.humpback.env %>' || 'development';
         var _prefix = '<%= sails.config.blueprints.prefix || '' %>';
         var _defaultLocale = '<%= sails.config.i18n.defaultLocale || 'en' %>';
+        var _dynamicView = <%= sails.config.humpback.dynamicView %> || false;
+        var _csrf = <% if (typeof sails.config.csrf !== 'undefined'){ %><%- JSON.stringify(sails.config.csrf) %><% }else{ %>{}<% } %>;
         var _user = <% if (typeof req.user !== 'undefined'){ %><%- JSON.stringify(req.user) %><% }else{ %>null<% } %>;
     </script>
     <!--HUMPBACK END-->

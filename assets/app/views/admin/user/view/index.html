@@ -10,5 +10,9 @@
 		
 		<h1>{{ thisuser.username }}</h1>
 		
+		<div ng-repeat="(key,value) in user.model.selected.attributes">
+
+			{{ key }} {{ thisuser[key] }}
+		</div>
 	</div>
 </div>

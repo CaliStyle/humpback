@@ -25,8 +25,25 @@
 			<p>
 				Updated {{ thisroute.updatedAt | date : 'short' }}
 			</p>
-			<a>Move to Trash</a>
-			<a class="button" ng-click="updateRoute()">
+
+			<a
+				ng-show="!route.isNew"
+			>
+				Move to Trash
+			</a>
+			<a 
+				class="button" 
+				ng-show="!route.isNew"
+				ng-click="updateRoute()"
+			>
+				{{ route.updating | iif : 'Publishing...' : 'Publish' }}
+			</a>
+
+			<a 
+				class="button"
+				ng-show="route.isNew" 
+				ng-click="createRoute()"
+			>
 				{{ route.updating | iif : 'Publishing...' : 'Publish' }}
 			</a>
 
@@ -47,7 +64,7 @@
 			</textarea>
 		
 			<h3>Category</h3>
-			<div ng-repeat="category in route.categories.visible">
+			<div ng-repeat="category in route.Categories.visible">
 				<label>
 					<input 
 					

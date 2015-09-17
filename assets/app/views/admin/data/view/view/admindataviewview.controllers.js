@@ -4,7 +4,7 @@
  * A humpback-view created at Sun Sep 13 2015 21:29:15 GMT-0400 (EDT).
  */
 
-angular.module( 'humpback.views.admindataviewview.controllers', [
+angular.module( 'humpback.views.AdminDataViewView.controllers', [
 
 ])
 .controller( 'AdminDataViewViewCtrl', function AdminDataViewViewController( $scope, $stateParams, DS, Api ) {

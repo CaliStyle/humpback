@@ -8,9 +8,6 @@
 <div class="grid-block">
 	<div class="vertical grid-block medium-8 large-9" ui-view="content">
 		<div class="admin-header-block">
-			<div class="loader" ng-class="{'done' : !thismodel.busy}">
-				<h3>Loading...</h3>
-			</div>
 			
 			<div class="grid-content">
 				<div>
@@ -22,6 +19,11 @@
 			</div>
 		</div>
 		<div class="admin-body-block">
+			
+			<div class="loader" ng-class="{'done' : !model.busy}">
+				<h3>Loading...</h3>
+			</div>
+
 			<div class="grid-content">
 				<div 
 					class="admin-well"

@@ -149,6 +149,16 @@
 			});
 		}
 
+		if(window._csrf){
+			$rootScope.__csrf = window._csrf;
+			if(utils.development()){ console.log(window._name,'CSRF:', window._csrf); }
+		}
+
+		if(window._dynamicView){
+			$rootScope.__dynamicView = window._dynamicView;
+			if(utils.development()){ console.log(window._name,'DYNAMIC VIEW:', window._dynamicView); }
+		}
+
 		if(window._maintenance){
 			$rootScope.__maintenance = window._maintenance;
 			if(utils.development()){ console.log(window._name,'MAINTENANCE:', window._maintenance); }
