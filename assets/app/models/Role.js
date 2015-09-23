@@ -32,6 +32,9 @@ angular.module('role.model', [
         idAttribute: 'id',
         endpoint: '/role',
         baseUrl: window._prefix || '/api',
+        meta: {
+            contentCount: 0
+        },
         
         /**
         * @description 

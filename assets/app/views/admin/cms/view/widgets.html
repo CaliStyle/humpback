@@ -88,6 +88,9 @@
 				ng-model="thisroute.image"
 				placeholder="Featured Image URL"
 			>
-			<img ng-if="thisroute.image" ng-src="thisroute.image">
+			<img 
+				ng-show="thisroute.image" 
+				ng-src="{{ thisroute.image }}"
+			/>
 	</div>
 </div>

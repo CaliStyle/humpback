@@ -22,6 +22,74 @@
 	</div>
 </div>
 
+<div class="admin-filters-block" ui-view="filters">
+	<div class="grid-block">
+		<div class="grid-content">
+			<form
+				ng-submit="categories.addFilter()"
+			>
+				<span class="select inline-label">
+					<select 
+						ng-model="categories.filter[0]"
+						ng-options="key as key for (key,value) in categories.model.selected.attributes"
+					>
+						<option value="">-- Search By --</option>
+					</select>
+					
+					<input 
+						type="search" 
+						placeholder="Search Categories..."
+						ng-model="categories.filter[1]"
+					>
+					<button 
+						type="submit"
+						class="button"
+					>
+						Search
+					</button>
+				</span>
+			</form>
+			<a 
+				ng-repeat="(filter, value) in categories.criteria"
+				ng-click="categories.removeFilter(filter)"
+			>
+				<span class="label close">{{ filter }}: {{ value.contains | iif: value.contains : value }}</span>
+			</a>
+			<a 
+				ng-click="categories.clearFilters()"
+			>
+				Clear Filters
+			</a>
+			<p>
+				Showing {{ categories.start | number }} - {{ categories.end | number }} of {{ categories.total | number}}
+			</p>
+		</div>
+	</div>
+	<div class="grid-block">
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="categories.limit"
+					ng-options="items.value as items.name for items in filters.itemsPerPage"
+					ng-change="categories.reset('limit')"
+				>
+					<option value="">-- Items Per Page --</option>
+				</select>
+			</div>
+		</div>
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="categories.sort"
+					ng-options="items.value as items.name for items in filters.itemsSort"
+					ng-change="categories.reset('sort')"
+				>
+					<option value="">-- Sort Items --</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="admin-content-block" ui-view="content">
 	<div class="loader" ng-class="{done: !categories.busy}">
@@ -38,4 +106,21 @@
 			</a>
 		</div>
 	</div>
+</div>
+<div class="admin-footer-block" ui-view="footer">
+	<div 
+		paging
+		class="grid-block align-center" 
+		page="categories.page" 
+		page-size="categories.limit" 
+		total="categories.total"
+		dots="..."
+		adjacent="2"
+		show-prev-next="true"
+		hide-if-empty="true"
+		ul-class="paging-menu-bar"
+		active-class="isActive"
+		disabled-class="isDisabled"
+		paging-action="categories.paging('Paging Clicked', page, pageSize, total)">
+	</div> 
 </div>

@@ -10,6 +10,12 @@ angular.module( 'humpback.services.utils', [])
 		},
 		alert: function(alert){
 			return FoundationApi.publish(alert.location, { color: alert.color, title: alert.title, content: alert.content, autoclose: alert.autoclose});
+		},
+		/**
+		 * @param {Object} err requires status, data
+		 */
+		handleError: function(err){
+			return err;
 		}
 	}
 });

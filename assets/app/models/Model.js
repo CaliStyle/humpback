@@ -32,6 +32,9 @@ angular.module('model.model', [
         idAttribute: 'id',
         endpoint: '/model',
         baseUrl: window._prefix || '/api',
+        meta: {
+            contentCount: 0
+        },
         
         /**
         * @description 

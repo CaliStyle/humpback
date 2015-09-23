@@ -50,6 +50,9 @@ angular.module('alert.model', [
         idAttribute: 'id',
         endpoint: '/alert',
         baseUrl: window._prefix || '/api',
+        meta: {
+            contentCount: 0
+        },
         
         /**
         * @description 

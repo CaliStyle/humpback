@@ -17,4 +17,15 @@ angular.module( 'humpback.views.AdminData.controllers', [
 	});
 	$scope.models.init();
 
+
+	$scope.models.model = new Api('model', {
+		criteria: {
+			name: 'model'
+		}
+	});
+
+	$scope.models.model.search()
+	.then(function(models){
+		$scope.models.model.selected = models[0];
+	});
 });

@@ -16,6 +16,9 @@ angular.module('humpback')
       return params;
     },
     deserialize: function (resourceConfig, data) {
+      if(data.contentCount){
+        resourceConfig.meta.contentCount = data.contentCount;
+      }
       return data ? "data" in data ? data.data : data : data;        
     },
     serialize: function(resourceConfig, data) {
@@ -474,4 +477,20 @@ angular.module('humpback')
       }
     };
   }];
+})
+.config(function($sailsSocketProvider){
+
+  $sailsSocketProvider.interceptors.push(function($q) {
+    return {
+      'request': function(config) {
+        //on request success
+        return config || $q.when(config);
+      },
+
+      'response': function(response) {
+        //on response success
+        return response || $q.when(response);
+      }
+    };
+  });
 });

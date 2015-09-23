@@ -32,6 +32,10 @@ module.exports.humpback = {
 	* If `preload` is true, Humpback will convert all EJS files as html       *
 	* files and then convert them to JS partials using html2js                *
 	***************************************************************************/
-	preload: false 
+	preload: false,
+
+	settings: [
+		{ googleAnalytics: ''}
+	] 
 
 }

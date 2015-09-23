@@ -20,24 +20,7 @@ angular.module('category.model', [
         CategoryService.handler[envelope.verb](envelope)
     });
     
-    DS.defineResource({
-        name: 'category_route__route_category',
-        relations: {
-            belongsTo: {
-                category: {
-                    localField: 'category',
-                    localKey: 'category_routes'
-                },
-                route: {
-                    localField: 'route',
-                    localKey: 'route_categories'
-                }
-            }
-        }
-    });
-
-
-    var Category = DS.defineResource({
+    return DS.defineResource({
         name: 'category',
         maxAge: 36000000,
         deleteOnExpire: 'none',
@@ -48,7 +31,9 @@ angular.module('category.model', [
         idAttribute: 'id',
         endpoint: '/category',
         baseUrl: window._prefix || '/api',
-        
+        meta: {
+            contentCount: 0
+        },
 
 
         /**
@@ -57,18 +42,7 @@ angular.module('category.model', [
         * http://www.js-data.io/v1.5.8/docs/dsdefaults
         **/
         beforeInject: function(resource, data){
-            //console.log(data);
-            /*
-            if(data.routes){
-                Promise.all(_.map(data.routes, function(route){
-                    return DS.inject('category_route__route_category', {
-                        id: data.id,
-                        category_routes: data.id,
-                        route_categories: route.id,
-                    });
-                }));
-            }
-            */
+           
         },
         beforeCreate: function (resource, data, cb) {
             cb(null, data);
@@ -98,27 +72,9 @@ angular.module('category.model', [
         * 
         **/
         relations:{
-           hasMany: {
-                category_route__route_category: {
-                    localField: 'categories',
-                    foreignKey: 'category_routes'
-                }
-            }
+           
         }
-    });
-    
-    Category.findAllRoutes = function(categoryId){
-        return DS.findAll('category_route__route_category', {
-            category_routes: categoryId
-        })
-        .then(function(categoryRoutes) {
-        // this could be done a few different ways
-            return Promise.all(categoryRoutes.map(function(categoryRoute) {
-                return DS.find('route', categoryRoute.category_routes);
-            }));
-        });
-    };
-    
+    });    
 })
 
 /**

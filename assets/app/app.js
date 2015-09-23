@@ -164,8 +164,6 @@
 			if(utils.development()){ console.log(window._name,'MAINTENANCE:', window._maintenance); }
 		}
 
-
-
 		/**
 		* @description 
 		* APP Wide State/Route change and connection event handler
@@ -189,24 +187,25 @@
 		$rootScope.__loadingRoute = true;
     
 		$rootScope.$on('$routeChangeStart', function(e, curr, prev) { 
-			$rootScope.__loadingRoute = true;
+			
 			// Show a loading message until promises are not resolved
 			if (curr.$$route && curr.$$route.resolve) {
 				$rootScope.__loadingRoute = true;
+				window.prerenderReady = false;
 			}
-
 			//console.log("START:",$location.path());
 
 		});
 
 		$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) { 
 		
-			// Show a loading message until promises are not resolved
+			// Show a loading message until promises are resolved
 			if (curr.$$route && curr.$$route.resolve) {
 				// Hide loading message
 				$rootScope.__loadingRoute = false;
+				window.prerenderReady = true;
 			}
-			//console.log("END:",$location.path());
+
 			if(window._barnacles.cms){
 				var id = btoa('get:' + $location.path().split(/[?#]/)[0]);
 				$rootScope.__route.read(id)
@@ -219,23 +218,21 @@
 		});
 
 		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) { 
-			//console.log(toState.name);	
+				
 			// Show a loading message until promises are not resolved
-			
 			$rootScope.__loadingRoute = true;
+			window.prerenderReady = false;
 			//console.log("START:", $location.path());
 
 		});
 
 		$rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) { 
 
-			//$root.currentState = toState.name.replace(".", "-");
-			//$root.currentPage = toState.name;
 			$rootScope.__currentState = toState.name;
 			// Hide loading message
 			$rootScope.__loadingRoute = false;
+			window.prerenderReady = true;
 
-			//console.log("END:",$location.path());
 			if(window._barnacles.cms){
 				var id = btoa('get:' + $location.path().split(/[?#]/)[0]);
 				$rootScope.__route.read(id)
@@ -245,7 +242,6 @@
 				});
 				//cms.setUrl($location.absUrl());
 			}
-			
 		});
 
 		$rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){ 
@@ -255,7 +251,6 @@
 				console.log(unfoundState.options);
 			} 
 			$state.go('fourZeroFour');
-
 		});
 
 		$rootScope.$on('$stateChargeError', function(event, errfoundState, fromState, fromParams){ 

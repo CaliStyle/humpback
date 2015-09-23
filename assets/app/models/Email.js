@@ -32,6 +32,9 @@ angular.module('email.model', [
         idAttribute: 'id',
         endpoint: '/email',
         baseUrl: window._prefix || '/api',
+        meta: {
+            contentCount: 0
+        },
         
         /**
         * @description 

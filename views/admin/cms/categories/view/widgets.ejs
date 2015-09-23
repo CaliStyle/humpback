@@ -19,4 +19,11 @@
 	>
 		{{ category.updating | iif : 'Updating...' : 'Update' }}
 	</a>
+	<a 
+		ng-show="!category.isNew"
+		class="button" 
+		ng-click="deleteCategory()"
+	>
+		{{ category.updating | iif : 'Deleting...' : 'Delete' }}
+	</a>
 </div>

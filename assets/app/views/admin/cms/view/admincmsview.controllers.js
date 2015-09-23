@@ -15,6 +15,7 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 	//DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
 
 	$scope.route = new Api('route', {
+		isCode: true,
 		options : {
 			bypassCache: true, 
 			params: {
@@ -22,8 +23,6 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 			}
 		}
 	});
-	
-	$scope.route.isCode = true;
 
 	$scope.route.read($stateParams.id);
 	
@@ -74,17 +73,20 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 	//DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
 
 	String.prototype.slug = function() {
-    var title = this;
-    return title
+    	var title = this;
+    	return title
         .toLowerCase()
         .replace(/[^\w ]+/g,'')
         .replace(/ +/g,'-');
 	};
 
+	
+
 	$scope.route = new Api('route',{
-		isCode: true
+		isCode: true,
+		isNew: true,
+		permalink: []
 	});
-	$scope.route.isCode = true;
 
 	$scope.thisroute = $scope.route.selected;
 	
@@ -107,11 +109,22 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 
 	$scope.route.Wildcards.init();
 
+	$scope.updatePermalink = function() {
+		//$scope.route.permalink[0] = $scope.route.permalink[0];
+		$scope.thisroute.title = $scope.thisroute.title ? $scope.thisroute.title : '';
+		$scope.route.permalink[1] = $scope.thisroute.title.slug();
+		$scope.thisroute.uri = $scope.route.permalink.join('').replace('*','');
+
+		$scope.thisroute.address = 'get ' + $scope.thisroute.uri;
+	}
+	$scope.$watch('thisroute.title', function(){
+		$scope.updatePermalink();
+	});
 
 	$scope.createRoute = function(){
 		$scope.route.create($scope.thisroute)
 		.then(function(thisroute){
-			$state.go('admin.cms.view', {id: thisroute.id});
+			$state.go('admin.cms.cms', {id: thisroute.id});
 		});
 	}
 

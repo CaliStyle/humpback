@@ -41,10 +41,10 @@ angular.module( 'humpback.views.AdminUserView.controllers', [
 	.then(function(models){
 		$scope.user.model.selected = models[0];
 	});
-	
+
 	$scope.createUser = function(){
 		console.log("Clicked");
-		$scope.category.create($scope.thisuser)
+		$scope.user.create($scope.thisuser)
 		.then(function(thisuser){
 			$state.go('admin.user.view',{id: thisuser.id});
 		});

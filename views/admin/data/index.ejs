@@ -14,18 +14,71 @@
 	</div>
 </div>
 <div class="admin-filters-block" ui-view="filters">
-	<div class="grid-content">
-		<input 
-			type="search" 
-			placeholder="Search Models..."
-		>
+	<div class="grid-block">
+		<div class="grid-content">
+			<form
+				ng-submit="models.addFilter()"
+			>
+				<span class="select inline-label">
+					
+					<select 
+						ng-model="models.filter[0]"
+						ng-options="key as key for (key,value) in models.model.selected.attributes"
+					>
+						<option value="">-- Search By --</option>
+					</select>
+					<input 
+						type="search" 
+						placeholder="Search Models..."
+						ng-model="models.filter[1]"
+					>
+					<button 
+						class="button"
+					>
+						Search
+					</button>
+				</span>
+			</form>
+			
+			<a 
+				ng-repeat="(filter, value) in models.criteria"
+				ng-click="models.removeFilter(filter)"
+			>
+				<span class="label close">{{ filter }}: {{ value.contains | iif: value.contains : value }}</span>
+			</a>
+
+			<p>
+				Showing {{ models.start | number }} - {{ models.end | number }} of {{ models.total | number}}
+			</p>
+		</div>	
+	</div>
+	<div class="grid-block">
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="models.limit"
+					ng-options="items.value as items.name for items in filters.itemsPerPage"
+					ng-change="models.reset('limit')"
+				>
+					<option value="">-- Items Per Page --</option>
+				</select>
+			</div>
+		</div>
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="models.sort"
+					ng-options="items.value as items.name for items in filters.itemsSort"
+					ng-change="models.reset('sort')"
+				>
+					<option value="">-- Sort Items --</option>
+				</select>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="admin-content-block" ui-view="content">
 	<div class="grid-content">
-		<div>
-			Showing {{ models.start | number }} - {{ models.end | number }} of {{ models.total | number}}
-		</div>
 		<div class="loader" ng-class="{done: !models.busy}">
  			<h2 class="loading-content">Loading Models...</h2>
  		</div>
@@ -44,19 +97,19 @@
 	</div>
 </div>
 <div class="admin-footer-block" ui-view="footer">
-	<div class="grid-content">
-		<a 
-			class="button"
-			ng-click="models.prevPage()"
-			ng-if="models.start > 0"
-		>
-			Previous Page
-		</a>
-		<a 
-			class="button"
-			ng-click="models.nextPage()"
-		>
-			Next Page
-		</a>
-	</div>
+	<div 
+		paging
+		class="grid-block align-center" 
+		page="models.page" 
+		page-size="models.limit" 
+		total="models.total"
+		dots="..."
+		adjacent="2"
+		show-prev-next="true"
+		hide-if-empty="true"
+		ul-class="paging-menu-bar"
+		active-class="isActive"
+		disabled-class="isDisabled"
+		paging-action="models.paging('Paging Clicked', page, pageSize, total)">
+	</div> 
 </div>

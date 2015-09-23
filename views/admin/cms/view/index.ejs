@@ -25,17 +25,25 @@
 				Slug: {{ thisroute.slug }}
 			</div>
 			<div 
+				ng-if="route.isNew"
+				class="admin-well"
+			>
+				<span class="inline-label">
+					<span class="form-label">Parent: </span>
+						<select 
+							ng-model="route.permalink[0]"
+							ng-options="permalink.uri as permalink.uri for permalink in route.Wildcards.visible"
+							ng-change="updatePermalink()"
+						>
+							<option value="">-- Select Parent --</option>
+						</select>
+					</label>
+				</span>
+			</div>
+			<div 
 				class="admin-well"
 			>
 				Permalink: {{ thisroute.uri }}
-				<select 
-					ng-if="route.isNew"
-					ng-model="permalink[0]"
-					ng-options="permalink.uri as permalink.uri for permalink in route.Wildcards.visible"
-					ng-change=""
-				>
-					<option value="">-- Select Parent --</option>
-				</select>
 			</div>
 
 			<ul class="cms-menu-bar">

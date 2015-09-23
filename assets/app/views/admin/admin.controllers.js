@@ -39,12 +39,12 @@ angular.module( 'humpback.views.Admin.controllers', [
 		itemsSort: [
 			{
 				value: 'createdAt DESC',
-				name: 'Newest',
+				name: 'Oldest',
 
 			},
 			{
 				value: 'createdAt ASC',
-				name: 'Oldest'
+				name: 'Newest'
 			}
 		]
 	};

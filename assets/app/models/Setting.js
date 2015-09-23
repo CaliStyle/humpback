@@ -32,6 +32,9 @@ angular.module('setting.model', [
         idAttribute: 'id',
         endpoint: '/setting',
         baseUrl: window._prefix || '/api',
+        meta: {
+            contentCount: 0
+        },
         
         /**
         * @description 

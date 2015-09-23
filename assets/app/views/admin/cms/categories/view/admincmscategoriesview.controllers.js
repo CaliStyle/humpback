@@ -7,7 +7,7 @@
 angular.module( 'humpback.views.AdminCmsCategoriesView.controllers', [
 
 ])
-.controller( 'AdminCmsCategoriesViewCtrl', function AdminCmsCategoriesViewController( $scope, $stateParams, DS, Api) {
+.controller( 'AdminCmsCategoriesViewCtrl', function AdminCmsCategoriesViewController( $scope, $state, $stateParams, DS, Api) {
 	$scope.category = new Api('category',{
 		options: {
 			bypassCache: true, 
@@ -35,7 +35,10 @@ angular.module( 'humpback.views.AdminCmsCategoriesView.controllers', [
 	}
 
 	$scope.deleteCategory = function(){
-		$scope.category.delete($scope.thiscategory);
+		$scope.category.delete($scope.thiscategory)
+		.then(function(thiscategory){
+			$state.go('admin.cms.categories');
+		});
 	}
 
 })

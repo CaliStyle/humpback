@@ -11,6 +11,7 @@ angular.module( 'humpback.views.AdminRole.states', [
 	$stateProvider
 		.state( 'admin.roles', {
 			url: '/roles',
+			reloadOnSearch: false,
 			ncyBreadcrumb: {
           		label: 'Roles'
         	},

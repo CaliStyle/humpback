@@ -16,8 +16,10 @@ angular.module( 'humpback.models'
 	/* CORE PROJECT MODELS */
 	'alert.model',
 	'category.model',
+	'company.model',
 	'email.model',
 	'model.model',
+	'permission.model',
 	'project.model',
 	'role.model',
 	'route.model',

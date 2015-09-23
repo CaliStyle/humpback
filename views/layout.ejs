@@ -111,6 +111,7 @@
         var _dynamicView = <%= sails.config.humpback.dynamicView %> || false;
         var _csrf = <% if (typeof sails.config.csrf !== 'undefined'){ %><%- JSON.stringify(sails.config.csrf) %><% }else{ %>{}<% } %>;
         var _user = <% if (typeof req.user !== 'undefined'){ %><%- JSON.stringify(req.user) %><% }else{ %>null<% } %>;
+        var prerenderReady = false;
     </script>
     <!--HUMPBACK END-->
 

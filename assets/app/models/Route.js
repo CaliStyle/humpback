@@ -21,7 +21,7 @@ angular.module('route.model', [
         RouteService.handler[envelope.verb](envelope)
     });
 
-    var Route = DS.defineResource({
+    return DS.defineResource({
         name: 'route',
         maxAge: 36000000,
         deleteOnExpire: 'none',
@@ -32,6 +32,9 @@ angular.module('route.model', [
         idAttribute: 'id',
         endpoint: '/route',
         baseUrl: window._prefix || '/api',
+        meta: {
+            contentCount: 0
+        },
         
         /**
         * @description 
@@ -88,17 +91,6 @@ angular.module('route.model', [
         }
     });
     
-    Route.findAllCategories = function(routeId){
-        return DS.findAll('category_route__route_category', {
-            routes_category: routeId
-        })
-        .then(function(categoryRoutes) {
-        // this could be done a few different ways
-            return Promise.all(categoryRoutes.map(function(categoryRoute) {
-                return DS.find('category', categoryRoute.route_categories);
-            }));
-        });
-    };
 })
 
 /**

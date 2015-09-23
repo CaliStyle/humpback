@@ -35,10 +35,41 @@
 <div class="admin-filters-block" ui-view="filters">
 	<div class="grid-block">
 		<div class="grid-content">
-			<input 
-				type="search" 
-				placeholder="Search Content..."
+			<form
+				ng-submit="routes.addFilter()"
 			>
+				<span class="select inline-label">
+					<select 
+						ng-model="routes.filter[0]"
+						ng-options="key as key for (key,value) in routes.model.selected.attributes"
+					>
+						<option value="">-- Search By --</option>
+					</select>
+					
+					<input 
+						type="search" 
+						placeholder="Search Content..."
+						ng-model="routes.filter[1]"
+					>
+					<button 
+						type="submit"
+						class="button"
+					>
+						Search
+					</button>
+				</span>
+			</form>
+			<a 
+				ng-repeat="(filter, value) in routes.criteria"
+				ng-click="routes.removeFilter(filter)"
+			>
+				<span class="label close">{{ filter }}: {{ value.contains | iif: value.contains : value }}</span>
+			</a>
+			<a 
+				ng-click="routes.clearFilters()"
+			>
+				Clear Filters
+			</a>
 			<p>
 				Showing {{ routes.start | number }} - {{ routes.end | number }} of {{ routes.total | number}}
 			</p>
@@ -90,19 +121,19 @@
 	</div>
 </div>
 <div class="admin-footer-block" ui-view="footer">
-	<div class="grid-content">
-		<a 
-			class="button"
-			ng-click="routes.prevPage()"
-			ng-if="routes.start > 0"
-		>
-			Previous Page
-		</a>
-		<a 
-			class="button"
-			ng-click="routes.nextPage()"
-		>
-			Next Page
-		</a>
-	</div>
+	<div 
+		paging
+		class="grid-block align-center" 
+		page="routes.page" 
+		page-size="routes.limit" 
+		total="routes.total"
+		dots="..."
+		adjacent="2"
+		show-prev-next="true"
+		hide-if-empty="true"
+		ul-class="paging-menu-bar"
+		active-class="isActive"
+		disabled-class="isDisabled"
+		paging-action="routes.paging('Paging Clicked', page, pageSize, total)">
+	</div> 
 </div>

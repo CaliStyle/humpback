@@ -32,7 +32,9 @@ angular.module('user.model', [
         idAttribute: 'id',
         endpoint: '/user',
         baseUrl: window._prefix || '/api',
-        
+        meta: {
+            contentCount: 0
+        },
         /**
         * @description 
         * Model's Life Cycle Callbacks

@@ -31,6 +31,9 @@ angular.module('permission.model', [
         idAttribute: 'id',
         endpoint: '/permission',
         baseUrl: window._prefix || '/api',
+        meta: {
+            contentCount: 0
+        },
         
         /**
         * @description 

@@ -22,18 +22,76 @@
 	</div>
 </div>
 <div class="admin-filters-block" ui-view="filters">
-	<div class="grid-content">
-		<input 
-			type="search" 
-			placeholder="Search Users..."
-		>
+	<div class="grid-block">
+		<div class="grid-content">
+			<form
+				ng-submit="users.addFilter()"
+			>
+				<span class="select inline-label">
+					<select 
+						ng-model="users.filter[0]"
+						ng-options="key as key for (key,value) in users.model.selected.attributes"
+					>
+						<option value="">-- Search By --</option>
+					</select>
+					
+					<input 
+						type="search" 
+						placeholder="Search Users..."
+						ng-model="users.filter[1]"
+					>
+					<button 
+						type="submit"
+						class="button"
+					>
+						Search
+					</button>
+				</span>
+			</form>
+			<a 
+				ng-repeat="(filter, value) in users.criteria"
+				ng-click="users.removeFilter(filter)"
+			>
+				<span class="label close">{{ filter }}: {{ value.contains | iif: value.contains : value }}</span>
+			</a>
+			<a 
+				ng-click="users.clearFilters()"
+			>
+				Clear Filters
+			</a>
+			<p>
+				Showing {{ users.start | number }} - {{ users.end | number }} of {{ users.total | number}}
+			</p>
+		</div>
+	</div>
+	<div class="grid-block">
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="users.limit"
+					ng-options="items.value as items.name for items in filters.itemsPerPage"
+					ng-change="users.reset('limit')"
+				>
+					<option value="">-- Items Per Page --</option>
+				</select>
+			</div>
+		</div>
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="users.sort"
+					ng-options="items.value as items.name for items in filters.itemsSort"
+					ng-change="users.reset('sort')"
+				>
+					<option value="">-- Sort Items --</option>
+				</select>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="admin-body-block" ui-view="content">
 	<div class="grid-content">
-		<div>
-			Showing {{ users.start | number }} - {{ users.end | number }} of {{ users.total | number}}
-		</div>
+		
 		<div class="loader" ng-class="{done: !users.busy}">
  			<h2 class="loading-content">
  				Loading Users...
@@ -45,11 +103,28 @@
 		</div>
 		<div 
 			class="admin-well"
-			ng-repeat="user in users.visible | orderBy: sailsToAngularSort(users.sort)"
+			ng-repeat="user in users.visible | orderBy: users.angularSort"
 		>
 			<a ui-sref="admin.user.user({id: user.id})">
 				{{ user.username }} {{ user.createdAt | date }}
 			</a>
 		</div>
 	</div>
+</div>
+<div class="admin-footer-block" ui-view="footer">
+	<div 
+		paging
+		class="grid-block align-center" 
+		page="users.page" 
+		page-size="users.limit" 
+		total="users.total"
+		dots="..."
+		adjacent="2"
+		show-prev-next="true"
+		hide-if-empty="true"
+		ul-class="paging-menu-bar"
+		active-class="isActive"
+		disabled-class="isDisabled"
+		paging-action="users.paging('Paging Clicked', page, pageSize, total)">
+	</div> 
 </div>

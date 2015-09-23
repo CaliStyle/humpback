@@ -11,6 +11,7 @@ angular.module( 'humpback.views.AdminSettings.states', [
 	$stateProvider
 		.state( 'admin.settings', {
 			url: '/settings',
+			reloadOnSearch: false,
 			ncyBreadcrumb: {
           		label: 'Settings'
         	},
