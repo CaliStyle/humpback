@@ -2,7 +2,7 @@
  * EmailController
  *
  * @description :: Server-side logic for managing emails
- * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#Email
+ * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#emailcontroller
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 

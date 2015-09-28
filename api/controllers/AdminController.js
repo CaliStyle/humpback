@@ -2,6 +2,7 @@
  * AdminController
  *
  * @description :: Server-side logic for managing humpback admin
+ * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#admincontroller
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 

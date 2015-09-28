@@ -9,8 +9,8 @@ angular.module( 'humpback.views.AdminRoleView.states', [
 ])
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
-		.state( 'admin.roles.role', {
-			url: '/:id',
+		.state( 'admin.role.role', {
+			url: '/view/:id',
 			ncyBreadcrumb: {
           		label: '{{ thisrole.name }}'
         	},
@@ -18,6 +18,24 @@ angular.module( 'humpback.views.AdminRoleView.states', [
 				"admin@admin": {
 					controller: 'AdminRolesViewCtrl',
 					templateUrl: 'app/views/admin/role/view/index.html'
+				},
+				"widgets@admin.roles.role": {
+					templateUrl: 'app/views/admin/role/view/widgets.html'
+				}
+			}
+		})
+		.state( 'admin.role.new', {
+			url: '/new?id',
+			ncyBreadcrumb: {
+          		label: 'New'
+        	},
+			views: {
+				"admin@admin": {
+					controller: 'AdminRolesNewCtrl',
+					templateUrl: 'app/views/admin/role/view/index.html'
+				},
+				"widgets@admin.roles.new": {
+					templateUrl: 'app/views/admin/role/view/widgets.html'
 				}
 			}
 		})

@@ -1,0 +1,46 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Sat Aug 29 2015 16:08:20 GMT-0400 (EDT).
+-->
+<!--admin/data/view/view/widgets.ejs-->
+<div class="grid-block">
+	<div class="loader" ng-class="{'done' : !item.busy}">
+		<h3>Loading...</h3>
+	</div>
+	<div class="grid-content">
+		
+		<a 
+			ng-show="item.isNew"
+			class="button" 
+			ng-click="createItem()"
+		>
+			{{ item.updating | iif : 'Creating...' : 'Create' }}
+		</a>
+		<a 
+			ng-show="!item.isNew"
+			class="button" 
+			ng-click="updateItem()"
+		>
+			{{ item.updating | iif : 'Updating...' : 'Update' }}
+		</a>
+		<a 
+			ng-show="!item.isNew"
+			class="button" 
+			ng-click="deleteItem()"
+		>
+			{{ item.deleting | iif : 'Deleting...' : 'Delete' }}
+		</a>
+
+		<h3>Attributes</h3>
+		
+		<p ng-repeat="(key, value) in thismodel.attributes">
+			<span>{{ key }}</span>
+
+			<span ng-if="value.type">{{ value.type }}</span>
+			<span ng-if="value.model">Model: {{ value.model }}</span>
+			<span ng-if="value.enum">{{ value.enum }}</span>
+			<span ng-if="value.collection">Collection: {{ value.collection }}</span>
+		</p>
+	</div>
+</div>

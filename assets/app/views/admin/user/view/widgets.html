@@ -1,3 +1,42 @@
 <div class="grid-content">
-	Widgets
+	<a 
+		ng-show="user.isNew"
+		class="button" 
+		ng-click="createUser()"
+	>
+		{{ user.updating | iif : 'Creating...' : 'Create' }}
+	</a>
+	<a 
+		ng-show="!user.isNew"
+		class="button" 
+		ng-click="updateUser()"
+	>
+		{{ user.updating | iif : 'Updating...' : 'Update' }}
+	</a>
+	<a 
+		ng-show="!user.isNew"
+		class="button" 
+		ng-click="deleteUser()"
+	>
+		{{ user.updating | iif : 'Deleting...' : 'Delete' }}
+	</a>
+
+	<h3>Roles</h3>
+	<div ng-repeat="role in user.Roles.visible">
+		<label>
+			<input 
+			
+				type="checkbox"
+				checklist-model="thisuser.roles" 
+				checklist-value="role"
+				checklist-comparator=".id"
+			>
+		
+			{{ role.name }}
+		</label>
+	</div>
+	<a ui-sref="admin.role.new">
+		Add New Role
+	</a>
+
 </div>

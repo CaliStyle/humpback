@@ -13,9 +13,15 @@ angular.module( 'humpback.views.AdminCms.controllers', [
 	$scope.routes = new Api('route',{
 		limit : $stateParams.limit ? parseInt($stateParams.limit) : 10,
 		skip : $stateParams.skip ? parseInt($stateParams.skip) : 0,
-		criteria : $stateParams.criteria ? $stateParams.criteria : {verb: 'get'}
+		criteria : $stateParams.criteria ? $stateParams.criteria : {verb: 'get'},
+		page : $stateParams.page ? $stateParams.page : 1,
+		options: {
+			bypassCache: true
+		}
 	});
-	$scope.routes.init();
+	$scope.routes.init().then(function(){
+		$scope.routes.options.bypassCache = false;
+	});
 	
 	$scope.routes.model = new Api('model', {
 		criteria: {

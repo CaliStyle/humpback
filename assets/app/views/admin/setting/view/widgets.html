@@ -20,4 +20,11 @@
 	>
 		{{ setting.updating | iif : 'Updating...' : 'Update' }}
 	</a>
+	<a 
+		ng-show="!setting.isNew"
+		class="button" 
+		ng-click="deleteSetting()"
+	>
+		{{ setting.deleting | iif : 'Deleting...' : 'Delete' }}
+	</a>
 </div>

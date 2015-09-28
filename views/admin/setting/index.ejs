@@ -15,7 +15,7 @@
 	<div class="grid-content">
 		<a 
 			class="button"
-			ui-sref="admin.settings.new"
+			ui-sref="admin.setting.new"
 		>
 			New Setting
 		</a>
@@ -98,8 +98,9 @@
 			<h2>No Settings</h2>
 		</div>
 		<div class="admin-well" ng-repeat="setting in settings.visible">
-			<a ui-sref="admin.settings.setting({id: setting.id})">
-				{{ setting.name }} {{ setting.createdAt | date }}
+			<a ui-sref="admin.setting.setting({id: setting.id})">
+				<h5>{{ setting.title }}</h5> 
+				<span>{{ setting.description }}</span>
 			</a>
 		</div>
 	</div>

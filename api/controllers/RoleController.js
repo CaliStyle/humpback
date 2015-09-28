@@ -2,7 +2,7 @@
  * RoleController
  *
  * @description :: Server-side logic for managing Roles
- * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#role
+ * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#rolecontroller
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 

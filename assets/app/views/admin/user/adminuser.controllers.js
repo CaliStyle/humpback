@@ -13,9 +13,15 @@ angular.module( 'humpback.views.AdminUser.controllers', [
 	$scope.users = new Api('user', {
 		limit : $stateParams.limit ? parseInt($stateParams.limit) : 10,
 		skip : $stateParams.skip ? parseInt($stateParams.skip) : 0,
-		criteria : $stateParams.criteria ? $stateParams.criteria : null
+		criteria : $stateParams.criteria ? $stateParams.criteria : null,
+		page : $stateParams.page ? $stateParams.page : 1,
+		options: {
+			bypassCache: true
+		}
 	});
-	$scope.users.init();
+	$scope.users.init().then(function(){
+		$scope.users.options.bypassCache = false;
+	});
 	
 	$scope.users.model = new Api('model', {
 		criteria: {

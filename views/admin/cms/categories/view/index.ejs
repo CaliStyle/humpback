@@ -23,19 +23,14 @@
 				placeholder="Category Name"
 			/>
 			
-			<div ng-show="category.Routes.api.length > 0">
-				<h3>In: {{ thiscategory.name }}</h3>
-				<div class="admin-well" ng-repeat="route in category.Routes.visible">
-					<input 
-					
-						type="checkbox"
-						checklist-model="thiscategory.routes" 
-						checklist-value="route"
-						checklist-comparator=".id"
-					>
-					<a ui-sref="admin.cms.cms({id: route.id})">
-						{{ route.method }} {{ route.title || route.uri }}
-					</a>
+			<div ng-repeat="item in category.model.selected.attributes | toArray: true">
+
+				<div 
+					ng-api-input="item" 
+					api-model="category.model.selected"
+					api-label="item.$key"
+					api-input="thiscategory[item.$key]"
+				>
 				</div>
 			</div>
 		</div>

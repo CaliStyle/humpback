@@ -1,0 +1,59 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Sep 25 2015 14:25:31 GMT-0400 (EDT).
+-->
+<!--admin/email/view/index.ejs-->
+
+<div class="grid-block">
+	<div 
+		class="vertical grid-block medium-8 large-9" 
+		ui-view="content"
+	>
+		<div class="grid-content">
+			
+			<h1>{{ thisemail.email }}</h1>
+			
+			<form
+				
+			>
+				<div ng-repeat="item in email.model.selected.attributes | toArray: true">
+
+					<div 
+						ng-api-input="item"
+						api-model="email.model.selected"
+						api-label="item.$key"
+						api-input="thisemail[item.$key]"
+					>
+					</div>
+				</div>
+
+				<ul class="cms-menu-bar">
+					<li><a ng-click="email.isCode = true">Code</a></li>
+					<li><a ng-click="email.isCode = false">Preview</a></li>
+				</ul>
+				<div ng-hide="!email.isCode">
+					<div 
+						ui-ace="{
+							mode: 'html',
+							onLoad: aceLoaded,
+							onChange: aceChanged
+						}"
+						ng-model="thisemail.html"
+					>
+						
+					</div>
+				</div>
+				<div ng-show="!email.isCode">
+					<div data-ng-bind-html="thisemail.html">
+						
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	<div class="grid-content medium-4 large-3" ui-view="widgets">
+
+	</div>
+</div>

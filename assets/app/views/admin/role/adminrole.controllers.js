@@ -13,9 +13,15 @@ angular.module( 'humpback.views.AdminRole.controllers', [
 	$scope.roles = new Api('role', {
 		limit : $stateParams.limit ? parseInt($stateParams.limit) : 10,
 		skip : $stateParams.skip ? parseInt($stateParams.skip) : 0,
-		criteria : $stateParams.criteria ? $stateParams.criteria : null
+		criteria : $stateParams.criteria ? $stateParams.criteria : null,
+		page : $stateParams.page ? $stateParams.page : 1,
+		options: {
+			bypassCache: true
+		}
 	});
-	$scope.roles.init();
+	$scope.roles.init().then(function(){
+		$scope.roles.options.bypassCache = false;
+	});
 
 	$scope.roles.model = new Api('model', {
 		criteria: {

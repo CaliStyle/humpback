@@ -9,8 +9,8 @@ angular.module( 'humpback.views.AdminRole.states', [
 ])
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
-		.state( 'admin.roles', {
-			url: '/roles',
+		.state( 'admin.role', {
+			url: '/roles?skip?sort?limit?criteria?page',
 			reloadOnSearch: false,
 			ncyBreadcrumb: {
           		label: 'Roles'

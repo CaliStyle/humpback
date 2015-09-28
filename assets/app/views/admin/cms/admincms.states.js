@@ -10,7 +10,7 @@ angular.module( 'humpback.views.AdminCms.states', [
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state( 'admin.cms', {
-			url: '/cms?skip?sort?limit?criteria',
+			url: '/cms?skip?sort?limit?criteria?page',
 			reloadOnSearch: false,
 			ncyBreadcrumb: {
           		label: 'Content Management'

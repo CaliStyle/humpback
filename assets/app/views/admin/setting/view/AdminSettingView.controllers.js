@@ -4,10 +4,10 @@
  * A humpback-view created at Tue Sep 15 2015 09:04:45 GMT-0400 (EDT).
  */
 
-angular.module( 'humpback.views.AdminSettingsView.controllers', [
+angular.module( 'humpback.views.AdminSettingView.controllers', [
 
 ])
-.controller( 'AdminSettingsViewCtrl', function AdminSettingsViewController( $scope, $stateParams, DS, Api ) {
+.controller( 'AdminSettingViewCtrl', function AdminSettingViewController( $scope, $state, $stateParams, DS, Api ) {
 	$scope.setting = new Api('setting');
 	$scope.setting.read($stateParams.id);
 	DS.bindOne('setting', $stateParams.id, $scope, 'thissetting');
@@ -29,9 +29,16 @@ angular.module( 'humpback.views.AdminSettingsView.controllers', [
 			
 		});
 	}
+	$scope.deleteSetting = function(){
+		console.log("Clicked");
+		$scope.setting.delete($scope.thissetting)
+		.then(function(thissetting){
+			$state.go('admin.setting');
+		});
+	}
 
 })
-.controller( 'AdminSettingsNewCtrl', function AdminSettingsNewController( $scope, $state, DS, Api ) {
+.controller( 'AdminSettingNewCtrl', function AdminSettingNewController( $scope, $state, DS, Api ) {
 
 	$scope.setting = new Api('setting', {
 		isNew: true
@@ -52,7 +59,7 @@ angular.module( 'humpback.views.AdminSettingsView.controllers', [
 	$scope.createSetting = function(){
 		$scope.setting.create($scope.thissetting)
 		.then(function(thissetting){
-			$state.go('admin.settings.view',{id: thissetting.id});
+			$state.go('admin.setting.setting',{id: thissetting.id});
 		});
 	}
 

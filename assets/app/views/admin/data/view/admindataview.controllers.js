@@ -18,9 +18,15 @@ angular.module( 'humpback.views.AdminDataView.controllers', [
 		$scope.model.Collection = new Api(model.identity, {
 			limit : $stateParams.limit ? parseInt($stateParams.limit) : 10,
 			skip : $stateParams.skip ? parseInt($stateParams.skip) : 0,
-			criteria : $stateParams.criteria ? $stateParams.criteria : null
+			criteria : $stateParams.criteria ? $stateParams.criteria : null,
+			page : $stateParams.page ? $stateParams.page : 1,
+			options: {
+				bypassCache: true
+			}
 		});
-		$scope.model.Collection.init();
+		$scope.model.Collection.init().then(function(){
+			$scope.model.Collection.options.bypassCache = false;
+		});
 
 	});
 

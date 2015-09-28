@@ -12,6 +12,14 @@
 			Manage Roles
 		</p>
 	</div>
+	<div class="grid-content">
+		<a 
+			class="button"
+			ui-sref="admin.role.new"
+		>
+			New Role
+		</a>
+	</div>
 </div>
 <div class="admin-filters-block" ui-view="filters">
 	<div class="grid-block">
@@ -93,7 +101,7 @@
 			class="admin-well" 
 			ng-repeat="role in roles.visible"
 		>
-			<a ui-sref="admin.roles.role({id: role.id})">
+			<a ui-sref="admin.role.role({id: role.id})">
 				{{ role.name }} {{ role.createdAt | date }}
 			</a>
 		</div>

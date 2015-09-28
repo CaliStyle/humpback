@@ -2,6 +2,7 @@
  * PermissionController
  *
  * @description :: Server-side logic for managing humpback permissions
+ * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#permissioncontroller
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 

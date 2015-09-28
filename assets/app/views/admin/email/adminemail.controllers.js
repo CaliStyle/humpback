@@ -13,9 +13,15 @@ angular.module( 'humpback.views.AdminEmail.controllers', [
 	$scope.emails = new Api('email', {
 		limit : $stateParams.limit ? parseInt($stateParams.limit) : 10,
 		skip : $stateParams.skip ? parseInt($stateParams.skip) : 0,
-		criteria : $stateParams.criteria ? $stateParams.criteria : null
+		criteria : $stateParams.criteria ? $stateParams.criteria : null,
+		page : $stateParams.page ? $stateParams.page : 1,
+		options: {
+			bypassCache: true
+		}
 	});
-	$scope.emails.init();
+	$scope.emails.init().then(function(){
+		$scope.emails.options.bypassCache = false;
+	});
 
 	$scope.emails.model = new Api('model', {
 		criteria: {

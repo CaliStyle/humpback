@@ -5,11 +5,18 @@
 -->
 <!--admin/data/view/widgets.ejs-->
 <div class="grid-block">
-	<div class="loader" ng-class="{'done' : !thismodel.busy}">
+	<div class="loader" ng-class="{'done' : !model.busy}">
 		<h3>Loading...</h3>
 	</div>
 	<div class="grid-content">
 		
+		<a 
+			class="button"
+			ui-sref="admin.data.data.new({model: thismodel.identity})"
+		>
+			New {{ thismodel.name }}
+		</a>
+
 		<h3>Attributes</h3>
 		
 		<p ng-repeat="(key, value) in thismodel.attributes">

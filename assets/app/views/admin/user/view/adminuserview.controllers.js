@@ -7,10 +7,24 @@
 angular.module( 'humpback.views.AdminUserView.controllers', [
 
 ])
-.controller( 'AdminUserViewCtrl', function AdminUserViewController( $scope, $stateParams, DS, utils, Api) {
+.controller( 'AdminUserViewCtrl', function AdminUserViewController( $scope, $state, $stateParams, DS, utils, Api) {
 
-	$scope.user = new Api('user');
+	$scope.user = new Api('user',{
+		options : {
+			bypassCache: true, 
+			params: {
+				populate: 'roles'
+			}
+		}
+	});
+
 	$scope.user.read($stateParams.id);
+	
+	$scope.user.Roles = new Api('role', {
+		limit: 100
+	});
+	$scope.user.Roles.init();
+
 	DS.bindOne('user', $stateParams.id, $scope, 'thisuser');
 
 	$scope.user.model = new Api('model', {
@@ -23,14 +37,35 @@ angular.module( 'humpback.views.AdminUserView.controllers', [
 		$scope.user.model.selected = models[0];
 	});
 
+
+	$scope.updateUser = function(){
+		$scope.user.update($scope.thisuser)
+		.then(function(thisuser){
+
+		});
+	}
+
+	$scope.deleteUser = function(){
+		$scope.user.delete($scope.thisuser)
+		.then(function(thisuser){
+			$state.go('admin.user');
+		});
+	}
+
+
 })
-.controller( 'AdminUserNewCtrl', function AdminUserNewController( $scope, $stateParams, DS, utils, Api) {
+.controller( 'AdminUserNewCtrl', function AdminUserNewController( $scope, $state, $stateParams, DS, utils, Api) {
 
 	$scope.user = new Api('user', {
 		isNew: true
 	});
 	
 	$scope.thisuser = $scope.user.selected;
+
+	$scope.user.Roles = new Api('role', {
+		limit: 100
+	});
+	$scope.user.Roles.init();
 
 	$scope.user.model = new Api('model', {
 		criteria: {
@@ -43,10 +78,9 @@ angular.module( 'humpback.views.AdminUserView.controllers', [
 	});
 
 	$scope.createUser = function(){
-		console.log("Clicked");
 		$scope.user.create($scope.thisuser)
 		.then(function(thisuser){
-			$state.go('admin.user.view',{id: thisuser.id});
+			$state.go('admin.user.user',{id: thisuser.id});
 		});
 	}
 });

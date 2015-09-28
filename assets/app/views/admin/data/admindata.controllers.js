@@ -9,13 +9,18 @@ angular.module( 'humpback.views.AdminData.controllers', [
 ])
 .controller( 'AdminDataCtrl', function AdminDataController( $scope, $stateParams, DS, Api) {
 
-	console.log($stateParams);
 	$scope.models = new Api('model',{
 		limit : $stateParams.limit ? parseInt($stateParams.limit) : 10,
 		skip : $stateParams.skip ? parseInt($stateParams.skip) : 0,
-		criteria : $stateParams.criteria ? $stateParams.criteria : null
+		criteria : $stateParams.criteria ? $stateParams.criteria : null,
+		page : $stateParams.page ? $stateParams.page : 1,
+		options: {
+			bypassCache: true
+		}
 	});
-	$scope.models.init();
+	$scope.models.init().then(function(){
+		$scope.models.options.bypassCache = false;
+	});
 
 
 	$scope.models.model = new Api('model', {

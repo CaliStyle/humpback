@@ -26,4 +26,14 @@
 	>
 		{{ category.updating | iif : 'Deleting...' : 'Delete' }}
 	</a>
+
+	<div ng-show="category.Routes.api.length > 0">
+		<h3>Pages: {{ thiscategory.name }}</h3>
+		<div class="admin-well" ng-repeat="route in category.Routes.visible">
+			<a ui-sref="admin.cms.cms({id: route.id})">
+				{{ route.method }} {{ route.title || route.uri }}
+			</a>
+		</div>
+	</div>
+
 </div>

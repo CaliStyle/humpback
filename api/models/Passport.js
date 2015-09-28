@@ -3,7 +3,7 @@
 *
 * @description    :: Stores a passport for a user
 * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Models#passport
-* @sails-docs   :: http://sailsjs.org/#!documentation/models
+* @sails-docs     :: http://sailsjs.org/#!documentation/models
 */
 
 var _ = require('lodash');
@@ -24,5 +24,4 @@ _.merge(exports, {
    * }
    */
 
-  
 });

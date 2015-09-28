@@ -10,7 +10,7 @@ angular.module( 'humpback.views.AdminDataView.states', [
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state( 'admin.data.data', {
-			url: '/:id',
+			url: '/:id?skip?sort?limit?criteria?page',
 			reloadOnSearch: false,
 			ncyBreadcrumb: {
           		label: '{{ thismodel.name }}'

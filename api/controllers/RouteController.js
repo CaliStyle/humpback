@@ -2,7 +2,7 @@
  * RouteController
  *
  * @description :: Server-side logic for managing settings
- * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#route
+ * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#routecontroller
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
@@ -21,6 +21,5 @@ _.merge(exports, {
 	 *  res.ok(); 
 	 * }
 	 */
-
 
 });

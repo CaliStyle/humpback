@@ -51,11 +51,11 @@ angular.module('setting.model', [
             cb(null, data);
         },
         afterUpdate: function(resource, data, cb){
-            $rootScope.__settings[data.name] = window._settings[data.name] = data.value;
+            $rootScope.__settings[data.name] = window._settings[data.name] = data.setting;
             cb(null, data);
         },
         afterCreate: function (resource, data, cb) {
-            $rootScope.__settings[data.name] = window._settings[data.name] = data.value;
+            $rootScope.__settings[data.name] = window._settings[data.name] = data.setting;
             cb(null, data);
         },
         beforeDestroy: function (resource, data, cb) {
@@ -106,8 +106,15 @@ angular.module('setting.model', [
     **/
     _handler.deleted = function(envelope){
         'use strict';
-        DS.eject('setting', envelope.data);
+        
         console.log(envelope);
+        if(envelope.data){
+            DS.eject('setting', envelope.data);
+            delete $rootScope.__settings[data.name]; 
+            delete window._settings[data.name];
+        }else{
+            DS.eject('setting', envelope.id);
+        }   
 
     };
 
@@ -122,6 +129,7 @@ angular.module('setting.model', [
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('setting', envelope.data);
+            $rootScope.__settings[envelope.data.name] = window._settings[envelope.data.name] = envelope.data.setting;
         }else{
             DS.refresh('setting',envelope.id);
         }

@@ -1,0 +1,78 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Wed Sep 09 2015 18:52:30 GMT-0400 (EDT).
+-->
+<!--admin/role/view/widgets.ejs-->
+<div class="grid-content">
+	<a 
+		ng-show="role.isNew"
+		class="button" 
+		ng-click="createRole()"
+	>
+		{{ role.updating | iif : 'Creating...' : 'Create' }}
+	</a>
+	<a 
+		ng-show="!role.isNew"
+		class="button" 
+		ng-click="updateRole()"
+	>
+		{{ role.updating | iif : 'Updating...' : 'Update' }}
+	</a>
+	<a 
+		ng-show="!role.isNew"
+		class="button" 
+		ng-click="deleteRole()"
+	>
+		{{ role.deleting | iif : 'Deleting...' : 'Delete' }}
+	</a>
+
+	<div ng-show="role.Users.api.length > 0">		
+		<h3>Users: {{ thisrole.name }}</h3>
+
+		<div class="loader" ng-class="{done: !role.Users.busy}">
+				<h2 class="loading-content">
+					Loading Users...
+				</h2>
+			</div>
+
+			<div ng-show="role.Users.visible.length == 0 && !role.Users.busy" class="not-found text-center">
+			<h2>No Users</h2>
+		</div>
+		
+		<div 
+			class="admin-well"
+			ng-repeat="user in role.Users.visible | orderBy: role.Users.angularSort"
+		>
+			<a ui-sref="admin.user.user({id: user.id})">
+				{{ user.username }} {{ user.createdAt | date }}
+			</a>
+		</div>
+
+		<div 
+			paging
+			class="grid-block align-center" 
+			page="role.Users.page" 
+			page-size="role.Users.limit" 
+			total="role.Users.total"
+			hide-if-empty="true"
+			ul-class="paging-menu-bar"
+			active-class="isActive"
+			disabled-class="isDisabled"
+			paging-action="role.Users.paging('Paging Clicked', page, pageSize, total)">
+		</div>
+	</div>
+	<div ng-show="role.Routes.api.length > 0">
+		<h3>Routes: {{ thisrole.name }}</h3>
+		
+		<div class="loader" ng-class="{done: !role.Routes.busy}">
+				<h2 class="loading-content">
+					Loading Routes...
+				</h2>
+			</div>
+
+			<div ng-show="role.Routes.visible.length == 0 && !role.Routes.busy" class="not-found text-center">
+			<h2>No Routes</h2>
+		</div>
+	</div>
+</div>

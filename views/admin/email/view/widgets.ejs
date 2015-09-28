@@ -1,0 +1,34 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Sep 25 2015 14:25:31 GMT-0400 (EDT).
+-->
+<!--admin/email/view/widgets.ejs-->
+<div class="grid-block">
+	<div class="loader" ng-class="{'done' : !email.busy}">
+		<h3>Loading...</h3>
+	</div>
+	<div class="grid-content">
+		<a 
+			ng-show="email.isNew"
+			class="button" 
+			ng-click="createEmail()"
+		>
+			{{ email.updating | iif : 'Creating...' : 'Create' }}
+		</a>
+		<a 
+			ng-show="!email.isNew"
+			class="button" 
+			ng-click="updateEmail()"
+		>
+			{{ email.updating | iif : 'Updating...' : 'Update' }}
+		</a>
+		<a 
+			ng-show="!email.isNew"
+			class="button" 
+			ng-click="deleteEmail()"
+		>
+			{{ email.deleting | iif : 'Deleting...' : 'Delete' }}
+		</a>
+	</div>
+</div>

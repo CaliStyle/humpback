@@ -35,7 +35,7 @@ module.exports.humpback = {
 	preload: false,
 
 	settings: [
-		{ googleAnalytics: ''}
+		
 	] 
 
 }

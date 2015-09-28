@@ -10,7 +10,7 @@ angular.module( 'humpback.views.AdminEmail.states', [
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state( 'admin.email', {
-			url: '/email?skip?sort?limit?criteria',
+			url: '/email?skip?sort?limit?criteria?page',
 			ncyBreadcrumb: {
           		label: 'Email Management'
         	},

@@ -2,7 +2,7 @@
  * CategoryController
  *
  * @description :: Server-side logic for managing Categories
- * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#category
+ * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#categorycontroller
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 

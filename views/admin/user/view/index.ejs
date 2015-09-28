@@ -14,10 +14,20 @@
 			
 			<h1>{{ thisuser.username }}</h1>
 			
-			<div ng-repeat="(key,value) in user.model.selected.attributes">
+			<form
+				
+			>
+				<div ng-repeat="item in user.model.selected.attributes | toArray: true">
 
-				{{ key }} {{ thisuser[key] }}
+				<div 
+					ng-api-input="item"
+					api-model="user.model.selected"  
+					api-label="item.$key"
+					api-input="thisuser[item.$key]"
+				>
+				</div>
 			</div>
+			</form>
 		</div>
 	</div>
 	<div class="grid-content medium-4 large-3" ui-view="widgets">

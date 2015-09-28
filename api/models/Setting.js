@@ -1,7 +1,7 @@
 /**
 * Setting.js
 *
-* @description 		:: Setting Contains the settings for the Humpback Application
+* @description 	:: Setting Contains the settings for the Humpback Application
 * @humpback-docs	:: https://github.com/CaliStyle/humpback/wiki/Models#setting
 * @sails-docs		:: http://sailsjs.org/#!documentation/models
 */
@@ -24,6 +24,5 @@ _.merge(exports, {
    *	next(); 
    * }
    */
-
   
 });

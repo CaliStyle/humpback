@@ -18,6 +18,9 @@ angular.module( 'humpback.views.AdminUserView.states', [
 				"admin@admin": {
 					controller: 'AdminUserViewCtrl',
 					templateUrl: 'app/views/admin/user/view/index.html'
+				},
+				"widgets@admin.user.user": {
+					templateUrl: 'app/views/admin/user/view/widgets.html'
 				}
 			}
 		})
@@ -30,6 +33,9 @@ angular.module( 'humpback.views.AdminUserView.states', [
 				"admin@admin": {
 					controller: 'AdminUserNewCtrl',
 					templateUrl: 'app/views/admin/user/view/index.html'
+				},
+				"widgets@admin.user.new": {
+					templateUrl: 'app/views/admin/user/view/widgets.html'
 				}
 			}
 		})

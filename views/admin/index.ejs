@@ -25,7 +25,7 @@
 							ng-if="__barnacles.admin"
 						>
 							<a 
-								ui-sref="admin.settings"
+								ui-sref="admin.setting"
 								ui-sref-active="active"
 							>
 								Settings
@@ -50,7 +50,7 @@
 							ng-if="__barnacles.admin"
 						>
 							<a 
-								ui-sref="admin.roles" 
+								ui-sref="admin.role" 
 								ui-sref-active="active"
 							>
 								Role Management
@@ -65,6 +65,17 @@
 								ui-sref-active="active"
 							>
 								Content Management
+							</a>
+						</li>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.ecommerce"
+						>
+							<a 
+								ui-sref="admin.ecommerce" 
+								ui-sref-active="active"
+							>
+								eCommerce Management
 							</a>
 						</li>
 						<li class="with-chevron">
@@ -83,6 +94,15 @@
 								ng-if="__barnacles.gui"
 							>
 								Data Management
+							</a>
+						</li>
+						<li class="with-chevron">
+							<a 
+								ui-sref="admin.webhook"
+								ui-sref-active="active"
+								ng-if="__barnacles.webhook"
+							>
+								Webhooks
 							</a>
 						</li>
 					</ul>

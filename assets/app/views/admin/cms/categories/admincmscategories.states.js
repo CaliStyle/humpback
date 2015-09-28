@@ -10,7 +10,7 @@ angular.module( 'humpback.views.AdminCmsCategories.states', [
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state( 'admin.cms.categories', {
-			url: '/categories?skip?sort?limit?criteria',
+			url: '/categories?skip?sort?limit?criteria?page',
 			reloadOnSearch: false,
 			ncyBreadcrumb: {
           		label: 'Categories'

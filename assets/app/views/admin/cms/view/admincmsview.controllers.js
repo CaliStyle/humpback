@@ -33,10 +33,31 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 
 	DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
 
+	$scope.route.model = new Api('model', {
+		criteria: {
+			name: 'route'
+		}
+	});
+	$scope.route.model.search()
+	.then(function(models){
+		$scope.route.model.selected = models[0];
+	});
+
 	$scope.updateRoute = function(){
 		$scope.route.update($scope.thisroute);
 	}
 
+	$scope.trashRoute = function(){
+		$scope.thisroute.trash = !$scope.thisroute.trash;
+		$scope.route.update($scope.thisroute);
+	}
+
+	$scope.deleteRoute = function(){
+		$scope.route.delete($scope.thisroute)
+		.then(function(thisroute){
+			$state.go('admin.cms');
+		});
+	}
 	//$scope.thisroute = route.route;
 	//console.log(route.route);
 	
@@ -70,8 +91,6 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 })
 .controller( 'AdminCmsNewCtrl', function AdminCmsNewController( $scope, $state, $stateParams, DS, utils, Api ) {
 	
-	//DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
-
 	String.prototype.slug = function() {
     	var title = this;
     	return title
@@ -79,8 +98,6 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
         .replace(/[^\w ]+/g,'')
         .replace(/ +/g,'-');
 	};
-
-	
 
 	$scope.route = new Api('route',{
 		isCode: true,
@@ -127,10 +144,6 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 			$state.go('admin.cms.cms', {id: thisroute.id});
 		});
 	}
-
-	//$scope.thisroute = route.route;
-	//console.log(route.route);
-	
 	
 
 	$scope.aceLoaded = function(_editor) {

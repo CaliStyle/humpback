@@ -10,7 +10,7 @@ angular.module( 'humpback.views.AdminUser.states', [
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state( 'admin.user', {
-			url: '/users?skip?sort?limit?criteria',
+			url: '/users?skip?sort?limit?criteria?page',
 			reloadOnSearch: false,
 			ncyBreadcrumb: {
           		label: 'User Management'

@@ -2,7 +2,7 @@
  * UserController
  *
  * @description :: Server-side logic for managing humpback User
- * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#User
+ * @humpback-docs  :: https://github.com/CaliStyle/humpback/wiki/Controllers#usercontroller
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
