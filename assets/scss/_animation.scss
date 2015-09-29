@@ -10,3 +10,21 @@ $animation-time: 0.3s;
 .fade.in {
   opacity: 1;
 }
+
+.loader {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-right: -100px;
+	z-index: 100;
+	opacity: 1;
+	-webkit-transition: opacity $animation-time linear;
+        transition: opacity $animation-time linear;
+    //-webkit-transition: z-index $animation-time linear;
+    //    transition: z-index $animation-time linear;
+}
+
+.loader.done {
+  z-index: 0;
+  opacity: 0;
+}

@@ -69,7 +69,9 @@
   <body ng-class="{'loading': __loadingRoute, 'disconnected': __disconnected}">
     <div class="grid-frame" ui-view="main">
         <%- body %>
+        <!-- System Notifications -->
         <zf-notification-set id="system-alerts" position="bottom-right"></zf-notification-set>
+        <!-- End System Notifications -->
     </div>
 
 
@@ -145,10 +147,12 @@
     <script src="/bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
     <script src="/bower_components/tether/tether.js"></script>
     <script src="/bower_components/hammerjs/hammer.js"></script>
+    <script src="/bower_components/ace-builds/src-min-noconflict/ace.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="/bower_components/js-data/dist/js-data.js"></script>
     <script src="/bower_components/js-data-angular/dist/js-data-angular.js"></script>
-    <script src="/bower_components/angularSails/dist/ngsails.io.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="/bower_components/foundation-apps/js/vendor/iconic.min.js"></script>
@@ -174,15 +178,30 @@
     <script src="/bower_components/foundation-apps/dist/js/foundation-apps.js"></script>
     <script src="/bower_components/foundation-apps/dist/js/foundation-apps-templates.js"></script>
     <script src="/bower_components/angular-translate/angular-translate.js"></script>
+    <script src="/bower_components/lodash/lodash.min.js"></script>
+    <script src="/bower_components/angular-lodash/angular-lodash.js"></script>
+    <script src="/bower_components/humpback-core-pack/src/humpbackSails.io.js"></script>
+    <script src="/bower_components/humpback-core-pack/src/humpback.js"></script>
+    <script src="/bower_components/ng-tags-input/ng-tags-input.js"></script>
+    <script src="/bower_components/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
+    <script src="/bower_components/angular-filter/dist/angular-filter.js"></script>
     <script src="/app/app.js"></script>
     <script src="/app/controllers/UserController.js"></script>
     <script src="/app/controllers/index.js"></script>
+    <script src="/app/directives/checklist.js"></script>
     <script src="/app/directives/focus.js"></script>
     <script src="/app/directives/index.js"></script>
     <script src="/app/filters/core.js"></script>
     <script src="/app/filters/index.js"></script>
+    <script src="/app/filters/truncate.js"></script>
     <script src="/app/hooks/index.js"></script>
     <script src="/app/models/Alert.js"></script>
+    <script src="/app/models/Category.js"></script>
+    <script src="/app/models/Email.js"></script>
+    <script src="/app/models/Model.js"></script>
+    <script src="/app/models/Permission.js"></script>
+    <script src="/app/models/Role.js"></script>
+    <script src="/app/models/Route.js"></script>
     <script src="/app/models/Setting.js"></script>
     <script src="/app/models/User.js"></script>
     <script src="/app/models/index.js"></script>
@@ -190,6 +209,44 @@
     <script src="/app/providers/js-data-angular-sailssocket.js"></script>
     <script src="/app/services/index.js"></script>
     <script src="/app/services/utils.js"></script>
+    <script src="/app/views/admin/Admin.controllers.js"></script>
+    <script src="/app/views/admin/Admin.states.js"></script>
+    <script src="/app/views/admin/cms/AdminCms.controllers.js"></script>
+    <script src="/app/views/admin/cms/AdminCms.states.js"></script>
+    <script src="/app/views/admin/cms/categories/AdminCmsCategories.controllers.js"></script>
+    <script src="/app/views/admin/cms/categories/AdminCmsCategories.states.js"></script>
+    <script src="/app/views/admin/cms/categories/view/AdminCmsCategoriesView.controllers.js"></script>
+    <script src="/app/views/admin/cms/categories/view/AdminCmsCategoriesView.states.js"></script>
+    <script src="/app/views/admin/cms/view/AdminCmsView.controllers.js"></script>
+    <script src="/app/views/admin/cms/view/AdminCmsView.states.js"></script>
+    <script src="/app/views/admin/data/AdminData.controllers.js"></script>
+    <script src="/app/views/admin/data/AdminData.states.js"></script>
+    <script src="/app/views/admin/data/view/AdminDataView.controllers.js"></script>
+    <script src="/app/views/admin/data/view/AdminDataView.states.js"></script>
+    <script src="/app/views/admin/data/view/view/AdminDataViewView.controllers.js"></script>
+    <script src="/app/views/admin/data/view/view/AdminDataViewView.states.js"></script>
+    <script src="/app/views/admin/email/AdminEmail.controllers.js"></script>
+    <script src="/app/views/admin/email/AdminEmail.states.js"></script>
+    <script src="/app/views/admin/email/view/AdminEmailView.controllers.js"></script>
+    <script src="/app/views/admin/email/view/AdminEmailView.states.js"></script>
+    <script src="/app/views/admin/login/AdminLogin.controllers.js"></script>
+    <script src="/app/views/admin/login/AdminLogin.states.js"></script>
+    <script src="/app/views/admin/role/AdminRole.controllers.js"></script>
+    <script src="/app/views/admin/role/AdminRole.states.js"></script>
+    <script src="/app/views/admin/role/view/AdminRoleView.controllers.js"></script>
+    <script src="/app/views/admin/role/view/AdminRoleView.states.js"></script>
+    <script src="/app/views/admin/setting/AdminSetting.controllers.js"></script>
+    <script src="/app/views/admin/setting/AdminSetting.states.js"></script>
+    <script src="/app/views/admin/setting/view/AdminSettingView.controllers.js"></script>
+    <script src="/app/views/admin/setting/view/AdminSettingView.states.js"></script>
+    <script src="/app/views/admin/user/AdminUser.controllers.js"></script>
+    <script src="/app/views/admin/user/AdminUser.states.js"></script>
+    <script src="/app/views/admin/user/view/AdminUserView.controllers.js"></script>
+    <script src="/app/views/admin/user/view/AdminUserView.states.js"></script>
+    <script src="/app/views/admin/webhook/AdminWebhook.controllers.js"></script>
+    <script src="/app/views/admin/webhook/AdminWebhook.states.js"></script>
+    <script src="/app/views/home/home.controllers.js"></script>
+    <script src="/app/views/home/home.states.js"></script>
     <script src="/app/views/index.js"></script>
     <script src="/app/views/templates.js"></script>
     <!--SCRIPTS END-->

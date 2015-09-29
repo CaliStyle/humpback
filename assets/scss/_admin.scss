@@ -1,0 +1,146 @@
+.breadcrumbs{
+	
+	ol{
+		list-style: none;
+		margin-bottom: 0px;
+		li {
+			display: inline-block;
+			margin-right:  $global-padding;
+
+			&:not(:last-child):after{
+				content: ">";
+				display: inline-block;
+				margin-left:  $global-padding;
+			}
+
+		}
+	}
+}
+.admin-body-block{
+	@include grid-block(
+		$size: expand, // Can be expand, shrink, or a number of columns
+		$orientation: vertical, // Set to vertical for a vertical grid
+		$wrap: false, // Set to true to make columns wrap if they get too wide
+		$align: left, // Can be left, right, center, justify, or spaced
+		$order: 0 // Can be any positive number
+	);
+}
+
+.admin-header-block{
+	@include grid-block(
+		$size: shrink, // Can be expand, shrink, or a number of columns
+		$orientation: horizontal, // Set to vertical for a vertical grid
+		$wrap: false, // Set to true to make columns wrap if they get too wide
+		$align: left, // Can be left, right, center, justify, or spaced
+		$order: 0 // Can be any positive number
+	);
+}
+.admin-filters-block{
+	@include grid-block(
+		$size: shrink, // Can be expand, shrink, or a number of columns
+		$orientation: vertical, // Set to vertical for a vertical grid
+		$wrap: false, // Set to true to make columns wrap if they get too wide
+		$align: left, // Can be left, right, center, justify, or spaced
+		$order: 0 // Can be any positive number
+	);
+}
+.admin-content-block{
+	@include grid-block(
+		$size: expand, // Can be expand, shrink, or a number of columns
+		$orientation: vertical, // Set to vertical for a vertical grid
+		$wrap: false, // Set to true to make columns wrap if they get too wide
+		$align: left, // Can be left, right, center, justify, or spaced
+		$order: 0 // Can be any positive number
+	);
+}
+.admin-footer-block{
+	@include grid-block(
+		$size: shrink, // Can be expand, shrink, or a number of columns
+		$orientation: horizontal, // Set to vertical for a vertical grid
+		$wrap: false, // Set to true to make columns wrap if they get too wide
+		$align: left, // Can be left, right, center, justify, or spaced
+		$order: 0 // Can be any positive number
+	);
+}
+
+[ui-view="admin-menu"]{
+	section.block-list{
+		ul > li > a.active{
+			background: $gray;
+		}
+	}
+}
+[ui-view="admin"]{
+
+}
+
+.admin-well{
+	border: 1px solid $dark-color;
+	margin-bottom: $global-padding;
+	padding: $global-padding;
+}
+
+.cms-menu-bar{
+	// This placeholder selector gets you the core structural styles for the menu
+	@extend %menu-bar;
+	// Set the orientation and sizing of the menu bar
+	@include menu-bar-layout(
+		$orientation: horizontal, // Can be horizontal or vertical
+		$stretch: false // Set to false for a condensed menu
+	);
+	// Add styles for the menu bar items and text
+	@include menu-bar-style(
+		$background: #000, // Background color of items
+		$background-hover: #333, // Background color of item on hover
+		$background-active: #666, // Background color of an active item
+		$color: #fff, // Text color of items
+		$color-hover: #fff, // Text color of item on hover
+		$color-active: #fff, // Text color of item when active
+		$autocolor: false // When true, all the above colors will be derived from $background
+	);
+	// Add support for icons
+	@include menu-bar-icons(
+		$position: left, // Can be top, right, bottom, or left
+		$size: 20px // Can be px, em, or rem
+	);
+}
+
+.ace_editor { 
+	height: 500px; 
+}
+
+.paging-menu-bar{
+	// This placeholder selector gets you the core structural styles for the menu
+	@extend %menu-bar;
+	// Set the orientation and sizing of the menu bar
+	@include menu-bar-layout(
+		$orientation: horizontal, // Can be horizontal or vertical
+		$stretch: false // Set to false for a condensed menu
+	);
+	// Add styles for the menu bar items and text
+	@include menu-bar-style(
+		$background: $primary-color, // Background color of items
+		$background-hover: darken($primary-color, 10), // Background color of item on hover
+		$background-active: darken($primary-color, 20), // Background color of an active item
+		$color: #fff, // Text color of items
+		$color-hover: #fff, // Text color of item on hover
+		$color-active: #fff, // Text color of item when active
+		$autocolor: false // When true, all the above colors will be derived from $background
+	);
+	// Add support for icons
+	@include menu-bar-icons(
+		$position: left, // Can be top, right, bottom, or left
+		$size: 20px // Can be px, em, or rem
+	);
+
+	& > li > a{
+		&.isActive{
+			background: darken($primary-color, 20);
+		}
+		&.isDisabled{
+			background: darken($primary-color, 40);
+		}
+	}
+}
+
+

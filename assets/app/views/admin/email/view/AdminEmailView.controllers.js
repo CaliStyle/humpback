@@ -9,7 +9,9 @@ angular.module( 'humpback.views.AdminEmailView.controllers', [
 ])
 .controller( 'AdminEmailViewCtrl', function AdminEmailViewController( $scope, DS ) {
 
-	$scope.email = new Api('email');
+	$scope.email = new Api('email',{
+		isCode: true
+	});
 	$scope.email.read($stateParams.id);
 	DS.bindOne('email', $stateParams.id, $scope, 'thisemail');
 
@@ -66,7 +68,8 @@ angular.module( 'humpback.views.AdminEmailView.controllers', [
 .controller( 'AdminEmailNewCtrl', function AdminEmailNewController( $scope, $state, DS, Api ) {
 
 	$scope.email = new Api('email', {
-		isNew: true
+		isNew: true,
+		isCode: true
 	});
 	
 	$scope.thisemail = $scope.email.selected;

@@ -78,29 +78,36 @@
 								eCommerce Management
 							</a>
 						</li>
-						<li class="with-chevron">
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.email"
+						>
 							<a 
 								ui-sref="admin.email"
 								ui-sref-active="active"
-								ng-if="__barnacles.email"
 							>
 								Email Management
 							</a>
 						</li>
-						<li class="with-chevron">
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.gui"
+						>
 							<a 
 								ui-sref="admin.data"
 								ui-sref-active="active"
-								ng-if="__barnacles.gui"
 							>
 								Data Management
 							</a>
 						</li>
-						<li class="with-chevron">
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.webhook"
+						>
 							<a 
 								ui-sref="admin.webhook"
 								ui-sref-active="active"
-								ng-if="__barnacles.webhook"
+								
 							>
 								Webhooks
 							</a>

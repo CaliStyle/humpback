@@ -7,15 +7,16 @@
 	**/
 	angular.module( 'humpback',	[
 		
+		//3rd Party Dependencies
 		'ui.router',
-		'js-data',
+		'js-data',	
 		'pascalprecht.translate',
 		'ngAnimate',
+		'ncy-angular-breadcrumb',
+		'angular.filter',
 
 		//Foundation core
 		'foundation',
-		//'foundation.dynamicRouting',
-    	//'foundation.dynamicRouting.animations',
 			
 		//humpback core
 		'humpback.core',

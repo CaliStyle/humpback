@@ -65,7 +65,7 @@ var jsFilesToInject =
   , 'bower_components/lodash/lodash.min.js'
   , 'bower_components/angular-lodash/angular-lodash.js'
 
-  // Loadh Humpback Core  
+    // Load Humpback Core  
   , 'bower_components/humpback-core-pack/src/humpbackSails.io.js'
   , 'bower_components/humpback-core-pack/src/humpback.js'
   , 'bower_components/ng-tags-input/ng-tags-input.js'

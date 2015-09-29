@@ -13,7 +13,8 @@ angular.module( 'humpback.filters'
 	* They are compiled with grunt -> tasks/register/humpback.js
 	**/
 	/* CORE PROJECT FILTERS */
-
+	'humpback.filters.core',
+	'humpback.filters.truncate',
 	/* CORE PROJECT FILTERS END */
 	/**
 	* @PROJECT SPECIFIC
