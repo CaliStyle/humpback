@@ -82,7 +82,7 @@ angular.module('category.model', [
 * The CategoryService factory Exposes Handler and Service methods for the Category Server Side Model
 * 
 **/
-.factory('CategoryService',function(DS, $sailsSocket){
+.factory('CategoryService',function(DS, $sailsSocket, utils){
 	var _service = {};
 	var _handler = {};
 
@@ -93,9 +93,9 @@ angular.module('category.model', [
     **/
 	_handler.created = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.inject('category', envelope.data);
-        console.log(envelope);
-
+        
     };
 
     /**
@@ -105,9 +105,8 @@ angular.module('category.model', [
     **/
     _handler.deleted = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.eject('category', envelope.data);
-        console.log(envelope);
-
     };
 
     /**
@@ -117,7 +116,7 @@ angular.module('category.model', [
     **/
     _handler.updated = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('category', envelope.data);
@@ -134,7 +133,7 @@ angular.module('category.model', [
     **/
     _handler.addedTo = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -144,7 +143,7 @@ angular.module('category.model', [
     **/
     _handler.removedFrom = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -154,7 +153,7 @@ angular.module('category.model', [
     **/
     _handler.messaged = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
 	return {

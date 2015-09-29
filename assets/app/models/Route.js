@@ -98,7 +98,7 @@ angular.module('route.model', [
 * The RouteService factory Exposes Handler and Service methods for the Route Server Side Model
 * 
 **/
-.factory('RouteService',function(DS, $sailsSocket){
+.factory('RouteService',function(DS, $sailsSocket, utils){
 	var _service = {};
 	var _handler = {};
 
@@ -109,9 +109,9 @@ angular.module('route.model', [
     **/
 	_handler.created = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.inject('route', envelope.data);
-        console.log(envelope);
-
+        
     };
 
     /**
@@ -121,8 +121,8 @@ angular.module('route.model', [
     **/
     _handler.deleted = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.eject('route', envelope.data);
-        console.log(envelope);
 
     };
 
@@ -133,7 +133,7 @@ angular.module('route.model', [
     **/
     _handler.updated = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('route', envelope.data);
@@ -150,7 +150,7 @@ angular.module('route.model', [
     **/
     _handler.addedTo = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -160,7 +160,7 @@ angular.module('route.model', [
     **/
     _handler.removedFrom = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -170,7 +170,7 @@ angular.module('route.model', [
     **/
     _handler.messaged = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
 	return {

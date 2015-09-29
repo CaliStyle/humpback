@@ -158,7 +158,7 @@ angular.module('alert.model', [
     _handler.created = function(envelope){
         "use strict";
         DS.inject('alert', envelope.data);
-        console.log(envelope);
+        utils.development(envelope);
 
     };
 
@@ -170,7 +170,7 @@ angular.module('alert.model', [
     _handler.deleted = function(envelope){
         "use strict";
         DS.eject('alert', envelope.data);
-        console.log(envelope);
+        utils.development(envelope);
 
     };
 
@@ -181,7 +181,7 @@ angular.module('alert.model', [
     **/
     _handler.updated = function(envelope){
         "use strict";
-        console.log(envelope);
+        utils.development(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('alert', envelope.data);
@@ -198,7 +198,7 @@ angular.module('alert.model', [
     **/
     _handler.addedTo = function(envelope){
         "use strict";
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -208,7 +208,7 @@ angular.module('alert.model', [
     **/
     _handler.removedFrom = function(envelope){
         "use strict";
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -218,7 +218,7 @@ angular.module('alert.model', [
     **/
     _handler.messaged = function(envelope){
         "use strict";
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     return {

@@ -79,7 +79,7 @@ angular.module('email.model', [
 * The EmailService factory Exposes Handler and Service methods for the Email Server Side Model
 * 
 **/
-.factory('EmailService',function(DS, $sailsSocket){
+.factory('EmailService',function(DS, $sailsSocket, utils){
 	var _service = {};
 	var _handler = {};
 
@@ -90,9 +90,9 @@ angular.module('email.model', [
     **/
 	_handler.created = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.inject('email', envelope.data);
-        console.log(envelope);
-
+        
     };
 
     /**
@@ -102,8 +102,8 @@ angular.module('email.model', [
     **/
     _handler.deleted = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.eject('email', envelope.data);
-        console.log(envelope);
 
     };
 
@@ -114,7 +114,7 @@ angular.module('email.model', [
     **/
     _handler.updated = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('email', envelope.data);
@@ -131,7 +131,7 @@ angular.module('email.model', [
     **/
     _handler.addedTo = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -141,7 +141,7 @@ angular.module('email.model', [
     **/
     _handler.removedFrom = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -151,7 +151,7 @@ angular.module('email.model', [
     **/
     _handler.messaged = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
 	return {

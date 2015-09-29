@@ -79,7 +79,7 @@ angular.module('role.model', [
 * The RoleService factory Exposes Handler and Service methods for the Role Server Side Model
 * 
 **/
-.factory('RoleService',function(DS, $sailsSocket){
+.factory('RoleService',function(DS, $sailsSocket, utils){
 	var _service = {};
 	var _handler = {};
 
@@ -90,8 +90,8 @@ angular.module('role.model', [
     **/
 	_handler.created = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.inject('role', envelope.data);
-        console.log(envelope);
 
     };
 
@@ -102,9 +102,9 @@ angular.module('role.model', [
     **/
     _handler.deleted = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.eject('role', envelope.data);
-        console.log(envelope);
-
+    
     };
 
     /**
@@ -114,7 +114,7 @@ angular.module('role.model', [
     **/
     _handler.updated = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('role', envelope.data);
@@ -131,7 +131,7 @@ angular.module('role.model', [
     **/
     _handler.addedTo = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -141,7 +141,7 @@ angular.module('role.model', [
     **/
     _handler.removedFrom = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -151,7 +151,7 @@ angular.module('role.model', [
     **/
     _handler.messaged = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
 	return {

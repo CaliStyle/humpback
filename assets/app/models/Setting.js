@@ -55,7 +55,9 @@ angular.module('setting.model', [
             cb(null, data);
         },
         afterCreate: function (resource, data, cb) {
-            $rootScope.__settings[data.name] = window._settings[data.name] = data.setting;
+            if(!data.secure){
+                $rootScope.__settings[data.name] = window._settings[data.name] = data.setting;
+            }
             cb(null, data);
         },
         beforeDestroy: function (resource, data, cb) {
@@ -83,7 +85,7 @@ angular.module('setting.model', [
 * The SettingService factory Exposes Handler and Service methods for the Setting Server Side Model
 * 
 **/
-.factory('SettingService',function(DS, $sailsSocket){
+.factory('SettingService',function(DS, $sailsSocket, utils){
 	var _service = {};
 	var _handler = {};
 
@@ -94,9 +96,14 @@ angular.module('setting.model', [
     **/
 	_handler.created = function(envelope){
         'use strict';
-        DS.inject('setting', envelope.data);
-        console.log(envelope);
 
+        utils.development(envelope);
+        
+        DS.inject('setting', envelope.data);
+        if(!data.secure){
+            $rootScope.__settings[data.name] = window._settings[data.name] = data.setting;
+        }
+        
     };
 
     /**
@@ -107,7 +114,8 @@ angular.module('setting.model', [
     _handler.deleted = function(envelope){
         'use strict';
         
-        console.log(envelope);
+        utils.development(envelope);
+
         if(envelope.data){
             DS.eject('setting', envelope.data);
             delete $rootScope.__settings[data.name]; 
@@ -125,7 +133,8 @@ angular.module('setting.model', [
     **/
     _handler.updated = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
+        
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('setting', envelope.data);
@@ -143,7 +152,7 @@ angular.module('setting.model', [
     **/
     _handler.addedTo = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -153,7 +162,7 @@ angular.module('setting.model', [
     **/
     _handler.removedFrom = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -163,7 +172,7 @@ angular.module('setting.model', [
     **/
     _handler.messaged = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
 	return {

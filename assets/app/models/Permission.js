@@ -78,7 +78,7 @@ angular.module('permission.model', [
 * The PermissionService factory Exposes Handler and Service methods for the Permission Server Side Model
 * 
 **/
-.factory('PermissionService',function(DS, $sailsSocket){
+.factory('PermissionService',function(DS, $sailsSocket, utils){
 	var _service = {};
 	var _handler = {};
 
@@ -89,9 +89,9 @@ angular.module('permission.model', [
     **/
 	_handler.created = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.inject('permission', envelope.data);
-        console.log(envelope);
-
+        
     };
 
     /**
@@ -101,9 +101,9 @@ angular.module('permission.model', [
     **/
     _handler.deleted = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.eject('permission', envelope.data);
-        console.log(envelope);
-
+    
     };
 
     /**
@@ -113,7 +113,7 @@ angular.module('permission.model', [
     **/
     _handler.updated = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('permission', envelope.data);
@@ -130,7 +130,7 @@ angular.module('permission.model', [
     **/
     _handler.addedTo = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -140,7 +140,7 @@ angular.module('permission.model', [
     **/
     _handler.removedFrom = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -150,7 +150,7 @@ angular.module('permission.model', [
     **/
     _handler.messaged = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
 	return {

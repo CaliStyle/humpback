@@ -79,7 +79,7 @@ angular.module('model.model', [
 * The ModelService factory Exposes Handler and Service methods for the Model Server Side Model
 * 
 **/
-.factory('ModelService',function(DS, $sailsSocket){
+.factory('ModelService',function(DS, $sailsSocket, utils){
     var _service = {};
     var _handler = {};
 
@@ -90,9 +90,8 @@ angular.module('model.model', [
     **/
     _handler.created = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.inject('model', envelope.data);
-        console.log(envelope);
-
     };
 
     /**
@@ -102,8 +101,8 @@ angular.module('model.model', [
     **/
     _handler.deleted = function(envelope){
         'use strict';
+        utils.development(envelope);
         DS.eject('model', envelope.data);
-        console.log(envelope);
 
     };
 
@@ -114,7 +113,7 @@ angular.module('model.model', [
     **/
     _handler.updated = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
         if(envelope.data){
             envelope.data.id = envelope.id;
             DS.inject('model', envelope.data);
@@ -131,7 +130,7 @@ angular.module('model.model', [
     **/
     _handler.addedTo = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -141,7 +140,7 @@ angular.module('model.model', [
     **/
     _handler.removedFrom = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     /**
@@ -151,7 +150,7 @@ angular.module('model.model', [
     **/
     _handler.messaged = function(envelope){
         'use strict';
-        console.log(envelope);
+        utils.development(envelope);
     };
 
     return {
