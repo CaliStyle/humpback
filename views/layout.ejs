@@ -106,7 +106,7 @@
     <script type="text/javascript">
         var _name = '<%= sails.config.humpback.name %>' || 'HUMPBACK';
         var _barnacles = <% if (typeof sails.config.humpback.barnacles !== 'undefined'){ %><%- JSON.stringify(sails.config.humpback.barnacles) %><% }else{ %>{}<% } %>;
-        var _settings = <% if (typeof sails.config.humpback.settingsClient !== 'undefined'){ %><%- JSON.stringify(sails.config.humpback.settingsClient) %><% }else{ %>{}<% } %>;
+        var _settings = <% if (typeof sails.config.humpback.notsecure !== 'undefined'){ %><%- JSON.stringify(sails.config.humpback.notsecure) %><% }else{ %>{}<% } %>;
         var _env = '<%= sails.config.humpback.env %>' || 'development';
         var _prefix = '<%= sails.config.blueprints.prefix || '' %>';
         var _defaultLocale = '<%= sails.config.i18n.defaultLocale || 'en' %>';
