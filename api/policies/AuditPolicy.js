@@ -6,12 +6,13 @@
 * @sails-docs		:: http://sailsjs.org/#!documentation/policies
 */
 
+module.exports = require('humpback-hook/api/policies/AuditPolicy');
 
-var _ = require('lodash');
-var _super = require('humpback-hook/api/policies/AuditPolicy');
+//var _ = require('lodash');
+//var _super = require('humpback-hook/api/policies/AuditPolicy');
 
-_.merge(exports, _super);
-_.merge(exports, {
+//_.merge(exports, _super);
+//_.merge(exports, {
 
   /**
    * Extend the Policy
@@ -19,4 +20,4 @@ _.merge(exports, {
    */
 
 
-});
+//});
