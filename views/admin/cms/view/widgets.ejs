@@ -14,11 +14,25 @@
 		<div class="grid-content">
 			<h3>Publish</h3>
 			<p>
-				Status
+				Status {{ thisroute.status || 'Draft' }}
 			</p>
-			<p>
-				Permissions
-			</p>
+			<div>
+				Visible
+			
+				<div ng-repeat="role in route.Roles.visible">
+					<label>
+						<input 
+						
+							type="checkbox"
+							checklist-model="thisroute.roles" 
+							checklist-value="role"
+							checklist-comparator=".id"
+						>
+					
+						{{ role.name }}
+					</label>
+				</div>
+			</div>
 			<p>
 				Created {{ thisroute.createdAt | date : 'short' }}
 			</p>

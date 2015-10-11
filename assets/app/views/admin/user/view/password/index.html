@@ -1,0 +1,70 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Sat Oct 10 2015 11:43:23 GMT-0400 (EDT).
+-->
+<!--admin/user/view/password/index.ejs-->
+
+<div class="grid-block">
+	<div class="grid-content">
+		<h1>Passports: {{ thisuser.username }}</h1>
+		<div 
+			
+			ng-repeat="passport in user.Passports.visible"
+		>
+			
+			<div ng-if="passport.protocol == 'local'">
+				<!--Local Passport-->
+				<form
+					ng-submit="updatePassword(passport)"
+					ng-init="passport = {}"
+				>
+					<label for="local">
+						Local Password
+					</label>
+					<input 
+						id="local"
+						type="password"
+						placeholder="New Password"
+						ng-model="passport.password"
+					>
+					<button
+						class="button"
+					>
+						Update Password
+					</button>
+				</form>
+				<!-- End Local Passport-->
+			</div>
+
+			<div ng-if="passport.protocol != 'local'">
+				<!-- Other Passport-->
+				{{ passport.protocol }}
+				<a>Disconnect {{ passport.protocol }}</a>
+				<!-- End Other Passport -->
+			</div>
+
+		</div>
+		<div ng-if="(user.Passports.visible | filter: {protocol: 'local'}).length == 0">
+			<form
+				ng-submit="createPassword(passport)"
+				ng-init="passport = {}"
+			>
+				<label for="new_local">
+					New Local Password
+				</label>
+				<input 
+					id="local"
+					type="password"
+					placeholder="New Password"
+					ng-model="passport.password"
+				>
+				<button
+					class="button"
+				>
+					Create Password
+				</button>
+			</form>
+		</div>
+	</div>
+</div>

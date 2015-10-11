@@ -106,6 +106,7 @@
 			ng-repeat="user in users.visible | orderBy: users.angularSort"
 		>
 			<a ui-sref="admin.user.user({id: user.id})">
+				<img ng-src="{{ user.gravatarUrl }}">
 				{{ user.username }} {{ user.createdAt | date }}
 			</a>
 		</div>

@@ -39,4 +39,17 @@
 		Add New Role
 	</a>
 
+	<h3>Passports</h3>
+	<div ng-repeat="passport in user.Passports.visible">
+		<p>		
+			<label>{{ passport.protocol }}</label>
+		</p>
+	</div>
+	<a 
+		
+		ui-sref="admin.user.user.password({id: thisuser.id })"
+	>
+		Edit Passports
+	</a>
+
 </div>

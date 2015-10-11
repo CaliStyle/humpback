@@ -46,6 +46,8 @@ angular.module( 'humpback.views', [
 	'humpback.views.AdminUser.states',
 	'humpback.views.AdminUserView.controllers',
 	'humpback.views.AdminUserView.states',
+	'humpback.views.AdminUserViewPassword.controllers',
+	'humpback.views.AdminUserViewPassword.states',
 	'humpback.views.AdminWebhook.controllers',
 	'humpback.views.AdminWebhook.states',
 	'humpback.views.home.controllers',

@@ -5,14 +5,17 @@
 -->
 <!--admin/user/view/index.ejs-->
 
-<div class="grid-block">
+<div class="grid-block" ui-view="content">
 	<div 
 		class="vertical grid-block medium-8 large-9" 
 		ui-view="content"
 	>
 		<div class="grid-content">
 			
-			<h1>{{ thisuser.username }}</h1>
+			<h1>
+				<img ng-src="{{ thisuser.gravatarUrl }}">
+				{{ thisuser.username }}
+			</h1>
 			
 			<form
 				

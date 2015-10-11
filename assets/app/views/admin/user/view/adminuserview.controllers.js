@@ -17,6 +17,8 @@ angular.module( 'humpback.views.AdminUserView.controllers', [
 			}
 		}
 	});
+	
+	$scope.thisuser = $scope.user.selected;
 
 	$scope.user.read($stateParams.id);
 	
@@ -24,6 +26,14 @@ angular.module( 'humpback.views.AdminUserView.controllers', [
 		limit: 100
 	});
 	$scope.user.Roles.init();
+
+	$scope.user.Passports = new Api('passport', {
+		options: {
+			bypassCache: true,
+			endpoint: '/user/' + $stateParams.id + '/passports'
+		}
+	});
+	$scope.user.Passports.init();
 
 	DS.bindOne('user', $stateParams.id, $scope, 'thisuser');
 

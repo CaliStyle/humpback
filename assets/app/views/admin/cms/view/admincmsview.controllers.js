@@ -19,7 +19,7 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 		options : {
 			bypassCache: true, 
 			params: {
-				populate: 'categories'
+				populate: 'categories,roles'
 			}
 		}
 	});
@@ -27,9 +27,17 @@ angular.module( 'humpback.views.AdminCmsView.controllers', [
 	$scope.route.read($stateParams.id);
 	
 	$scope.route.Categories = new Api('category', {
-		limit: 100
+		limit: 100,
+		options: {
+			bypassCache: true
+		}
 	});
 	$scope.route.Categories.init();
+
+	$scope.route.Roles = new Api('role', {
+		limit: 100
+	});
+	$scope.route.Roles.init();
 
 	DS.bindOne('route', $stateParams.id, $scope, 'thisroute');
 

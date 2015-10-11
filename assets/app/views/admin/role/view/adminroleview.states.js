@@ -19,7 +19,7 @@ angular.module( 'humpback.views.AdminRoleView.states', [
 					controller: 'AdminRolesViewCtrl',
 					templateUrl: 'app/views/admin/role/view/index.html'
 				},
-				"widgets@admin.roles.role": {
+				"widgets@admin.role.role": {
 					templateUrl: 'app/views/admin/role/view/widgets.html'
 				}
 			}
@@ -34,7 +34,7 @@ angular.module( 'humpback.views.AdminRoleView.states', [
 					controller: 'AdminRolesNewCtrl',
 					templateUrl: 'app/views/admin/role/view/index.html'
 				},
-				"widgets@admin.roles.new": {
+				"widgets@admin.role.new": {
 					templateUrl: 'app/views/admin/role/view/widgets.html'
 				}
 			}
