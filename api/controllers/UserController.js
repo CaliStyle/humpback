@@ -6,10 +6,6 @@
  * @help        :: See http://links.sailsjs.org/docs/controllers
  */
 
-module.exports = {
-	
-};
-
 var _ = require('lodash');
 var _super = require('humpback-hook/api/controllers/UserController');
 

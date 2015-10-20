@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html ng-app="humpback" ng-controller="HumpbackCtrl">
+  <head>
+    <!--
+        /****************************************************
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+         
+        ||  || ||   || ||\  /|| ||\\ ||\\    /\    //\\ || //
+        ||  || ||   || ||\\//|| ||// ||//   //\\  ||    ||//
+        ||==|| ||   || || \/ || ||   ||\\  /====\ ||    ||\\
+        ||  ||  \\_//  ||    || ||   ||// //    \\ \\// || \\
+
+        Authored By: 
+        Scott Wyatt @ScottBWyatt 
+        Built On: Humpback
+
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ****************************************************/
+    -->
+
+    <base href="/">
+    <title><%= sails.config.meta.title || '' %></title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="<%= sails.config.meta.keywords || '' %>">
+    <meta name="description" content="<%= sails.config.meta.description || ''%>">
+    <meta property="og:locale" content="<%= sails.config.i18n.defaultLocale || 'en' %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<%= sails.config.meta.title %>" />
+    <meta property="og:description" content="<%= sails.config.meta.description || '' %>" />
+    <meta property="og:url" content="<%= sails.config.meta.url || '' %>" />
+    <meta property="og:image" content="<%= sails.config.meta.image || '' %>">
+    <meta property="og:site_name" content="<%= sails.config.meta.name || 'Humpback' %>" />
+
+    <link type="text/plain" rel="author" href="/humans.txt" />   
+
+    <% if (typeof sails.config.humpback.livereload !== 'undefined' && sails.config.humpback.livereload) { %>
+        <script src="//<%= sails.config.humpback.host %>:1338/livereload.js"></script>
+    <% } %>
+
+    <!--  
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage 
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+        
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+            
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/bower_components/angular/angular-csp.css">
+    <link rel="stylesheet" href="/styles/app.css">
+    <!--STYLES END-->
+  </head>
+
+  <body ng-class="{'loading': __loadingRoute, 'disconnected': __disconnected}">
+    <div class="grid-frame" ui-view="main">
+        <%- body %>
+        <!-- System Notifications -->
+        <zf-notification-set id="system-alerts" position="bottom-right"></zf-notification-set>
+        <!-- End System Notifications -->
+    </div>
+
+
+
+    <!--
+        Client-side Templates
+        ========================
+
+        HTML templates are important prerequisites of modern, rich client applications.
+        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
+        that you load these templates client-side.
+
+        By default, your Gruntfile is configured to automatically load and precompile
+        client-side JST templates in your `assets/templates` folder, then
+        include them here automatically (between TEMPLATES and TEMPLATES END).
+        
+        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Import templates from other directories
+            + Use a different template engine (handlebars, jade, dust, etc.)
+            + Internationalize your client-side templates using a server-side
+              stringfile before they're served.
+    -->
+
+    <!--TEMPLATES-->
+    
+    <!--TEMPLATES END-->
+
+    
+    <!--HUMPBACK-->
+    <script type="text/javascript">
+        var _name = '<%= sails.config.humpback.name %>' || 'HUMPBACK';
+        var _barnacles = <% if (typeof sails.config.humpback.barnacles !== 'undefined'){ %><%- JSON.stringify(sails.config.humpback.barnacles) %><% }else{ %>{}<% } %>;
+        var _settings = <% if (typeof sails.config.humpback.notsecure !== 'undefined'){ %><%- JSON.stringify(sails.config.humpback.notsecure) %><% }else{ %>{}<% } %>;
+        var _env = '<%= sails.config.humpback.env %>' || 'development';
+        var _prefix = '<%= sails.config.blueprints.prefix || '' %>';
+        var _defaultLocale = '<%= sails.config.i18n.defaultLocale || 'en' %>';
+        var _dynamicView = <%= sails.config.humpback.dynamicView %> || false;
+        var _csrf = <% if (typeof sails.config.csrf !== 'undefined'){ %><%- JSON.stringify(sails.config.csrf) %><% }else{ %>{}<% } %>;
+        var _user = <% if (typeof req.user !== 'undefined'){ %><%- JSON.stringify(req.user) %><% }else{ %>null<% } %>;
+        var prerenderReady = false;
+    </script>
+    <!--HUMPBACK END-->
+
+    <!--
+
+      Client-side Javascript
+      ========================
+
+      You can always bring in JS files manually with `script` tags, or asynchronously
+      on the client using a solution like AMD (RequireJS).  Or, if you like, you can 
+      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+      By default, files in your `assets/js` folder are included here
+      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
+      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
+      and concatenated into a single file.
+      
+      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+      For example, here are a few things you could do:
+          
+          + Change the order of your scripts
+          + Import scripts from other directories
+          + Use a different preprocessor, like TypeScript
+
+    -->
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/humpback.io.js"></script>
+    <script src="/bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="/bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
+    <script src="/bower_components/tether/tether.js"></script>
+    <script src="/bower_components/hammerjs/hammer.js"></script>
+    <script src="/bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/js-data/dist/js-data.js"></script>
+    <script src="/bower_components/js-data-angular/dist/js-data-angular.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/foundation-apps/js/vendor/iconic.min.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/accordion/accordion.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/actionsheet/actionsheet.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/common/common.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/iconic/iconic.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/interchange/interchange.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/modal/modal.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/notification/notification.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/offcanvas/offcanvas.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/panel/panel.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/popup/popup.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/components/tabs/tabs.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.core.animation.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.core.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.dynamicRouting.animations.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.dynamicRouting.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/services/foundation.mediaquery.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/vendor/markdown.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/vendor/svgDirs.js"></script>
+    <script src="/bower_components/foundation-apps/js/angular/foundation.js"></script>
+    <script src="/bower_components/foundation-apps/dist/js/foundation-apps.js"></script>
+    <script src="/bower_components/foundation-apps/dist/js/foundation-apps-templates.js"></script>
+    <script src="/bower_components/angular-translate/angular-translate.js"></script>
+    <script src="/bower_components/lodash/lodash.min.js"></script>
+    <script src="/bower_components/angular-lodash/angular-lodash.js"></script>
+    <script src="/bower_components/humpback-core-pack/src/humpbackSails.io.js"></script>
+    <script src="/bower_components/humpback-core-pack/src/humpback.js"></script>
+    <script src="/bower_components/ng-tags-input/ng-tags-input.js"></script>
+    <script src="/bower_components/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
+    <script src="/bower_components/angular-filter/dist/angular-filter.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/controllers/UserController.js"></script>
+    <script src="/app/controllers/index.js"></script>
+    <script src="/app/directives/checklist.js"></script>
+    <script src="/app/directives/focus.js"></script>
+    <script src="/app/directives/index.js"></script>
+    <script src="/app/filters/core.js"></script>
+    <script src="/app/filters/index.js"></script>
+    <script src="/app/filters/truncate.js"></script>
+    <script src="/app/hooks/index.js"></script>
+    <script src="/app/models/Alert.js"></script>
+    <script src="/app/models/Category.js"></script>
+    <script src="/app/models/Email.js"></script>
+    <script src="/app/models/Model.js"></script>
+    <script src="/app/models/Passport.js"></script>
+    <script src="/app/models/Permission.js"></script>
+    <script src="/app/models/Role.js"></script>
+    <script src="/app/models/Route.js"></script>
+    <script src="/app/models/Setting.js"></script>
+    <script src="/app/models/User.js"></script>
+    <script src="/app/models/index.js"></script>
+    <script src="/app/policies/index.js"></script>
+    <script src="/app/providers/js-data-angular-sailssocket.js"></script>
+    <script src="/app/services/index.js"></script>
+    <script src="/app/services/utils.js"></script>
+    <script src="/app/views/admin/Admin.controllers.js"></script>
+    <script src="/app/views/admin/Admin.states.js"></script>
+    <script src="/app/views/admin/cms/AdminCms.controllers.js"></script>
+    <script src="/app/views/admin/cms/AdminCms.states.js"></script>
+    <script src="/app/views/admin/cms/categories/AdminCmsCategories.controllers.js"></script>
+    <script src="/app/views/admin/cms/categories/AdminCmsCategories.states.js"></script>
+    <script src="/app/views/admin/cms/categories/view/AdminCmsCategoriesView.controllers.js"></script>
+    <script src="/app/views/admin/cms/categories/view/AdminCmsCategoriesView.states.js"></script>
+    <script src="/app/views/admin/cms/view/AdminCmsView.controllers.js"></script>
+    <script src="/app/views/admin/cms/view/AdminCmsView.states.js"></script>
+    <script src="/app/views/admin/data/AdminData.controllers.js"></script>
+    <script src="/app/views/admin/data/AdminData.states.js"></script>
+    <script src="/app/views/admin/data/view/AdminDataView.controllers.js"></script>
+    <script src="/app/views/admin/data/view/AdminDataView.states.js"></script>
+    <script src="/app/views/admin/data/view/view/AdminDataViewView.controllers.js"></script>
+    <script src="/app/views/admin/data/view/view/AdminDataViewView.states.js"></script>
+    <script src="/app/views/admin/email/AdminEmail.controllers.js"></script>
+    <script src="/app/views/admin/email/AdminEmail.states.js"></script>
+    <script src="/app/views/admin/email/view/AdminEmailView.controllers.js"></script>
+    <script src="/app/views/admin/email/view/AdminEmailView.states.js"></script>
+    <script src="/app/views/admin/login/AdminLogin.controllers.js"></script>
+    <script src="/app/views/admin/login/AdminLogin.states.js"></script>
+    <script src="/app/views/admin/role/AdminRole.controllers.js"></script>
+    <script src="/app/views/admin/role/AdminRole.states.js"></script>
+    <script src="/app/views/admin/role/view/AdminRoleView.controllers.js"></script>
+    <script src="/app/views/admin/role/view/AdminRoleView.states.js"></script>
+    <script src="/app/views/admin/setting/AdminSetting.controllers.js"></script>
+    <script src="/app/views/admin/setting/AdminSetting.states.js"></script>
+    <script src="/app/views/admin/setting/view/AdminSettingView.controllers.js"></script>
+    <script src="/app/views/admin/setting/view/AdminSettingView.states.js"></script>
+    <script src="/app/views/admin/user/AdminUser.controllers.js"></script>
+    <script src="/app/views/admin/user/AdminUser.states.js"></script>
+    <script src="/app/views/admin/user/view/AdminUserView.controllers.js"></script>
+    <script src="/app/views/admin/user/view/AdminUserView.states.js"></script>
+    <script src="/app/views/admin/user/view/password/AdminUserViewPassword.controllers.js"></script>
+    <script src="/app/views/admin/user/view/password/AdminUserViewPassword.states.js"></script>
+    <script src="/app/views/admin/webhook/AdminWebhook.controllers.js"></script>
+    <script src="/app/views/admin/webhook/AdminWebhook.states.js"></script>
+    <script src="/app/views/home/home.controllers.js"></script>
+    <script src="/app/views/home/home.states.js"></script>
+    <script src="/app/views/index.js"></script>
+    <script src="/app/views/templates.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>

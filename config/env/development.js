@@ -30,7 +30,7 @@ module.exports = {
   },
 
   policies: {
-    UserController: { create: true }
+    UserController: { create: true, register: true  }
   }
 
 };

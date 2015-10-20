@@ -36,7 +36,7 @@ module.exports = {
   },
 
   policies: {
-    UserController: { create: true }
+    UserController: { create: true, register: true  }
   }
   /***************************************************************************
    * Set the port in the production environment to 80                        *
