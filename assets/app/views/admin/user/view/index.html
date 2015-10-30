@@ -1,0 +1,39 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Aug 28 2015 17:08:01 GMT-0400 (EDT).
+-->
+<!--admin/user/view/index.ejs-->
+
+<div class="grid-block" ui-view="content">
+	<div 
+		class="vertical grid-block medium-8 large-9" 
+		ui-view="content"
+	>
+		<div class="grid-content">
+			
+			<h1>
+				<img ng-src="{{ thisuser.gravatarUrl }}">
+				{{ thisuser.username }}
+			</h1>
+			
+			<form
+				
+			>
+				<div ng-repeat="item in user.model.selected.attributes | toArray: true">
+
+				<div 
+					ng-api-input="item"
+					api-model="user.model.selected"  
+					api-label="item.$key"
+					api-input="thisuser[item.$key]"
+				>
+				</div>
+			</div>
+			</form>
+		</div>
+	</div>
+	<div class="grid-content medium-4 large-3" ui-view="widgets">
+
+	</div>
+</div>

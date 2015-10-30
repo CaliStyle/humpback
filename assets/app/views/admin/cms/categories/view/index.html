@@ -1,0 +1,42 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Sep 04 2015 17:31:09 GMT-0400 (EDT).
+-->
+<!--admin/cms/categories/view/index.ejs-->
+
+<div class="grid-block">
+	<div class="grid-block medium-8 large-9">
+		
+		<div class="loader" ng-class="{'done' : !category.busy}">
+			<h3>Loading...</h3>
+		</div>
+
+		<div class="grid-content">
+			<h2>Category: {{ thiscategory.name }}</h2>
+
+			<label for="category">Category Name</label>
+			<input 
+				ng-model="thiscategory.name" 
+				id="category" 
+				type="text" 
+				placeholder="Category Name"
+			/>
+			
+			<div ng-repeat="item in category.model.selected.attributes | toArray: true">
+
+				<div 
+					ng-api-input="item" 
+					api-model="category.model.selected"
+					api-label="item.$key"
+					api-input="thiscategory[item.$key]"
+				>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="grid-block medium-4 large-3" ui-view="widgets">
+
+	</div>
+</div>

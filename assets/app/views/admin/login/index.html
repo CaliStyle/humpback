@@ -1,0 +1,62 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Tue Sep 29 2015 09:42:27 GMT-0400 (EDT).
+-->
+<!--admin/login/index.ejs-->
+
+<div class="grid-block client" ui-view="client">
+	<div class="grid-block align-center">
+		<div class="grid-block medium-8 large-4 v-align">
+			<div class="grid-content">
+				<form
+					name="loginForm"
+					action="/auth/local?next=%2Fadmin"
+					method="POST"
+					novalidate
+				>
+					<h1>Admin Login</h1>
+					<p ng-if="loginerror.message" ng-cloak class="alert-text">
+						{{ loginerror.message }}
+					</p>
+					<input 
+						type="text" 
+						id="inputEmail" 
+						name="identifier" 
+						placeholder="Email or Username"
+						ng-model="login.identifier"	
+						required
+						event-focus
+					/>
+
+					<input 
+						type="password" 
+						id="inputPassword" 
+						name="password"
+						ng-model="login.password" 
+						placeholder="Password"
+						required
+					/>
+					
+					<button 
+						type="submit" 
+						class="button large expand"
+					>
+						<img zf-iconic="" icon="lock" size="small" class="iconic-color-white">	Login
+					</button>
+					<!--
+					<ul class="inline-list-center text-center">
+						<li>
+							<a ui-sref="client.password">Forgot Password?</a>
+						</li>
+						<li>&mdash;</li>
+						<li>
+							<a ui-sref="contact">I need an Account</a>
+						</li>
+					</ul>
+					-->
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

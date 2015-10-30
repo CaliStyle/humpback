@@ -1,0 +1,124 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Tue Aug 25 2015 13:43:23 GMT-0400 (EDT).
+-->
+<!--admin/settings/index.ejs-->
+
+<div class="admin-header-block">
+	<div class="grid-content">
+		<h1>Settings</h1>
+		<p class="lead">
+			Manage Core and Custom settings
+		</p>
+	</div>
+	<div class="grid-content">
+		<a 
+			class="button"
+			ui-sref="admin.setting.new"
+		>
+			New Setting
+		</a>
+	</div>
+</div>
+<div class="admin-filters-block" ui-view="filters">
+	<div class="grid-block">
+		<div class="grid-content">
+			<form
+				ng-submit="settings.addFilter()"
+			>
+				<span class="select inline-label">
+					<select 
+						ng-model="settings.filter[0]"
+						ng-options="key as key for (key,value) in settings.model.selected.attributes"
+					>
+						<option value="">-- Search By --</option>
+					</select>
+					
+					<input 
+						type="search" 
+						placeholder="Search Settings..."
+						ng-model="settings.filter[1]"
+					>
+					<button 
+						type="submit"
+						class="button"
+					>
+						Search
+					</button>
+				</span>
+			</form>
+			<a 
+				ng-repeat="(filter, value) in settings.criteria"
+				ng-click="settings.removeFilter(filter)"
+			>
+				<span class="label close">{{ filter }}: {{ value.contains | iif: value.contains : value }}</span>
+			</a>
+			<a 
+				ng-click="settings.clearFilters()"
+			>
+				Clear Filters
+			</a>
+			<p>
+				Showing {{ settings.start | number }} - {{ settings.end | number }} of {{ settings.total | number}}
+			</p>
+		</div>
+	</div>
+	<div class="grid-block">
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="settings.limit"
+					ng-options="items.value as items.name for items in filters.itemsPerPage"
+					ng-change="settings.reset('limit')"
+				>
+					<option value="">-- Items Per Page --</option>
+				</select>
+			</div>
+		</div>
+		<div class="grid-block">
+			<div class="grid-content">
+				<select 
+					ng-model="settings.sort"
+					ng-options="items.value as items.name for items in filters.itemsSort"
+					ng-change="settings.reset('sort')"
+				>
+					<option value="">-- Sort Items --</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="admin-body-block" ui-view="content">
+	<div class="grid-content">
+		<div class="loader" ng-class="{done: !settings.busy}">
+ 			<h2 class="loading-content">Loading Settings...</h2>
+ 		</div>
+ 		<div ng-show="settings.visible.length == 0 && !settings.busy" class="not-found text-center">
+			<h2>No Settings</h2>
+		</div>
+		<div class="admin-well" ng-repeat="setting in settings.visible">
+			<a ui-sref="admin.setting.setting({id: setting.id})">
+				<h5>{{ setting.title }}</h5> 
+				<span>{{ setting.description }}</span>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="admin-footer-block" ui-view="footer">
+	<div 
+		paging
+		class="grid-block align-center" 
+		page="settings.page" 
+		page-size="settings.limit" 
+		total="settings.total"
+		dots="..."
+		adjacent="2"
+		show-prev-next="true"
+		hide-if-empty="true"
+		ul-class="paging-menu-bar"
+		active-class="isActive"
+		disabled-class="isDisabled"
+		paging-action="settings.paging('Paging Clicked', page, pageSize, total)">
+	</div> 
+</div>

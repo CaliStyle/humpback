@@ -1,0 +1,31 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Sun Sep 13 2015 21:29:15 GMT-0400 (EDT).
+-->
+<!--admin/data/view/view/index.ejs-->
+<div class="vertical grid-block medium-8 large-9">
+	<div class="grid-content">
+		
+		<div class="loader" ng-class="{'done' : !item.busy}">
+			<h3>Loading...</h3>
+		</div>
+
+		<form
+
+		>
+			<div ng-repeat="item in thismodel.attributes | toArray: true">
+				<div 
+					ng-api-input="item" 
+					api-model="thismodel"
+					api-label="item.$key"
+					api-input="thisitem[item.$key]"
+				>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<div class="grid-content medium-4 large-3" ui-view="widgets">
+	
+</div>

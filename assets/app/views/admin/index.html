@@ -1,0 +1,148 @@
+<div class="grid-block" class="admin">
+	<zf-panel 
+		    id="admin-nav" 
+		    position="left" 
+		    class="medium-grid-block medium-3 large-2 admin-left"
+		>
+		<div class="grid-block" ui-view="admin-menu">
+			<div class="grid-content">
+				<section class="block-list">
+					<header>Main Menu</header>
+					<ul>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.admin"
+						>
+							<a 
+								ui-sref="admin"
+								ui-sref-active-eq="active"
+							>
+								Dashboard
+							</a>
+						</li>
+						<li 
+							class="with-chevron" 
+							ng-if="__barnacles.admin"
+						>
+							<a 
+								ui-sref="admin.setting"
+								ui-sref-active="active"
+							>
+								Settings
+							</a>
+						</li>
+					</ul>
+					<header>Administration</header>
+					<ul>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.admin"
+						>
+							<a 
+								ui-sref="admin.user"
+								ui-sref-active="active"
+							>
+								User Management
+							</a>
+						</li>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.admin"
+						>
+							<a 
+								ui-sref="admin.role" 
+								ui-sref-active="active"
+							>
+								Role Management
+							</a>
+						</li>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.cms"
+						>
+							<a 
+								ui-sref="admin.cms" 
+								ui-sref-active="active"
+							>
+								Content Management
+							</a>
+						</li>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.ecommerce"
+						>
+							<a 
+								ui-sref="admin.ecommerce" 
+								ui-sref-active="active"
+							>
+								eCommerce Management
+							</a>
+						</li>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.email"
+						>
+							<a 
+								ui-sref="admin.email"
+								ui-sref-active="active"
+							>
+								Email Management
+							</a>
+						</li>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.gui"
+						>
+							<a 
+								ui-sref="admin.data"
+								ui-sref-active="active"
+							>
+								Data Management
+							</a>
+						</li>
+						<li 
+							class="with-chevron"
+							ng-if="__barnacles.webhook"
+						>
+							<a 
+								ui-sref="admin.webhook"
+								ui-sref-active="active"
+								
+							>
+								Webhooks
+							</a>
+						</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	</zf-panel>
+	<div class="vertical grid-block medium-9 large-10 admin-center">
+		<div class="grid-block shrink">
+			<div class="breadcrumbs">
+				<ncy-breadcrumb class="breadcrumb"></ncy-breadcrumb>
+			</div>
+		</div>
+		<div class="admin-body-block" ui-view="admin">
+			<div class="admin-header-block">
+				<div class="grid-content">
+					<h1>Dashboard</h1>
+				</div>
+			</div>
+			<div class="grid-block">
+				<div 
+					class="grid-content"
+					ng-cms="__route.selected" 
+				>
+					Welcome to Admin
+				</div>
+				<div class="grid-content">
+					<h2>Barnacles</h2>
+					<div ng-repeat="(key, value) in __barnacles">
+						{{ key }}: {{ value }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

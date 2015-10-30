@@ -1,0 +1,30 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Tue Sep 15 2015 09:04:45 GMT-0400 (EDT).
+-->
+<!--admin/settings/view/widgets.ejs-->
+
+<div class="grid-content">
+	<a 
+		ng-show="setting.isNew"
+		class="button" 
+		ng-click="createSetting()"
+	>
+		{{ setting.updating | iif : 'Creating...' : 'Create' }}
+	</a>
+	<a 
+		ng-show="!setting.isNew"
+		class="button" 
+		ng-click="updateSetting()"
+	>
+		{{ setting.updating | iif : 'Updating...' : 'Update' }}
+	</a>
+	<a 
+		ng-show="!setting.isNew"
+		class="button" 
+		ng-click="deleteSetting()"
+	>
+		{{ setting.deleting | iif : 'Deleting...' : 'Delete' }}
+	</a>
+</div>

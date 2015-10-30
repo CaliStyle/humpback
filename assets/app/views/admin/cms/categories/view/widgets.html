@@ -1,0 +1,39 @@
+<!--
+ * @description
+ * 
+ * A humpback-view created at Fri Sep 04 2015 17:31:09 GMT-0400 (EDT).
+-->
+<!--admin/cms/categories/view/widgets.ejs-->
+<div class="grid-content">
+	<a 
+		ng-show="category.isNew"
+		class="button" 
+		ng-click="createCategory()"
+	>
+		{{ category.updating | iif : 'Creating...' : 'Create' }}
+	</a>
+	<a 
+		ng-show="!category.isNew"
+		class="button" 
+		ng-click="updateCategory()"
+	>
+		{{ category.updating | iif : 'Updating...' : 'Update' }}
+	</a>
+	<a 
+		ng-show="!category.isNew"
+		class="button" 
+		ng-click="deleteCategory()"
+	>
+		{{ category.updating | iif : 'Deleting...' : 'Delete' }}
+	</a>
+
+	<div ng-show="category.Routes.api.length > 0">
+		<h3>Pages: {{ thiscategory.name }}</h3>
+		<div class="admin-well" ng-repeat="route in category.Routes.visible">
+			<a ui-sref="admin.cms.cms({id: route.id})">
+				{{ route.method }} {{ route.title || route.uri }}
+			</a>
+		</div>
+	</div>
+
+</div>
