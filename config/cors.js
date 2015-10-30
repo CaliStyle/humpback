@@ -73,6 +73,15 @@ module.exports.cors = {
   *                                                                          *
   ***************************************************************************/
 
-  // headers: 'content-type'
+  headers: 'content-type, Content-Count',
+
+  /***************************************************************************
+  *                                                                          *
+  * Which headers in CORS response should be allowed for browser? This is    *
+  * only used in response to preflight requests.                             *
+  *                                                                          *
+  ***************************************************************************/
+
+  exposeHeaders: 'Content-Count'
 
 };
