@@ -1,5 +1,31 @@
 /**
 * @class
+* disconnected
+*
+* @description 
+* Class applied to the body when the app is disconnected from the server 
+* 
+**/
+.disconnected{
+	input, textarea, select{
+		background: lighten($warning-color, 20) !important;
+		cursor: not-allowed;
+	}
+}
+/**
+* @class
+* loading
+*
+* @description 
+* Class applied to the body when the app is loading a state 
+* 
+**/
+.loading{
+	cursor: progress;
+}
+
+/**
+* @class
 * max-width 
 *
 * @description 

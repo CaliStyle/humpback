@@ -88,7 +88,7 @@
 	* Root Module Run that can be ignored during unit testing.
 	* 
 	**/
-	.run(['DS', 'DSSailsSocketAdapter', '$rootScope', '$state', '$stateParams', '$location', '$q', 'utils', 'Api', 'CMS',  function (DS, DSSailsSocketAdapter, $rootScope, $state, $stateParams, $location, $q, utils, Api, CMS) {
+	.run(['DS', 'DSSailsSocketAdapter', '$rootScope', '$state', '$stateParams', '$location', '$q', 'utils', 'Api',  function (DS, DSSailsSocketAdapter, $rootScope, $state, $stateParams, $location, $q, utils, Api) {
 
 		/**
 		* @description 
@@ -180,86 +180,17 @@
 	        $rootScope.__disconnected = false;
 	    });
 
-	    $rootScope.__route = new Api('route');
-	    $rootScope.__cms = new CMS();
-
-		$rootScope.$state = $state;
-		$rootScope.$stateParams = $stateParams;
-		$rootScope.__loadingRoute = true;
-    
-		$rootScope.$on('$routeChangeStart', function(e, curr, prev) { 
-			
-			// Show a loading message until promises are not resolved
-			if (curr.$$route && curr.$$route.resolve) {
-				$rootScope.__loadingRoute = true;
-				window.prerenderReady = false;
-			}
-			//console.log("START:",$location.path());
-
-		});
-
-		$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) { 
-		
-			// Show a loading message until promises are resolved
-			if (curr.$$route && curr.$$route.resolve) {
-				// Hide loading message
-				$rootScope.__loadingRoute = false;
-				window.prerenderReady = true;
-			}
-
-			if(window._barnacles.cms){
-				var id = btoa('get:' + $location.path().split(/[?#]/)[0]);
-				$rootScope.__route.read(id)
-				.then(function(thisroute){
-					$rootScope.__cms.setPage(thisroute);
-				});
-				//cms.setUrl($location.absUrl());
-			}
-
-		});
-
-		$rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) { 
-				
-			// Show a loading message until promises are not resolved
-			$rootScope.__loadingRoute = true;
-			window.prerenderReady = false;
-			//console.log("START:", $location.path());
-
-		});
-
-		$rootScope.$on('$stateChangeSuccess', function(e, toState, toParams, fromState, fromParams) { 
-
-			$rootScope.__currentState = toState.name;
-			// Hide loading message
-			$rootScope.__loadingRoute = false;
-			window.prerenderReady = true;
-
-			if(window._barnacles.cms){
-				var id = btoa('get:' + $location.path().split(/[?#]/)[0]);
-				$rootScope.__route.read(id)
-				.then(function(thisroute){
-					console.log(thisroute);
-					$rootScope.__cms.setPage(thisroute);
-				});
-				//cms.setUrl($location.absUrl());
-			}
-		});
-
 		$rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams){ 
-			if(utils.development()){
-				console.log(unfoundState.to);
-				console.log(unfoundState.toParams);
-				console.log(unfoundState.options);
-			} 
+			utils.development(unfoundState.to);
+			utils.development(unfoundState.toParams);
+			utils.development(unfoundState.options);
 			$state.go('fourZeroFour');
 		});
 
 		$rootScope.$on('$stateChargeError', function(event, errfoundState, fromState, fromParams){ 
-			if(utils.development()){
-				console.log(errfoundState.to);
-				console.log(errfoundState.toParams);
-				console.log(errfoundState.options);
-			} 
+			utils.development(errfoundState.to);
+			utils.development(errfoundState.toParams);
+			utils.development(errfoundState.options);
 			$state.go('fiveZeroZero');
 		});
 

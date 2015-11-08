@@ -65,6 +65,14 @@ angular.module( 'humpback.views', [
 ])
 .config(function config( $stateProvider, $urlRouterProvider) {
 	$stateProvider
+		.state( 'fourZeroOne', {
+			url: '^/401',
+			views: {
+				"main": {
+					templateUrl: 'app/views/401.html'
+				}
+			}
+		})
 		.state( 'fourZeroThree', {
 			url: '^/403',
 			views: {
