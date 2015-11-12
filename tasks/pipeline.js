@@ -72,8 +72,11 @@ var jsFilesToInject =
     // Load Angular Bread Crumbs
   , 'bower_components/angular-breadcrumb/dist/angular-breadcrumb.js'
 
+    // 
   , 'bower_components/angular-filter/dist/angular-filter.js'
 
+    //Upload
+  , 'bower_components/ng-file-upload/ng-file-upload-all.js'
     // All other Dependencies are brought in here  
   , 'js/dependencies/**/*.js'
     // All of the rest of your client-side js files
