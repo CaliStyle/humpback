@@ -102,6 +102,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   *  Humpback includes a `.jshintrc` file for consitent javascript across the front and back end.
   *  Humpback removes the `assets/images` folder to be more consitent with the app file structure.
   *  Humpback removes the `assets/styles` folder to be more consitent with the app file structure.
+  *  Humpback adds a `jobs` folder that can store kue background task jobs
   
   * -- api
     * -- controllers
@@ -136,6 +137,7 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
   	* -- robots.txt
   	* -- humans.txt
   * -- config
+  * -- jobs
   * -- node_modules
   * -- tasks
   * -- test
@@ -234,6 +236,13 @@ Humpback's default frontend is [Zurb's Foundation-apps](https://foundation.zurb.
 Humpback exentends a few of foundation-apps' modules functionality but supports them all.  Since we are
 using sails as the view router, you will want to avoid using foundation-apps built in router fuctionality
 or any of it's funcationality that relies on gulp.
+
+##Bower
+Humpback includes bower and it automatically installs it's front end dependencies when you run `npm install`.
+One of the largest components is [humpback-core-pack](https://github.com/CaliStyle/humpback-core-pack). This
+has some built in frontend features for the humpback CMS as well as a JS-data connector that works perfectly with
+the sails API. It can also help with file uploads and more! Make sure to check it out and dig into the examples 
+for more information. 
 
 ##Kue
 Humpback takes advantage of the power of [Kue](https://github.com/Automattic/kue) for background tasks.  Kue depends on Redis, but don't worry, humpback also uses a fake redis for development so you can test without having to run Redis.
