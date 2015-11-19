@@ -16,11 +16,13 @@ JSdata, Foundation-apps, and all the wonderful new projects that have come out
 recently.  We are building the platform publicly so there is as much external 
 input as possible and will launch contributor guidelines when they are ready.
 
+Also, Humpback is a great solution if you are waiting on Angular 2's amazing server rendering.
+
 This README.md file will be updated as this project evolves. Also, check out the WIKI.  
 This product is currently *NOT PRODUCTION* ready. 
 
 ##Overview
-Humpback is to the frontend what treeline is to the backend of a sails.js app. 
+Humpback is all about development speed and working in team enviroments. 
 We've concretely decided to use Foundation-apps as the frontend framework and 
 JSdata as the client side persistence layer.  Both of these are forward thinking 
 technologies, and we are focusing on Humpback as a Single Page Application (SPA) 
@@ -55,6 +57,8 @@ Additional things that will come in handy
   * Node-machines
   * Bower
   * Grunt
+  * kue
+  * Rabbitmq
 
 Methodologies to keep in mind
   * Single Page Applications (SPAs)
@@ -103,10 +107,10 @@ Humpback's file structure is identical to a normal Sails.js app with a few excep
     * -- controllers
     * -- hooks
     * -- models
- 	* -- machines
-    * -- policies
-    * -- responses
-    * -- services
+ 	  * -- machines
+      * -- policies
+      * -- responses
+      * -- services
   * -- assets
     * -- assets
       * -- img
@@ -189,6 +193,7 @@ Humpback reserves certain controller names.  While you are free to extend the co
 you shound not attempt to create controllers with these name spaces
   * [`UserController`](https://github.com/CaliStyle/humpback/wiki/Controllers#usercontroller)
   * [`AuthController`](https://github.com/CaliStyle/humpback/wiki/Controllers#authcontroller)
+  * [`KueController`](https://github.com/CaliStyle/humpback/wiki/Controllers#kuecontroller)
 
 ##Reserved Policies
 
@@ -230,6 +235,13 @@ Humpback exentends a few of foundation-apps' modules functionality but supports 
 using sails as the view router, you will want to avoid using foundation-apps built in router fuctionality
 or any of it's funcationality that relies on gulp.
 
+##Kue
+Humpback takes advantage of the power of [Kue](https://github.com/Automattic/kue) for background tasks.  Kue depends on Redis, but don't worry, humpback also uses a fake redis for development so you can test without having to run Redis.
+
+##Rabbitmq
+Humpback has a variety of events that need to be concurrent between all instances running your app.  Do do this, Humpback
+uses [Rabbitmq](https://github.com/waterlinejs/rabbitmq-adapter), which can broadcast model messages between instances and do updates.
+
 ##Iconic
 Iconic and Open Iconic allow for responsive and stylized SVGs to be used 
 across the frontend. Humpback uses grunt-svg-toolkit to optimize svgs.  
@@ -241,6 +253,7 @@ We included a dependency on PhantomJs. This dependency is to support certain
 levels of image manipulation as well screenshot creation. For best restults 
 PhantomJs should be installed globally.
 `npm install phantomjs -g`
+All though you are more then welcome to change it to your favorite node image processor.
 
 ##Contributing
 See `CONTRIBUTORS.md` or [click here](https://github.com/CaliStyle/humpback/blob/master/CONTRIBUTORS.md)

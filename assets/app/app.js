@@ -77,7 +77,8 @@
 			}else {
 				// pass through to let the web server handle this request
 				console.log(window._name,': Not Found - send request to server');
-				window.location = $location.$$absUrl;
+				//window.location = $location.$$absUrl;
+				$location.$$url === '/404';
 			}
 		});
 

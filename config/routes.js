@@ -23,6 +23,26 @@
 module.exports.routes = {
 
   /***************************************************************************
+  * Kue Endpoints                                                            *
+  * Change `/api` to your sails.config.blueprints.prefix                     *
+  ***************************************************************************/
+
+  'get /api/kue/jobs': 'KueController.jobs',
+  'get /api/kue/stats': 'KueController.stats',
+  'get /api/kue/types': 'KueController.types',
+  'get /api/kue/jobRange': 'KueController.jobRange',
+  'get /api/kue/jobStateRange/:type/:state': 'KueController.jobStateRange',
+  'get /api/kue/jobTypeRange/:type/:state': 'KueController.jobTypeRange',
+  'get /api/kue/jobTypeStateStats': 'KueController.jobTypeStateStats',
+  'post /api/kue/create': 'KueController.createJob',
+  'get /api/kue/job/:id': 'KueController.job',
+  'delete /api/kue/job/:id': 'KueController.remove',
+  'put /api/kue/job/:id/:priority': 'KueController.updatePriority',
+  'put /api/kue/job/:id/:state': 'KueController.updateState',
+  'get /api/kue/job/:id/log': 'KueController.log',
+  'get /api/kue/search': 'KueController.search',
+
+  /***************************************************************************
   *                                                                          *
   * Make the view located at `views/home/index.ejs`                          *
   *                                                                          *
@@ -32,7 +52,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   'get /': {
-    view: 'home/index'
+    view: 'home/index',
+    defaultRoles: ['public','registered']
   }
 
   /***************************************************************************
