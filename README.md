@@ -23,7 +23,7 @@ This product is currently *NOT PRODUCTION* ready.
 
 ##Overview
 Humpback is all about development speed and working in team enviroments. 
-We've concretely decided to use Foundation-apps as the frontend framework and 
+We've concretely decided to use Foundation-apps as the frontend layout framework and 
 JSdata as the client side persistence layer.  Both of these are forward thinking 
 technologies, and we are focusing on Humpback as a Single Page Application (SPA) 
 builder not a website generator.  It's also a fast track for your next hackathon
@@ -34,6 +34,7 @@ For now, there is no complete CLI or node module, so to get started with humpbac
 you can use the standard sails.js way.  First you will need to have node.js/NPM, 
 sails.js, Ruby, Sass, and PhantomJs installed. 
 *NOTE: PhantomJs works best if installed globally `npm install phantomjs -g`*
+*PRO TIP: Mac users, perhaps use home-brew to install node/npm to avoid permission issues*
 
 Then, Fork this repo
 ```sh
@@ -41,6 +42,12 @@ $ npm install
 
 $ sails lift
 ```
+This will install all of the node dependencies and bower components.  You'll be able to 
+see your app at `localhost:1337/`
+
+
+##Screencast
+TODO: create some epic screencasts
 
 ##What you should know if you consider using Humpback
 There is plethra of awesome technologies being used in Humpback.  If you 
@@ -85,8 +92,8 @@ and is the only source to add additional Admin users in.
 
 ##API
 Humpback uses sails.js's native sails.socket.io combined with JSdata and a 
-custom provider for storage of client side models.  By default, humpback 
-client side models communicate with the the REST routes via the prefix `/api` 
+custom provider and a powerful factory for storage and communication of client side models.  
+By default, humpback client side models communicate with the the REST routes via the prefix `/api` 
 and pluralize turned to false. 
 
 ##File Structure
@@ -234,8 +241,8 @@ to translate the app into the desired language.
 ##Foundation-apps
 Humpback's default frontend is [Zurb's Foundation-apps](https://foundation.zurb.com/foundation-apps/).
 Humpback exentends a few of foundation-apps' modules functionality but supports them all.  Since we are
-using sails as the view router, you will want to avoid using foundation-apps built in router fuctionality
-or any of it's funcationality that relies on gulp.
+using sails as the view router, you will want to avoid using foundation-apps built in router functionality
+or any of it's functionality that relies on gulp.
 
 ##Bower
 Humpback includes bower and it automatically installs it's front end dependencies when you run `npm install`.
@@ -248,7 +255,7 @@ for more information.
 Humpback takes advantage of the power of [Kue](https://github.com/Automattic/kue) for background tasks.  Kue depends on Redis, but don't worry, humpback also uses a fake redis for development so you can test without having to run Redis.
 
 ##Rabbitmq
-Humpback has a variety of events that need to be concurrent between all instances running your app.  Do do this, Humpback
+Humpback has a variety of events that need to be concurrent between all instances running your app.  To do this, Humpback
 uses [Rabbitmq](https://github.com/waterlinejs/rabbitmq-adapter), which can broadcast model messages between instances and do updates.
 
 ##Iconic
@@ -264,9 +271,22 @@ PhantomJs should be installed globally.
 `npm install phantomjs -g`
 All though you are more then welcome to change it to your favorite node image processor.
 
+##Tests
+TODO: Testing is the greatest practiced fundamental in the development world and is always worth the time to set up.
+Humpback uses Mocha to perform backend tests and Karma to perform frontend testing and a JShint file to keep coding
+consitent.
+TODO: ADD TESTS!
+
 ##Contributing
 See `CONTRIBUTORS.md` or [click here](https://github.com/CaliStyle/humpback/blob/master/CONTRIBUTORS.md)
 
 ##Change Log
+
+###0.11.3
+
+
+###0.11.2
+Stability updates for barnicles and settings
+
 ###0.11.1
 Add initial View generator and semantic layout of module names and file includes.
