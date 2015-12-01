@@ -19,7 +19,10 @@
     -->
 
     <base href="/">
-    <title><%= sails.config.meta.title || '' %></title>
+
+    <% if (typeof meta !== 'undefined'){ %>
+
+    <title><%= meta.title || '' %></title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta 
@@ -61,6 +64,8 @@
         property="og:site_name" 
         content="<%= sails.config.humpback.name || 'Humpback' %>" 
     >
+
+    <% } %>
 
     <link type="text/plain" rel="author" href="/humans.txt" />   
 
