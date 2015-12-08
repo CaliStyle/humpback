@@ -254,9 +254,11 @@ for more information.
 ##Kue
 Humpback takes advantage of the power of [Kue](https://github.com/Automattic/kue) for background tasks.  Kue depends on Redis, but don't worry, humpback also uses a fake redis for development so you can test without having to run Redis.
 
-##Rabbitmq
+##Redis and Redis Event
+Humpback uses Redis for quick lookups and pubsub for any data that doesn't not require a high level of persiteance.
+
 Humpback has a variety of events that need to be concurrent between all instances running your app.  To do this, Humpback
-uses [Rabbitmq](https://github.com/waterlinejs/rabbitmq-adapter), which can broadcast model messages between instances and do updates.
+uses [humpback-redis-event](https://github.com/CaliStyle/humpback-redis-event), which can broadcast model messages between instances and do updates.
 
 ##Iconic
 Iconic and Open Iconic allow for responsive and stylized SVGs to be used 
