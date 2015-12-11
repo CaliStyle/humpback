@@ -59,13 +59,13 @@ understanding of the following:
   * Foundation-apps
   * JS-Data
   * i18n
+  * Redis
 
 Additional things that will come in handy  
   * Node-machines
   * Bower
   * Grunt
   * kue
-  * Rabbitmq
 
 Methodologies to keep in mind
   * Single Page Applications (SPAs)

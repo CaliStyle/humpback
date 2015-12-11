@@ -5,27 +5,57 @@
 -->
 <!--admin/role/view/widgets.ejs-->
 <div class="grid-content">
-	<a 
-		ng-show="role.isNew"
-		class="button" 
-		ng-click="createRole()"
+	<ul
+		class="button-group"
 	>
-		{{ role.updating | iif : 'Creating...' : 'Create' }}
-	</a>
-	<a 
-		ng-show="!role.isNew"
-		class="button" 
-		ng-click="updateRole()"
-	>
-		{{ role.updating | iif : 'Updating...' : 'Update' }}
-	</a>
-	<a 
-		ng-show="!role.isNew"
-		class="button" 
-		ng-click="deleteRole()"
-	>
-		{{ role.deleting | iif : 'Deleting...' : 'Delete' }}
-	</a>
+		<li
+			ng-show="role.isNew"
+		>
+			<a 
+				class="button" 
+				ng-click="createRole()"
+			>
+				{{ role.updating | iif : 'Creating...' : 'Create' }}
+			</a>
+		</li>
+		<li
+			ng-show="!role.isNew"
+		>
+			<a
+				ng-click="updateRole()"
+			>
+				{{ role.updating | iif : 'Updating...' : 'Update' }}
+			</a>
+		</li>
+		<li
+			ng-show="!role.isNew"
+		>
+			<a 
+				href="#"
+				zf-open="deleteModal"
+				class="alert button"
+			>
+				Delete
+			</a>
+			<div zf-modal="" id="deleteModal" class="small">
+				<h4>Delete {{ thisrole.name }} role</h4>
+				<p class="lead">Do you <em>really</em> want to do this? It can not be undone.</p>
+				<a 
+					zf-close=""
+					ng-click="deleteRole()"
+					class="alert button"
+				>
+					{{ role.deleting | iif: 'Deleting...' : 'Yes' }}
+				</a>
+				<a 
+					zf-close="" 
+					class="secondary button"
+				>
+					No
+				</a>
+			</div>
+		</li>
+	</ul>
 
 	<div ng-show="role.Users.api.length > 0">		
 		<h3>Users: {{ thisrole.name }}</h3>
@@ -45,6 +75,7 @@
 			ng-repeat="user in role.Users.visible | orderBy: role.Users.angularSort"
 		>
 			<a ui-sref="admin.user.user({id: user.id})">
+				<img ng-src="{{ user.gravatarUrl }}">
 				{{ user.username }} {{ user.createdAt | date }}
 			</a>
 		</div>

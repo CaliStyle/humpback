@@ -9,28 +9,54 @@
 		<h3>Loading...</h3>
 	</div>
 	<div class="grid-content">
-		
-		<a 
-			ng-show="item.isNew"
-			class="button" 
-			ng-click="createItem()"
-		>
-			{{ item.updating | iif : 'Creating...' : 'Create' }}
-		</a>
-		<a 
-			ng-show="!item.isNew"
-			class="button" 
-			ng-click="updateItem()"
-		>
-			{{ item.updating | iif : 'Updating...' : 'Update' }}
-		</a>
-		<a 
-			ng-show="!item.isNew"
-			class="button" 
-			ng-click="deleteItem()"
-		>
-			{{ item.deleting | iif : 'Deleting...' : 'Delete' }}
-		</a>
+		<ul class="button-group">
+			<li
+				ng-show="item.isNew"
+			>
+				<a 
+					ng-click="createItem()"
+				>
+					{{ item.updating | iif : 'Creating...' : 'Create' }}
+				</a>
+			</li>
+			<li
+				ng-show="!item.isNew"
+			>
+				<a
+					ng-click="updateItem()"
+				>
+					{{ item.updating | iif : 'Updating...' : 'Update' }}
+				</a>
+			</li>
+			<li
+				ng-show="!item.isNew"
+			>
+				<a 
+					href="#"
+					zf-open="deleteModal"
+					class="alert button"
+				>
+					Delete
+				</a>
+				<div zf-modal="" id="deleteModal" class="small">
+					<h4>Delete {{ thismodel.name }} item</h4>
+					<p class="lead">Do you <em>really</em> want to do this? It can not be undone.</p>
+					<a 
+						zf-close=""
+						ng-click="deleteItem()"
+						class="alert button"
+					>
+						{{ item.deleting | iif: 'Deleting...' : 'Yes' }}
+					</a>
+					<a 
+						zf-close="" 
+						class="secondary button"
+					>
+						No
+					</a>
+				</div>
+			</li>
+		</ul>
 
 		<h3>Attributes</h3>
 		

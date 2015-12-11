@@ -6,25 +6,54 @@
 <!--admin/settings/view/widgets.ejs-->
 
 <div class="grid-content">
-	<a 
-		ng-show="setting.isNew"
-		class="button" 
-		ng-click="createSetting()"
-	>
-		{{ setting.updating | iif : 'Creating...' : 'Create' }}
-	</a>
-	<a 
-		ng-show="!setting.isNew"
-		class="button" 
-		ng-click="updateSetting()"
-	>
-		{{ setting.updating | iif : 'Updating...' : 'Update' }}
-	</a>
-	<a 
-		ng-show="!setting.isNew"
-		class="button" 
-		ng-click="deleteSetting()"
-	>
-		{{ setting.deleting | iif : 'Deleting...' : 'Delete' }}
-	</a>
+	<ul class="button-group">
+		<li
+			ng-show="setting.isNew"
+		>
+			<a 
+				class="button" 
+				ng-click="createSetting()"
+			>
+				{{ setting.updating | iif : 'Creating...' : 'Create' }}
+			</a>
+		</li>
+		<li
+			ng-show="!setting.isNew"
+		>
+			<a
+				class="button" 
+				ng-click="updateSetting()"
+			>
+				{{ setting.updating | iif : 'Updating...' : 'Update' }}
+			</a>
+		</li>
+		<li
+			ng-show="!setting.isNew"
+		>
+			<a 
+				href="#"
+				zf-open="deleteModal"
+				class="alert button"
+			>
+				Delete
+			</a>
+			<div zf-modal="" id="deleteModal" class="small">
+				<h4>Delete {{ thissetting.name }}</h4>
+				<p class="lead">Do you <em>really</em> want to do this? It can not be undone.</p>
+				<a 
+					zf-close=""
+					ng-click="deleteSetting()"
+					class="alert button"
+				>
+					{{ setting.deleting | iif: 'Deleting...' : 'Yes' }}
+				</a>
+				<a 
+					zf-close="" 
+					class="secondary button"
+				>
+					No
+				</a>
+			</div>
+		</li>
+	</ul>
 </div>

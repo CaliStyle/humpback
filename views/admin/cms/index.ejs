@@ -6,30 +6,37 @@
 <!--admin/cms/index.ejs-->
 <div class="admin-header-block">
 	<div class="grid-content">
-		<h1>Content Management</h1>
+		<div class="clearfix">
+			<h1 class="float-left">
+				Content Management
+			</h1>
+			<ul class="button-group float-right">
+				<li>
+					<a 
+						ui-sref="admin.cms.categories"
+					>
+						Categories
+					</a>
+				</li>
+				<li>
+					<a 
+						ui-sref="admin.cms.new"
+					>
+						New Page
+					</a>
+				</li>
+				<li>
+					<a 
+						ui-sref="admin.cms.categories.new"
+					>
+						New Category
+					</a>
+				</li>
+			</ul>
+		</div>
 		<p class="lead">
 			Manage Content, Content Permissions, and more 
 		</p>
-	</div>
-	<div class="grid-content">
-		<a 
-			class="button"
-			ui-sref="admin.cms.categories"
-		>
-			Categories
-		</a>
-		<a 
-			class="button"
-			ui-sref="admin.cms.new"
-		>
-			New Page
-		</a>
-		<a 
-			class="button"
-			ui-sref="admin.cms.categories.new"
-		>
-			New Category
-		</a>
 	</div>
 </div>
 <div class="admin-filters-block" ui-view="filters">
@@ -115,7 +122,8 @@
 		</div>
 		<div class="admin-well" ng-repeat="route in routes.visible | orderBy: routes.angularSort">
 			<a ui-sref="admin.cms.cms({id: route.id})">
-				{{ route.method }} {{ route.title || route.uri }}
+				<h5>{{ route.title || route.uri }}</h5>
+				<span>{{ route.verb }} {{ route.uri }}</span>
 			</a>
 		</div>
 	</div>

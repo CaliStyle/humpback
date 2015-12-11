@@ -7,18 +7,25 @@
 
 <div class="admin-header-block">
 	<div class="grid-content">
-		<h1>Roles</h1>
+		<div class="clearfix">
+			<h1
+				class="float-left"
+			>
+				Roles
+			</h1>
+			<ul class="button-group float-right">
+				<li>
+					<a
+						ui-sref="admin.role.new"
+					>
+						New Role
+					</a>
+				</li>
+			</ul>
+		</div>
 		<p class="lead">
 			Manage Roles
 		</p>
-	</div>
-	<div class="grid-content">
-		<a 
-			class="button"
-			ui-sref="admin.role.new"
-		>
-			New Role
-		</a>
 	</div>
 </div>
 <div class="admin-filters-block" ui-view="filters">
@@ -27,8 +34,7 @@
 			<form
 				ng-submit="roles.addFilter()"
 			>
-				<span class="select inline-label">
-					
+				<span class="select inline-label">	
 					<select 
 						ng-model="roles.filter[0]"
 						ng-options="key as key for (key,value) in roles.model.selected.attributes"

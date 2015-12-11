@@ -7,18 +7,25 @@
 
 <div class="admin-header-block">
 	<div class="grid-content">
-		<h1>Content Categories</h1>
+		<div class="clearfix">
+			<h1
+				class="float-left"
+			>
+				Content Categories
+			</h1>
+			<ul class="button-group float-right">
+				<li>
+					<a 
+						ui-sref="admin.cms.categories.new"
+					>
+						New Category
+					</a>
+				</li>
+			</ul>
+		</div>
 		<p class="lead">
 			Manage Content Categories
 		</p>
-	</div>
-	<div class="grid-content">
-		<a 
-			class="button"
-			ui-sref="admin.cms.categories.new"
-		>
-			New Category
-		</a>
 	</div>
 </div>
 

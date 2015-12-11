@@ -7,18 +7,25 @@
 
 <div class="admin-header-block">
 	<div class="grid-content">
-		<h1>Settings</h1>
+		<div class="clearfix">
+			<h1
+				class="float-left"
+			>
+				Settings
+			</h1>
+			<ul class="button-group float-right">
+				<li>
+					<a
+						ui-sref="admin.setting.new"
+					>
+						New Setting
+					</a>
+				</li>
+			</ul>
+		</div>
 		<p class="lead">
 			Manage Core and Custom settings
 		</p>
-	</div>
-	<div class="grid-content">
-		<a 
-			class="button"
-			ui-sref="admin.setting.new"
-		>
-			New Setting
-		</a>
 	</div>
 </div>
 <div class="admin-filters-block" ui-view="filters">

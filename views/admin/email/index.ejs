@@ -7,18 +7,25 @@
 
 <div class="admin-header-block">
 	<div class="grid-content">
-		<h1>Email Management</h1>
+		<div class="clearfix">
+			<h1
+				class="float-left"
+			>
+				Email Management
+			</h1>
+			<ul class="button-group float-right">
+				<li>
+					<a 
+						ui-sref="admin.email.new"
+					>
+						New Email Template
+					</a>
+				</li>
+			</ul>
+		</div>
 		<p class="lead">
 			Manage Email Templates
 		</p>
-	</div>
-	<div class="grid-content">
-		<a 
-			class="button"
-			ui-sref="admin.email.new"
-		>
-			New Email
-		</a>
 	</div>
 </div>
 <div class="admin-filters-block" ui-view="filters">

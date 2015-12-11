@@ -5,28 +5,54 @@
 -->
 <!--admin/cms/categories/view/widgets.ejs-->
 <div class="grid-content">
-	<a 
-		ng-show="category.isNew"
-		class="button" 
-		ng-click="createCategory()"
-	>
-		{{ category.updating | iif : 'Creating...' : 'Create' }}
-	</a>
-	<a 
-		ng-show="!category.isNew"
-		class="button" 
-		ng-click="updateCategory()"
-	>
-		{{ category.updating | iif : 'Updating...' : 'Update' }}
-	</a>
-	<a 
-		ng-show="!category.isNew"
-		class="button" 
-		ng-click="deleteCategory()"
-	>
-		{{ category.updating | iif : 'Deleting...' : 'Delete' }}
-	</a>
-
+	<ul class="button-group">
+		<li 
+			ng-show="category.isNew"
+		>
+			<a 
+				ng-click="createCategory()"
+			>
+				{{ category.updating | iif : 'Creating...' : 'Create' }}
+			</a>
+		</li>
+		<li
+			ng-show="!category.isNew"
+		>
+			<a
+				ng-click="updateCategory()"
+			>
+				{{ category.updating | iif : 'Updating...' : 'Update' }}
+			</a>
+		</li>
+		<li
+			ng-show="!category.isNew"
+		>
+			<a 
+				href="#"
+				zf-open="deleteModal"
+				class="alert button"
+			>
+				Delete
+			</a>
+			<div zf-modal="" id="deleteModal" class="small">
+				<h4>Delete {{ thiscategory.name }}</h4>
+				<p class="lead">Do you <em>really</em> want to do this? It can not be undone.</p>
+				<a 
+					zf-close=""
+					ng-click="deleteCategory()"
+					class="alert button"
+				>
+					{{ category.deleting | iif: 'Deleting...' : 'Yes' }}
+				</a>
+				<a 
+					zf-close="" 
+					class="secondary button"
+				>
+					No
+				</a>
+			</div>
+		</li>
+	</ul>
 	<div ng-show="category.Routes.api.length > 0">
 		<h3>Pages: {{ thiscategory.name }}</h3>
 		<div class="admin-well" ng-repeat="route in category.Routes.visible">

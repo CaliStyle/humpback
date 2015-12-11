@@ -24,5 +24,53 @@ _.merge(exports, {
    *	next(); 
    * }
    */
+   afterCreate: [
+      function eventBroadcast (setting, next){
+         sails.log('Setting.afterCreate.eventBroadcast', setting);
+
+         sails.config.redisevent.pub('settings:create', {
+            setting: setting
+         });
+
+         next();
+      },
+      function webhookBroadcast (setting, next){
+         sails.log('Setting.afterCreate.webhookBroadcast', setting);
+
+         next();
+      }
+   ],
+   afterUpdate: [
+      function eventBroadcast (setting, next){
+         sails.log('Setting.afterUpdate.eventBroadcast', setting);
+         
+         sails.config.redisevent.pub('settings:update', {
+            setting: setting
+         });
+
+         next();
+      },
+      function webhookBroadcast (subcategory, next){
+         sails.log('Setting.afterUpdate.webhookBroadcast', subcategory);
+         
+         next();
+      }
+   ],
+   afterDestroy: [
+      function eventBroadcast (setting, next){
+         sails.log('Setting.afterDestroy.eventBroadcast', setting);
+         
+         sails.config.redisevent.pub('settings:destroy', {
+            setting: setting
+         });
+
+         next();
+      },
+      function webhookBroadcast (subcategory, next){
+         sails.log('Setting.afterDestroy.webhookBroadcast', subcategory);
+         
+         next();
+      }
+   ]
   
 });

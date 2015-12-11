@@ -14,8 +14,8 @@
 							ng-if="__barnacles.admin"
 						>
 							<a 
-								ui-sref="admin"
-								ui-sref-active-eq="active"
+								ui-sref="admin.dashboard"
+								ui-sref-active="active"
 							>
 								Dashboard
 							</a>
@@ -124,24 +124,43 @@
 			</div>
 		</div>
 		<div class="admin-body-block" ui-view="admin">
-			<div class="admin-header-block">
-				<div class="grid-content">
-					<h1>Dashboard</h1>
-				</div>
-			</div>
-			<div class="grid-block">
-				<div 
-					class="grid-content"
-					ng-cms="__route.selected" 
+			<div class="grid-content">
+				<form
+					name="loginForm"
+					action="/auth/local?next=%2Fadmin%2Fdashboard"
+					method="POST"
+					novalidate
 				>
-					Welcome to Admin
-				</div>
-				<div class="grid-content">
-					<h2>Barnacles</h2>
-					<div ng-repeat="(key, value) in __barnacles">
-						{{ key }}: {{ value }}
-					</div>
-				</div>
+					<h1>Admin Login</h1>
+					<p ng-if="loginerror.message" ng-cloak class="alert-text">
+						{{ loginerror.message }}
+					</p>
+					<input 
+						type="text" 
+						id="inputEmail" 
+						name="identifier" 
+						placeholder="Email or Username"
+						ng-model="login.identifier"	
+						required
+						event-focus
+					/>
+
+					<input 
+						type="password" 
+						id="inputPassword" 
+						name="password"
+						ng-model="login.password" 
+						placeholder="Password"
+						required
+					/>
+					
+					<button 
+						type="submit" 
+						class="button large expand"
+					>
+						<img zf-iconic="" icon="lock" size="small" class="iconic-color-white">	Login
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>
