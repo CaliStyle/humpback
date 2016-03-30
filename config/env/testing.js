@@ -16,14 +16,20 @@ module.exports = {
 	port: 1337, // Yay for LEET!
 	
 	hooks: {
-    	// Runt grunt (unless you want to skip it)
+    	// Run grunt (unless you want to skip it)
     	//'grunt': true
   	},
 
 	//Set the model settigns
 	models: {
 		connection: 'localDiskDb',
-		migrate: 'drop'
+		migrate: 'alter'
+	},
+
+	connections: {
+		localDiskDb: {
+	    	adapter: 'sails-disk'
+		}
 	},
 
 	log: {

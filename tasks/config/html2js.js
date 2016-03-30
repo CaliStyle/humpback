@@ -6,9 +6,13 @@
 * `config/humpback.js` preload to be set to true                        *
 ************************************************************************/
 
+var config = require('../../config/humpback').humpback;
+var preload = config.preload;
+
+
 module.exports = function(grunt) {
 
-	grunt.config.set('html2js', {
+	var actions = {
 		humpbackViews: {
 			options: {
 				base: 'assets/src/app',
@@ -20,7 +24,14 @@ module.exports = function(grunt) {
 				'.tmp/public/app/views/templates.js':  require('../pipeline').templateFilesToInject
 			}
 		}
-	});
+	};
+	if(!preload){
+		actions = {
+			humpbackViews: {}
+		};
+	}
+
+	grunt.config.set('html2js', actions);
 
 	grunt.loadNpmTasks('grunt-html2js');
 };
